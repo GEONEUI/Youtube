@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/front_header"></head>
+<style>
+        /* youtube 수정 */
+        .youtube_card{
+            width: 23%;
+        }
+
+        .youtube_card iframe{
+            border-radius: 15px;
+        }
+
+        .youtube_card .youtube_card_info{
+            padding: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .youtube_card .youtube_card_info img{
+            margin-right: 10px;
+        }
+        .youtube_card .youtube_card_info .youtube_card_title .text_subject{
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .youtube_card .youtube_card_info .youtube_card_title .text_writer{
+            font-size: 14px;
+            color: #606060;
+        }
+
+        .youtube_card .youtube_card_info .youtube_card_title .text_reacount{
+            font-size: 14px;
+            color: #606060;
+        }
+        
+        
+        
+</style>
 <body>
     <div id="wrap">
 		<div th:replace="fragments/header"></div>
@@ -11,7 +48,64 @@
 							<div th:replace="fragments/aside"></div>
                         </div>
                         <div class="youtube_main">
-							< 여기다가 코딩하세요! >
+							<ul class="youtube_main_gnb">
+                                <li>전체</li>
+                                <li>음악</li>
+                                <li>뉴스</li>
+                                <li>실시간</li>
+                                <li>게임</li>
+                                <li>관광지</li>
+                                <li>축구</li>
+                                <li>요리</li>
+                                <li>최근에 업로드된 동영상</li>
+                            </ul>
+                                                        <div class="youtube_main_item">
+                                <div class="youtube_card">
+                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
+                                    <div class="youtube_card_info">
+                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
+                                        <div class="youtube_card_title">
+                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
+                                            <p class="text_writer">피식대학</p>
+                                            <p class="text_reacount">조회수 1만회</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="youtube_card">
+                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
+                                    <div class="youtube_card_info">
+                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
+                                        <div class="youtube_card_title">
+                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
+                                            <p class="text_writer">피식대학</p>
+                                            <p class="text_reacount">조회수 1만회</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="youtube_card">
+                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
+                                    <div class="youtube_card_info">
+                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
+                                        <div class="youtube_card_title">
+                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
+                                            <p class="text_writer">피식대학</p>
+                                            <p class="text_reacount">조회수 1만회</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="youtube_card">
+                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
+                                    <div class="youtube_card_info">
+                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
+                                        <div class="youtube_card_title">
+                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
+                                            <p class="text_writer">피식대학</p>
+                                            <p class="text_reacount">조회수 1만회</p>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
                         </div>
                    </div>
                 </div>
