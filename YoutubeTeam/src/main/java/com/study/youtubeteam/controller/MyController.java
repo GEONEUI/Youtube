@@ -11,6 +11,7 @@ public class MyController {
 	public String index() {
 		return "index";
 	}
+	//-------------------------------------------------------
 	
 	//예준
 	@RequestMapping("/play")
@@ -18,7 +19,19 @@ public class MyController {
 		return "play";
 	}
 	
-	//준호
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//--------------------------------------------------------
+	
+	//준호-----------------------------------------------------
 	@RequestMapping("/channel")
 	public String channel() {
 		return "channel";
