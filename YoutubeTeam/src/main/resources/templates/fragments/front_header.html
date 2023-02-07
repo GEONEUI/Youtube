@@ -1,0 +1,112 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css");
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+        /* reset css */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .inner{
+            width: 1900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: #0f0f0f;
+        }
+
+        body{
+            font-family: 'Roboto', sans-serif;
+            color: #0f0f0f;
+            padding-top: 130px;
+            padding-left: 11%;
+        }
+
+        /* wrap */
+        #wrap{
+            overflow-x: hidden;
+        }
+
+        /* sec_layout */
+        .sec_layout{
+            position: relative;
+        }
+        /* sec_layout layout 1*/
+        .sec_layout .layout{display: flex; justify-content: space-between;}
+
+         /* sec_layout aside 2*/
+
+
+
+
+        /* contents */
+        .sec_layout .layout .youtube_main{
+            width: 89%;
+        }
+        .sec_layout .layout .youtube_main .youtube_main_item{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 0 60px;
+        }
+
+
+		/* youtube_main_gnb */
+        .youtube_main_gnb{
+            display: flex;
+            position: fixed;
+            top: 56px;
+            left: 13%;
+            z-index: 999;
+            height: 56px;
+            align-items: center;
+            background: #fff;
+            width: 100%;
+        }
+
+        .youtube_main_gnb li{
+            padding:7px 15px;
+            background: #f2f2f2;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+
+
+
+        /* youtube 수정 */
+        .youtube_card{
+            width: 23%;
+        }
+
+        .youtube_card iframe{
+            border-radius: 15px;
+        }
+        
+
+
+        @media(max-width:1900px){
+            .inner{
+                width: 100%;
+            }
+        }
+
+
+    </style>
+</head>
