@@ -11,16 +11,24 @@
         width: 100%;
         position: relative;
     }
-    #ChannelHeader {
-    	width: 100%;
-    	height: 220px;
+    #chbd {
+    	display: flex;
+		justify-content: center;
     }
-    #header {
-    	height: 220px;
-    	width: 1400px;
+    #ChannelHeader {
+    	width: 1300px;
+    	height: 150px;
+    }
+    #logoHeader {
+    	height: 105px;
+    	width: 1300px;
     }
     
   	.box {
+  		float: left;
+  		top: 10px;
+  		left: 30px;
+  		margin: auto 20px;
     	width: 90px;
     	height: 90px;
         border-radius: 70%;
@@ -30,7 +38,47 @@
     	height: 100%;
     	width: 100%;
     	object-fit: cover;
-    }
+   	}
+   	.channelContent {
+   		position: relative;
+   		float: left;
+   		top: 5px;
+   	}
+   	.channelName {
+   		font-size: 30px;
+   	}
+   	.channelId {
+   		color: grey;
+   	}
+   	
+   	.channelFollow {
+   		color: grey;
+   	}
+   	
+   	#followButton {
+   		position: relative;
+   		float: right;
+   		top: 30px;
+   	}
+   	#fBtn {
+   		height: 40px;
+   		width: 60px;
+   		border-radius: 20px;
+   		border: 0;
+   		color: white;
+   		font-size: 15px;
+   		background-color: black;
+   	}
+   	
+   	.chbtn {
+   		background-color: transparent;
+   		border: 0;
+   		height: 30px;
+   		width: 120px;
+   	}
+   	
+   
+    
  
 	
 </style>
@@ -47,13 +95,39 @@
 							<div id="BannerLayout">
 								<img id="Banner" src='/image/bannerCalm.jpg'>
 							</div>
-							<div id="ChannelHeader">
-								<div id="Header">
-									<div class="box">
-										<img id="img" src="/image/calm.jpg">
+							<div id="chbd">
+								<div id="ChannelHeader">
+									<div id="logoHeader">
+										<div class="box">
+											<img id="img" src="/image/calm.jpg">
+										</div>
+										<div class="channelContent">
+											<div class="channelName">
+												침착맨
+											</div>
+											<div class="channelId">
+												@아이디
+											</div>
+											<div class="channelFollow">
+												구독자 11명
+											</div>
+										</div>
+										<div id="followButton">
+											<input type="button" id="fBtn" value="구독"/>
+										</div>
 									</div>
-								</div>
-							</div>				
+									<div id="chbtnAll">
+										<input type="button" class="chbtn" value="홈"/>
+										<input type="button" class="chbtn" value="동영상"/>
+										<input type="button" class="chbtn" value="SHORTS"/>
+										<input type="button" class="chbtn" value="커뮤니티"/>
+										<input type="button" class="chbtn" value="정보"/>
+										<button><i class="fa-thin fa-magnifying-glass"></i></button>
+										<input type="text" id="chbtnSC"/>
+									</div>
+								</div>	
+							</div>
+							<hr />		
                         </div>
                    </div>
                 </div>
