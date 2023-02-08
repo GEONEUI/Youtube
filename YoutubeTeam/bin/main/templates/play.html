@@ -21,17 +21,34 @@
 		width: 20px;
 	}
 	
-	#wrap > div.sec_layout > div > div > div.aside.active > h1 {
+	
+	#wrap > div.sec_layout > div > div > div.aside > h1 {
 		width: 100px;
 	    position: absolute;
 	    top: 17PX;
 	    right: 65PX;
 	}
 	
+	#wrap > div.sec_layout > div > div > div.aside.active > h1 {
+		width: 100px;
+	    position: absolute;
+	    top: 17PX;
+	    right: 65PX;
+	   
+	}
+	
+	
 	
 	/* 	play-body */
 	
-	
+	#back {
+		width: 1679px;
+		height: 100vh;
+		background: red;
+		position: fixed;
+		left: 241px;
+		top: 0px;
+	}
 	
 	
 	/* 	footer */
@@ -54,6 +71,7 @@
 	#wrap > div.sec_layout > div > div > div.aside.active > ul {
 	   	position: unset;
 	    margin-top: 68px;
+	   
 	}
 	
 	#wrap > div.sec_layout > div > div > div.aside > ul {
@@ -61,6 +79,7 @@
 	    margin-top: 68px;
 	}
 	
+	/* footer 열릴 때 */
 	.sec_layout .layout .aside.active {
 		width: 241px;
         height: 100vh;
@@ -68,10 +87,11 @@
         left: 0px;
         top: 0px;
         z-index: 99;
-        background: #fff;
+        background: #ccc;
         transition: 0.2s;
 	}
 	
+	/* footer 닫힐 때 */
 	.sec_layout .layout .aside{
         transition: 0.2s;
 	}
@@ -86,6 +106,7 @@
 
    	</div>
     <div id="wrap">
+    
 		<div th:replace="fragments/header"></div>
     	<a href="#" class="burger"><i class="fa-solid fa-bars"></i> </a>
         <div class="sec_layout">
@@ -107,10 +128,10 @@
                       <ytd-lottie-player class="style-scope ytd-yoodle-renderer" hidden=""></ytd-lottie-player></ytd-yoodle-renderer>
                       </a>
                       </ytd-topbar-logo-renderer></h1>
+   						 <div id="back">
                         </div>
                         <div class="youtube_main">
 							< 여기다가 코딩하fh세asdfasdf요! >
-							
 							
 							
 							
@@ -120,16 +141,18 @@
                 </div>
             </div>
         </div>
-        
+        </div>
 </body>
 
         <script>
         
         const menuTrigger = document.querySelector('.burger');
 		const footerSide = document.querySelector('.aside');
+		const backColor = document.querySelector('#back');
 		
 		menuTrigger.addEventListener('click', () => {
         footerSide.classList.add('active');
+        
         });
 		
 		const menuTrigger2 = document.querySelector('.burger2');
