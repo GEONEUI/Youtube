@@ -29,4 +29,22 @@ public class MyController {
 	public String mypage() {
 		return "mypage";
 	}
+	
+	//유진-보관함
+	@RequestMapping("/videos")
+	public String videos() {
+		return "videos";
+	}
+	
+	//유진-시청기록
+		@RequestMapping("/watchtime")
+		public String watchtime() {
+			return "watchtime";
+		}
+		
+	//유진-구독
+		@RequestMapping("/subscribe")
+		public String subscribe() {
+			return "subscribe";
+		}
 }

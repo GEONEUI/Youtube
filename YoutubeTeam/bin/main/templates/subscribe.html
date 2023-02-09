@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Document</title>
+</head>
+<style>
+* {
+	box-sizing: border-box
+}
+
+#wrap {
+	position: relative;
+}
+
+.main {
+	width: 1300px;
+	float: left;
+}
+
+.profile {
+	width: 100%;
+	height: 30px;
+	background-color: white;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+.content {
+	margin-left: 200px;
+	overflow: hidden;
+}
+
+.title1 {
+	margin: 10px 0px 10px 0px;
+	margin-left: 5px;
+	background-color: #A9E2F3;
+	height: 5px;
+	width: 100%;
+}
+
+.video1, .video2, .video3, .video4, .video5 {
+	margin-top: 20px;
+	margin-left: 5px;
+	width: 23%;
+	height: 170px;
+	background-color: black;
+}
+
+.cont1 { /* 가로로 배열이 되어야함-이둘을 포함하는 cont1박스를 flex로 지정 */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+aside {
+	width: 200px;
+	height: 300px;
+	background: gray;
+	float: right;
+	margin-top: 60px;
+	margin-right: 70px;
+}
+
+footer {
+	width: 100px;
+	height: 40px;
+	background-color: white;
+	margin-top: 10px;
+	text-align: center;
+}
+</style>
+<body>
+	<div id="wrap">
+		<div th:replace="fragments/header"></div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<div class="youtube_main">
+						<!-- <header>Youtube</header> -->
+						<section class="main">
+
+							<div class="content">
+								<div class="cont1">
+									<div class="profile">오늘</div>
+									<div>
+										<iframe src="디비에서 가져온 경로">짱구는못말여</iframe>
+										<p>개패버린다?</p>
+									</div>
+									<div class="video2">동영상2</div>
+									<div class="video3">동영상3</div>
+									<div class="video4">동영상4</div>
+									<div class="video5">동영상5</div>
+									<div class="title1"></div>
+									<div class="profile">어제</div>
+									<div class="video1">동영상1</div>
+									<div class="video2">동영상2</div>
+									<div class="video3">동영상3</div>
+									<div class="video4">동영상4</div>
+									<div class="video5">동영상5</div>
+									<div class="title1"></div>
+									<div class="profile">이번 주</div>
+									<div class="video1">동영상1</div>
+									<div class="video2">동영상2</div>
+									<div class="video3">동영상3</div>
+									<div class="video4">동영상4</div>
+									<div class="video5">동영상5</div>
+									<div class="title1"></div>
+									<div class="profile">이번 달</div>
+									<div class="video1">동영상1</div>
+									<div class="video2">동영상2</div>
+									<div class="video3">동영상3</div>
+									<div class="video4">동영상4</div>
+									<div class="video5">동영상5</div>
+									<div class="video1">동영상1</div>
+									<div class="video2">동영상2</div>
+									<div class="video3">동영상3</div>
+									<div class="video4">동영상4</div>
+									<div class="video5">동영상5</div>
+								</div>
+							</div>
+						</section>
+						<aside>
+							프사<br> <br> 닉넴<br> <br> 구독:10<br> 좋아요:
+							10
+						</aside>
+						<footer> + </footer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Document</title>
+</head>
+<style>
+*{
+	box-sizing:border-box
+}
+
+#wrap{
+	position:relative;
+}
+
+header{
+	margin-left:200px;
+	margin-top:200px;
+}
+
+.main{
+	width:1300px;
+	float:left;
+}
+
+.profile{
+	width: 100%;
+	height: 30px;
+	background-color:white;
+	margin-top:10px;
+	margin-left:150px;
+}
+
+.content{
+	margin-left: 200px;
+	overflow: hidden;
+}
+
+.video1,.video2,.video3,.video4,.video5{
+	margin-top: 20px;
+	margin-left:5px;
+	width: 25%;
+	height: 170px;
+	background-color:black;
+}
+
+.video11,.video12,.video13,.video14,.video15{
+	margin-top: 20px;
+	margin-left:5px;
+	width: 25%;
+	height: 170px;
+	background-color:black;
+}
+
+.video21,.video22,.video23,.video24,.video25{
+	height: 150px;
+	width:25%;
+	height: 170px;
+	margin-left:5px;
+	background-color: #dfdfdf;
+}
+
+.videotitle{
+	display:flex;
+}
+
+.cont2{
+	display:flex;
+}
+
+aside{
+	width:200px;
+	height:300px;
+	background:gray;
+	float:right;
+	margin-top:60px;
+	margin-right:70px;
+}
+
+footer{
+	width:100px;
+	height: 40px;
+	background-color:white;
+	margin-top:10px;
+	text-align:center;
+}
+
+</style>
+<body>
+    <div id="wrap">
+		<div th:replace="fragments/header"></div>
+        <div class="sec_layout">
+                <div class="inner">
+                    <div class="layout">
+                        <div class="aside">
+							<div th:replace="fragments/aside"></div>
+                        </div>
+                        <div class="youtube_main">
+							<header>시청 기록</header>
+							<section class="main">
+								<div class="profile">
+									오늘
+								</div>
+								<div class="content">
+									<div class="cont1">
+										<div class="cont2">
+											<iframe src="디비에서 가져온 경로">짱구는못말여</iframe>
+											<p>개패버린다?</p>
+										</div>
+										<div class="video2">동영상2</div>
+										<div class="video3">동영상3</div>
+										<div class="video4">동영상4</div>	
+										<div class="video5">동영상5</div>
+										<div class="video1">동영상1</div>
+										<div class="video2">동영상2</div>
+										<div class="video3">동영상3</div>
+										<div class="video4">동영상4</div>	
+										<div class="video5">동영상5</div>	
+										<div class="video1">동영상1</div>
+										<div class="video2">동영상2</div>
+										<div class="video3">동영상3</div>
+										<div class="video4">동영상4</div>	
+										<div class="video5">동영상5</div>	
+										<div class="video1">동영상1</div>
+										<div class="video2">동영상2</div>
+										<div class="video3">동영상3</div>
+										<div class="video4">동영상4</div>	
+										<div class="video5">동영상5</div>	
+										<div class="video1">동영상1</div>
+										<div class="video2">동영상2</div>
+										<div class="video3">동영상3</div>
+										<div class="video4">동영상4</div>	
+										<div class="video5">동영상5</div>
+									</div>
+								</div>
+							</section>
+							<aside>
+							시청 기록 검색<br><br>기록 유형<br>시청 기록<br>커뮤니티<br><br>시청 기록 지우기<br>
+							시청 기록 일시중지<br>전체 기록 관리<br>시청 기록 및 검색 기록<br>
+							댓글<br>실시간 채팅
+
+							</aside>
+							<footer>
+       							 +     
+    						</footer>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
