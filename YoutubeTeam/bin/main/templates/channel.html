@@ -16,16 +16,25 @@
 		justify-content: center;
     }
     #ChannelHeader {
+    	display: flex;
+   		flex-wrap: wrap;
+    	align-content: space-between;
     	width: 1300px;
     	height: 150px;
     }
     #logoHeader {
+    	display: flex;
+   	 	justify-content: space-between;
     	height: 105px;
     	width: 1300px;
     }
     
+    .chbox {
+    	display: flex;
+    }
+    
   	.box {
-  		float: left;
+  		display: flex;
   		top: 10px;
   		left: 30px;
   		margin: auto 20px;
@@ -56,12 +65,12 @@
    	}
    	
    	#followButton {
-   		position: relative;
-   		float: right;
-   		top: 30px;
+   		display: flex;
+    	flex-wrap: wrap; 
+    	align-content: center;
    	}
    	#fBtn {
-   		height: 40px;
+   		height: 43px;
    		width: 60px;
    		border-radius: 20px;
    		border: 0;
@@ -70,11 +79,26 @@
    		background-color: black;
    	}
    	
+   	#chbtnAll {
+		display: flex;   	
+   	}
+   	
    	.chbtn {
+   		display: flex;
+    	justify-content: center;
    		background-color: transparent;
    		border: 0;
    		height: 30px;
    		width: 120px;
+   	}
+   	.scbtn {
+   		display: flex;
+   	}
+   	
+   	.chbtn > p {
+   		display: flex;
+	    flex-wrap: wrap;
+    	align-content: center;
    	}
    	
    
@@ -98,18 +122,20 @@
 							<div id="chbd">
 								<div id="ChannelHeader">
 									<div id="logoHeader">
-										<div class="box">
-											<img id="img" src="/image/calm.jpg">
-										</div>
-										<div class="channelContent">
-											<div class="channelName">
-												침착맨
+										<div class="chbox">
+											<div class="box">
+												<img id="img" src="/image/calm.jpg">
 											</div>
-											<div class="channelId">
-												@아이디
-											</div>
-											<div class="channelFollow">
-												구독자 11명
+											<div class="channelContent">
+												<div class="channelName">
+													침착맨
+												</div>
+												<div class="channelId">
+													@아이디
+												</div>
+												<div class="channelFollow">
+													구독자 11명
+												</div>
 											</div>
 										</div>
 										<div id="followButton">
@@ -117,13 +143,27 @@
 										</div>
 									</div>
 									<div id="chbtnAll">
-										<input type="button" class="chbtn" value="홈"/>
-										<input type="button" class="chbtn" value="동영상"/>
-										<input type="button" class="chbtn" value="SHORTS"/>
-										<input type="button" class="chbtn" value="커뮤니티"/>
-										<input type="button" class="chbtn" value="정보"/>
-										<button><i class="fa-thin fa-magnifying-glass"></i></button>
-										<input type="text" id="chbtnSC"/>
+										<div class="chbtn">
+											<p>홈</p>
+										</div>
+										<div class="chbtn">
+											<p>동영상</p>
+										</div>
+										<div class="chbtn">
+											<p>커뮤니티</p>
+										</div>
+										<div class="chbtn">
+											<p>정보</p>
+										</div>
+										<div class="scbtn">
+											<div>
+												<i class="fa-thin fa-magnifying-glass"></i>
+											</div>
+											<div>
+												<input type="text" id="chbtnSC"/>
+											</div>
+										</div>
+										
 									</div>
 								</div>	
 							</div>
