@@ -38,19 +38,294 @@
 	}
 	
 	
-	
 	/* 	play-body */
 	
-	#back {
+	body {
+		font-family: 'Roboto', sans-serif;
+	    color: #0f0f0f;
+	    padding-top: 80px;
+	    padding-left: 0%;
+	    overflow-x: hidden;
+	}
+
+	.sec_layout .layout .youtube_main{
+            width: 100%;
+        }
+        
+    .title {
+    	font-size: 19.5px;
+    	font-weight: bold;
+    	margin-top: 11px;
+    }
+    
+    .subscribe {
+    	width: 100%;
+    	height: 55px;
+    	display: flex;
+    	margin-top: 15px;
+    }    
+    
+    .subscribe .subscribeCh	{
+    	width: 50%;
+    	height: 43px;
+    	background: #ccc;
+    	display: flex;
+    }
+    
+    .subscribe .subscribeCh2 {
+    	width: 50%;
+  		height: 43px;
+  		background: #fff;
+  		display: flex;
+  		justify-content: space-around;
+    }
+    
+    #wrap > div.sec_layout > div > div > div.youtube_main > div > div.print > div > div:nth-child(1) > a	{
+    	margin-right: 10px;
+    }
+    
+    .jtbc {
+    	margin-right: 20px;
+    	line-height: 20px;
+    }    
+    
+    .sutak	{
+    	width: 40px;
+    	height: 40px;
+    	border-radius: 70%;
+    }
+
+    
+    .gudok	{
+    	width: 60px;
+	    height: 43px;
+	    background: darkgreen;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 5px;
+	  	border-radius: 2em;
+    }
+    
+ 
+    .upDown	{
+    	display: flex;
+    	border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 8px;
+	  	border-radius: 2em;
+    }
+    
+    .upDown .upDownCh {
+    	margin-right:32px;
+    	display: flex;
+    }
+    
+    .upDown .upDownCh > div {
+    	border: 1px solid black;
+    }
+  
+    .upDown .upDownCh > a:nth-child(2) {
+    	margin: 0 15px;
+    }
+    
+    .share	{
+    	display: flex;
+    	border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 8px;
+	  	border-radius: 2em;
+    }
+    
+    .share > li{
+    	margin: 0 10px;
+    }
+    
+    .save	{
+    	display: flex;
+    	border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 8px;
+	  	border-radius: 2em;
+    }
+    
+    .save > li{
+    	margin: 0 10px;
+    }    
+    
+    .klip	{
+    	display: flex;
+    	border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 8px;
+	  	border-radius: 2em;
+    }
+    
+    .klip > li {
+    	margin: 0 10px;
+    }
+    
+    .dotMom	{
+    	align-items: center;
+    	justify-content: center;
+    	display: flex;
+    	border: 1px solid #3b8c9a;
+    	cursor:pointer; cursor:hand;
+	  	background-color: #3b8c9a;
+	  	color: white;
+	  	padding: 11px;
+	  	border-radius: 2em;
+    }
+    
+    .dotMom .dot {
+    	width: 5px;
+    	height: 5px;
+    	border-radius:100%;
+    	background: #000;
+    	margin: 0 1px;
+    }
+  
+	/*--- footer 버거 클릭 시 불투명 gray 색 활성화 ---*/
+	.burgerThema {
 		width: 1679px;
 		height: 100vh;
-		background: red;
+		background: #000;
 		position: fixed;
 		left: 241px;
 		top: 0px;
+		z-index: 999;
+		display: none;
+		transition:0.3s;
+	}
+	
+	.burgerThema.active {
+		display: block;
+		opacity:0.6;
+		transition:0.3s;
+	}
+	
+	.center {
+		width: 100%;
+		height: 100vh;
+		background: cornflowerblue;
+		display: flex;
+		padding: 0 84px;
+	}
+	
+	.print {
+		width: 1280px;
+	    height: 720px;
+	    background: lightseagreen;
+	    margin-right: 30px;
+	}
+	
+	.list {
+		width: 376px;
+		height: 100vh;
+		background: #ccc;
+	}
+	
+	.below {
+		border: 1px solid black;
+	}
+	
+	.below .below-Ch {
+		display: flex;
+		font-size: 16px;
+		margin: 20px 0;
 	}
 	
 	
+	.below .below-Ch > div > span:nth-child(2) {
+		margin: 0 5px;
+	}
+	
+	.below .below-Ch > div > span:nth-child(3) {
+		margin-right: 30px;
+	}
+	
+	.below .below-Ch2 {
+		display: flex;
+	}
+	
+	.below .below-Ch2 > div:nth-child(1) {
+		margin-right: 15px;
+	}
+	
+	.comment {
+		display: flex;
+		margin-bottom: 25px;
+	}
+	
+	.comment > div > img {
+		width: 50px;
+	    height: 50px;
+	    border-radius: 70%;
+	}
+	
+	.comment .comment-Ch {
+		width: 1200px;
+		display: flex;
+  		justify-content: space-between;
+	}
+	
+	.comment > div:nth-child(2) {
+		margin: 0 15px;
+	}
+	
+	.comment .comment-live {
+		width: 1200px;
+	}
+	
+	.comment .comment-Ch .comment-Ch2	{
+		display: flex;
+	}
+	
+	.view {
+		display: flex;
+	}
+	
+	.view1 {
+		display: flex;
+	}
+	
+	.view1 > div:nth-child(1) {
+		margin: 0 15px;
+	}
+	
+	.view2 {
+		margin: 0 15px;
+	}
+	
+	.view3 {
+		display: flex;
+	}
+	
+	.view3 > div:nth-child(1) {
+		margin: 0 15px;
+	}
+	
+	.view > div > img {
+		width: 50px;
+	    height: 50px;
+	    border-radius: 70%;
+	}
+	
+	
+	
+
 	/* 	footer */
 	
 	.burger {
@@ -87,7 +362,7 @@
         left: 0px;
         top: 0px;
         z-index: 99;
-        background: #ccc;
+        background: #fff;
         transition: 0.2s;
 	}
 	
@@ -128,10 +403,103 @@
                       <ytd-lottie-player class="style-scope ytd-yoodle-renderer" hidden=""></ytd-lottie-player></ytd-yoodle-renderer>
                       </a>
                       </ytd-topbar-logo-renderer></h1>
-   						 <div id="back">
                         </div>
                         <div class="youtube_main">
-							< 여기다가 코딩하fh세asdfasdf요! >
+							<div class="center">
+								<div class="print">
+								<iframe width="1280" height="720" src="https://www.youtube.com/embed/bUAOvY6SyJw" title="오랜만에 다시 도전하는 '그 공포게임' (그림자 복도/파괴자 난이도)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<li class="title">[스페셜] 서로에게 벗어나지 못하는 유연석-문가영, 키스로 마음 확인 끝 | 사랑의 이해 | JTBC 230119 방송</li>
+								
+								<div class="subscribe">
+									<div class="subscribeCh">
+								 		<a href="https://www.youtube.com/watch?v=bUAOvY6SyJw">
+								 			<img class="sutak" src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></a>
+								 		<div class="jtbc">
+									 		<a>JTBC Drama</a>
+									 		<li>구독자 471만명</li>
+								 		</div>
+								 		<div class="gudok">구독</div>
+									</div>
+								 
+									<div class="subscribeCh2">
+								 		<div class="upDown">
+									 		<div class="upDownCh">
+									 		<a><i class="fa-regular fa-thumbs-up"></i></a>
+									 		<a>up</a>
+									 		<div></div>
+									 		</div>
+								 		
+								 			<a><i class="fa-regular fa-thumbs-down"></i></a>
+								 		</div>
+								 		
+								 		<div class="share"><i class="fa-solid fa-share"></i> 
+								 		<li>공유</li></div>
+								 		
+								 		<div class="save"><i class="fa-solid fa-download"></i>
+								 		<li>오프라인 저장</li></div>
+								 		
+								 		<div class="klip"><i class="fa-solid fa-scissors"></i>
+								 		<li>클립</li></div>
+								 		
+								 		<div class="dotMom">
+								 		<span class="dot"></span>
+								 		<span class="dot"></span>
+								 		<span class="dot"></span>
+								 		</div>
+									</div>
+								</div>
+									<div class="below"> 
+										<div class="below-Ch">
+											<div>
+												<span>댓글</span>
+												<span>7,977</span>
+												<span>개</span>
+											</div>
+											<div class="below-Ch2">
+												<div><i class="fa-solid fa-align-left"></i></div>
+												<div>정렬 기준</div>
+											</div>
+										</div>
+										
+										<div class="comment">
+											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
+											<div>
+												<div class="comment-live">댓글 적는 칸</div>
+												<div class="comment-Ch">
+													<div>이모티콘</div>
+													<div class="comment-Ch2">
+														<div>취소</div>
+														<div>작성</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="view"> <!-- 댓글 보이는 부분 -->
+											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
+											<div>
+												<div class="view1">
+													<div>aaaa</div>
+													<div>aaaa</div>
+												</div>
+												<div class="view2">aaaa</div>
+												<div class="view3">
+													<div>aaaa</div>
+													<div>aaaa</div>
+													<div>aaaa</div>
+												</div>
+											</div>
+										</div>
+										
+									</div> <!-- comment  -->
+									
+							</div> <!-- print  -->
+								
+								<div class="list">
+								</div>
+								
+								
+						</div> <!-- center  -->
 							
 							
 							
@@ -141,6 +509,7 @@
                 </div>
             </div>
         </div>
+		 <div class="burgerThema">
         </div>
 </body>
 
@@ -148,11 +517,12 @@
         
         const menuTrigger = document.querySelector('.burger');
 		const footerSide = document.querySelector('.aside');
-		const backColor = document.querySelector('#back');
-		
+ 		const backColor = document.querySelector('.burgerThema');
+ 		
 		menuTrigger.addEventListener('click', () => {
         footerSide.classList.add('active');
-        
+        backColor.classList.add('active');
+        document.body.style.overflow = "hidden";
         });
 		
 		const menuTrigger2 = document.querySelector('.burger2');
@@ -160,7 +530,10 @@
 		
 		menuTrigger2.addEventListener('click', () => {
         footerSide2.classList.remove('active');
+        backColor.classList.remove('active');
+        document.body.style.overflow = "unset";
         });
+		
         
         
         </script>
