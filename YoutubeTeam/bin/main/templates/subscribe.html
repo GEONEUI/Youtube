@@ -16,60 +16,140 @@
 }
 
 .main {
-	width: 1300px;
-	float: left;
+	
 }
 
 .profile {
 	width: 100%;
 	height: 30px;
 	background-color: white;
-	margin-top: 10px;
-	margin-left: 30px;
+	display: flex;
+}
+
+body {
+	padding-top: 45px;
 }
 
 .content {
-	margin-left: 200px;
-	overflow: hidden;
-}
-
-.title1 {
-	margin: 10px 0px 10px 0px;
-	margin-left: 5px;
-	background-color: #A9E2F3;
-	height: 5px;
-	width: 100%;
-}
-
-.video1, .video2, .video3, .video4, .video5 {
-	margin-top: 20px;
-	margin-left: 5px;
-	width: 23%;
-	height: 170px;
-	background-color: black;
-}
-
-.cont1 { /* 가로로 배열이 되어야함-이둘을 포함하는 cont1박스를 flex로 지정 */
+	padding-left: 215px;
 	display: flex;
+}
+
+.later {
+	width: 1000px;
+}
+
+.rcontainer {
+	width: 74%;
+}
+
+.rcontainer .cont1 {
+	width: 100%;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	display: flex;
 }
 
-aside {
-	width: 200px;
-	height: 300px;
-	background: gray;
-	float: right;
-	margin-top: 60px;
-	margin-right: 70px;
+.video {
+	width: 19.5%;
+	background: #000;
+	height: 140px;
+	margin-bottom: 48px;
+	border-radius: 12px;
+}
+
+.line {
+	padding: 32px 0;
+}
+
+.info {
+	width: 100%;
+	border-top: 1px solid #ccc;
+	display: flex;
+	align-items: center;
+}
+
+.info i {
+	margin-right: 5px;
+}
+
+.cont2 {
+	width: 13%;
+	padding-top: 34px;
+}
+
+.text{
+	
+}
+
+.rcontainer .record {
+	display: flex;
+	justify-content: space-between;
+	padding: 30px 0;
+}
+
+.rcontainer .records {
+	display: flex;
+	align-items: center;
+}
+
+.rcontainer .records i {
+	margin-right: 15px;
+}
+
+.box {
+	align-items: center;
+	display: flex;
+	margin-left: 50px;
+	justify-content: space-around;
+}
+
+.profile_item {
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	padding: 13px 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+div.profile-icon{
+	display: flex;
+}
+
+.nickname {
+	text-align: center;
+	padding: 6px;
 }
 
 footer {
-	width: 100px;
 	height: 40px;
-	background-color: white;
-	margin-top: 10px;
 	text-align: center;
+	padding-left: 215px;
+}
+
+.bottom {
+	padding: 40px 0;
+}
+
+.sissor i {
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+.sissor p {
+	margin-bottom: 15px;
+}
+
+.sissor {
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
+
+.nothing {
+	text-align: left;
+	font-size: 14px;
 }
 </style>
 <body>
@@ -82,54 +162,69 @@ footer {
 						<div th:replace="fragments/aside"></div>
 					</div>
 					<div class="youtube_main">
-						<!-- <header>Youtube</header> -->
 						<section class="main">
-
 							<div class="content">
-								<div class="cont1">
-									<div class="profile">오늘</div>
-									<div>
-										<iframe src="디비에서 가져온 경로">짱구는못말여</iframe>
-										<p>개패버린다?</p>
+								<div class="rcontainer">
+									<div class="record">
+										<div class="records">
+											<p>오늘</p>
+										</div>
 									</div>
-									<div class="video2">동영상2</div>
-									<div class="video3">동영상3</div>
-									<div class="video4">동영상4</div>
-									<div class="video5">동영상5</div>
-									<div class="title1"></div>
-									<div class="profile">어제</div>
-									<div class="video1">동영상1</div>
-									<div class="video2">동영상2</div>
-									<div class="video3">동영상3</div>
-									<div class="video4">동영상4</div>
-									<div class="video5">동영상5</div>
-									<div class="title1"></div>
-									<div class="profile">이번 주</div>
-									<div class="video1">동영상1</div>
-									<div class="video2">동영상2</div>
-									<div class="video3">동영상3</div>
-									<div class="video4">동영상4</div>
-									<div class="video5">동영상5</div>
-									<div class="title1"></div>
-									<div class="profile">이번 달</div>
-									<div class="video1">동영상1</div>
-									<div class="video2">동영상2</div>
-									<div class="video3">동영상3</div>
-									<div class="video4">동영상4</div>
-									<div class="video5">동영상5</div>
-									<div class="video1">동영상1</div>
-									<div class="video2">동영상2</div>
-									<div class="video3">동영상3</div>
-									<div class="video4">동영상4</div>
-									<div class="video5">동영상5</div>
+									<div class="cont1">
+										<div class="video">동영상2</div>
+										<div class="video">동영상3</div>
+										<div class="video">동영상4</div>
+										<div class="video">동영상5</div>
+										<div class="video">동영상</div>
+								
+										<div class="info">
+											<div class="line"></div>
+											<p>어제</p>
+										</div>
+										<div class="video">동영상1</div>
+										<div class="video">동영상2</div>
+										<div class="video">동영상3</div>
+										<div class="video">동영상4</div>
+										<div class="video">동영상5</div>
+										<div class="info"></div>
+										<div class="video">동영상</div>
+										<div class="video"></div>
+										<div class="video">동영상1</div>
+										<div class="video">동영상2</div>
+										<div class="video">동영상3</div>
+										<div class="info">
+											<div class="line"></div>
+											<p>이번 주</p>
+										</div>
+										<div class="video">동영상4</div>
+										<div class="video">동영상5</div>
+										<div class="video">재생목록</div>
+										<div class="video">동영상1</div>
+										<div class="video">동영상2</div>
+										<div class="info">
+											<div class="line"></div>
+											<p>이번 달</p>
+										</div>
+										<div class="video">동영상3</div>
+										<div class="video">동영상4</div>
+										<div class="video">동영상5</div>
+										<div class="video">동영상</div>
+										<div class="video">동영상1</div>
+										<div class="line"></div>
+									</div>
+								</div>
+								<div class="cont2">
+									<div class="box">
+										<div>관리</div>
+										<i class="fa-light fa-table-cells"></i>
+										<div class="profile-icon">
+											<i class="fa-regular fa-list"></i>
+										</div>
+									</div>
 								</div>
 							</div>
 						</section>
-						<aside>
-							프사<br> <br> 닉넴<br> <br> 구독:10<br> 좋아요:
-							10
-						</aside>
-						<footer> + </footer>
+						<footer> </footer>
 					</div>
 				</div>
 			</div>

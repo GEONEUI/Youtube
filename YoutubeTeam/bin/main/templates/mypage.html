@@ -11,59 +11,74 @@
 	box-sizing: border-box
 }
 
-/* header{
-	height: 50px;
-	border-bottom-color:gray;
-} */
 .profile {
-	position: relative;
 	width: 100%;
 	height: 120px;
 	background-color: #dfdfdf;
 	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .box {
-	position: absolute;
 	width: 100px;
 	height: 100px;
 	border-radius: 70%;
 	overflow: hidden;
 	margin-left: 80px;
-	top: 10px;
+	margin-top: 9px;
 }
 
-#profile {
+.info {
+	align-items: center;
+}
+
+.profile_img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.nickname {
-	position: absolute;
-	width: 200px;
-	height: 20px;
-	left: 200px;
-	top: 30px;
+#nickname {
+	width: 100px;
+	height: 50px;
 	font-size: 35px;
+	margin-top: 31px;
 }
 
-.email {
-	position: absolute;
-	width: 200px;
-	height: 20px;
-	left: 200px;
-	top: 80px;
+#email {
+	width: 100px;
+	height: 50px;
 	font-size: 15px;
 }
 
+#button {
+	display: flex;
+	align-items: center;
+	margin-right: 30px;
+}
+
+#button_2 {
+	width: 72px;
+	height: 26px;
+	background-color: black;
+	border-radius: 20px;
+	text-align: center;
+}
+
+#profile_22 {
+	display: flex;
+}
+
+#button a {
+	color: white;
+}
+
 .content {
-	margin-left: 30px;
 	padding: 30px;
 }
 
-.videos { /* 보관함 */
-	position: relative;
+.storage_box { /* 보관함 */
 	margin-top: 20px;
 	margin-left: 5px;
 	margin-right: 10px;
@@ -72,98 +87,94 @@
 	background-color: #dfdfdf;
 	font-size: 30px;
 	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.storage {
-	position: absolute;
-	width: 250px;
-	height: 10px;
-	top: 30px;
-	left: 120px;
-}
-
-.watchtime { /* 시청기록 */
-	position: relative;
+.watchtime_box { /* 시청기록 */
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-right: 10px;
 	width: 25%;
 	height: 100px;
 	background-color: #dfdfdf;
 	font-size: 30px;
 	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.watched {
-	position: absolute;
-	width: 250px;
-	height: 10px;
-	top: 30px;
-	left: 120px;
-}
-
-.comment { /* 작성한 댓글 */
-	position: relative;
+.comment_box { /* 작성한 댓글 */
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 5px;
 	margin-right: 10px;
 	width: 25%;
 	height: 100px;
 	background-color: #dfdfdf;
 	font-size: 30px;
 	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.opinion {
-	position: absolute;
-	width: 250px;
-	height: 10px;
-	top: 30px;
-	left: 120px;
-}
-
-.subscribe { /* 구독 */
-	position: relative;
+.subscribe_box { /* 구독 */
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 5px;
+	margin-right: 10px;
 	width: 25%;
 	height: 100px;
 	background-color: #dfdfdf;
 	font-size: 30px;
 	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.subscribes {
-	position: absolute;
-	width: 250px;
-	height: 10px;
-	top: 30px;
-	left: 130px;
-}
-
-.cont1 { /* 가로로 배열이 되어야함-이둘을 포함하는 cont1박스를 flex로 지정 */
+.cont1 {
 	display: flex;
 }
 
-.title1 {
+.line {
 	margin: 10px 0px 10px 0px;
 	margin-left: 5px;
 	background-color: #dfdfdf;
-	height: 5px;
+	height: 2px;
 }
 
-.cont2 { /* 가로로 배열이 되어야함-이둘을 포함하는 cont1박스를 flex로 지정 */
-	
+.cont2 {
+	display: flex;
+	justify-content: space-between;
+}
+
+.ad_box {
+	height: 150px;
+	width: 49.3%;
+	margin-left: 5px;
+	background-color: #dfdfdf;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.than {
 	display: flex;
 }
 
-.ad1 {
-	
-	height: 150px;
-	width: 50%;
-	margin-left: 5px;
-	background-color: #dfdfdf;
-	
+.ad_box p {
+	margin-left: 11px;
+}
+
+.ad_box i{
+	margin-right: 22px;
+}
+
+.new_func {
+	font-size: 20px;
 }
 
 .ad2 {
@@ -171,45 +182,48 @@
 	width: 50%;
 	margin-left: 5px;
 	background-color: #dfdfdf;
+	border-radius: 10px;
 }
 
-.title2 {
-	margin: 10px 0px 10px 0px;
-	margin-left: 5px;
-	background-color: #dfdfdf;
-	height: 5px;
+.ad_img {
+	width: 60px;
+	height: 60px;
+	border-radius: 70%;
+	overflow: hidden;
+	height: 60px;
 }
 
-.video1 {
+.ad_box2 {
+	width: 60px;
+	height: 60px;
+	border-radius: 70%;
+	overflow: hidden;
+	margin-left: 22px;
+}
+
+.ads {
 	height: 150px;
 	width: 25%;
 	margin-left: 5px;
-	background-color: #dfdfdf;
 }
 
-.video2 {
-	height: 150px;
-	width: 25%;
-	margin-left: 5px;
-	background-color: #dfdfdf;
+#p1 {
+	font-size: 27px;
 }
 
-.video3 {
-	height: 150px;
-	width: 25%;
-	margin-left: 5px;
-	background-color: #dfdfdf;
+#p2 {
+	font-size: 17px;
+	margin-top: 10px;
 }
 
-.video4 {
-	height: 150px;
-	width: 25%;
-	margin-left: 5px;
-	background-color: #dfdfdf;
-}
-
-.cont3 { /* 가로로 배열이 되어야함-이둘을 포함하는 cont1박스를 flex로 지정 */
+.cont3 {
 	display: flex;
+}
+
+.ads_img {
+	width: 100%;
+	height: 175%;
+	overflow: hidden;
 }
 
 .footer {
@@ -230,56 +244,97 @@
 						<div th:replace="fragments/aside"></div>
 					</div>
 					<div class="youtube_main">
-
 						<section class="main">
 							<div class="profile">
-								<div class="box">
-									<img id="profile" src="images/her.jpg">
+								<div id="profile_22">
+									<div class="box">
+										<img class="profile_img" src="images/her.jpg">
+									</div>
+									<div class="info">
+										<div id="nickname">닉넴</div>
+										<div id="email">이메일</div>
+									</div>
 								</div>
-								<div class="nickname">닉넴</div>
-								<div class="email">이메일</div>
+								<div id="button">
+									<div id="button_2">
+										<a href="#">수정하기</a>
+									</div>
+								</div>
 							</div>
 							<div class="content">
 								<div class="cont1">
-									<div class="videos">
-										<div class="storage">
+									<div class="storage_box">
+										<div class="storage_box2">
 											<i class="fa-light fa-clapperboard-play"></i>보관함
 										</div>
 									</div>
-
-									<div class="watchtime">
-										<div class="watched">
+									<div class="watchtime_box">
+										<div class="watchtime_2">
 											<i class="fa-light fa-clock-rotate-left"></i>시청기록
 										</div>
 									</div>
-
-									<div class="comment">
-										<div class="opinion">
+									<div class="comment_box">
+										<div class="comment_2">
 											<i class="fa-light fa-comment-lines"></i>내 댓글
 										</div>
 									</div>
-
-									<div class="subscribe">
-										<div class="subscribes">
+									<div class="subscribe_box">
+										<div class="subscribe_2">
 											<i class="fa-light fa-films"></i>구독
 										</div>
 									</div>
 								</div>
-								<div class="title1"></div>
+								<div class="line"></div>
 								<div class="cont2">
-									<div class="ad1"><i class="fa-light fa-sparkles"></i>새로운 기능 사용해 보기</div>
-									<div class="ad2"><i class="fa-brands fa-youtube"></i>YouTube Music 살펴보기</div>
+									<div class="ad_box">
+										<div class="than">
+											<div class="ad_box2">
+												<img class="ad_img" src="images/idea.jpg">
+											</div>
+											<div>
+												<p class="new_func">새로운 기능 사용해 보기</p>
+												<p>사용 가능한 기능이 없으므로 나중에 다시 확인하세요</p>
+											</div>
+										</div>
+										<i class="fa-light fa-greater-than"></i>
+									</div>
+									<div class="ad_box">
+										<div class="than">
+											<div class="ad_box2">
+												<img class="ad_img" src="images/music.jpg">
+											</div>
+											<div>
+												<p class="new_func">YouTube Music 살펴보기</p>
+												<p>Premium 멤버십으로 고품질 오디오를 광고 없이 감상하세요</p>
+											</div>
+										</div>
+										<i class="fa-light fa-greater-than"></i>
+									</div>
 								</div>
-								<div class="title2"></div>
+								<div class="line"></div>
 								<div class="cont3">
-									<div class="video1">광고1</div>
-									<div class="video2">광고2</div>
-									<div class="video3">광고3</div>
-									<div class="video4">광고4</div>
+									<div class="ads">
+										<p id="p1">YouTube Music에서 좋아하는 아티스트의 노래를 감상하세요</p>
+										<p id="p2">premium 멤버십에 포함된 혜택: 고품질 오디오</p>
+									</div>
+									<div class="ads">
+										<img class="ads_img" src="images/black.jpg">
+										<p>Black Pink</p>
+									</div>
+									<div class="ads">
+										<img class="ads_img" src="images/who.jpg">
+										<p>BTS</p>
+									</div>
+									<div class="ads">
+										<img class="ads_img" src="images/new.jpg">
+										<p>NewJeans</p>
+									</div>
 								</div>
 							</div>
 						</section>
-						<footer class="footer"> <i class="fa-regular fa-angle-down"></i> </footer>
+						<footer class="footer">
+							<a href="#"><i class="fa-regular fa-angle-down"></i> </a>
+						</footer>
 					</div>
 				</div>
 			</div>
