@@ -24,6 +24,18 @@ public class MyController {
 		return "channel";
 	}
 	
+	//준호
+	@RequestMapping("/channelBoard")
+	public String channelBoard() {
+		return "channelBoard";
+	}
+	
+	//준호
+	@RequestMapping("/channelIndex")
+	public String channelIndex() {
+		return "channelIndex";
+	}
+	
 	//유진
 	@RequestMapping("/mypage")
 	public String mypage() {
