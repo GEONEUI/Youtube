@@ -1,3 +1,5 @@
+
+
 <style>
         /* header */
         .sec_header{
@@ -8,41 +10,57 @@
         .header{display: flex; height: 56px; align-items: center; justify-content:space-between; }
 
          /* logo */
-        .header .logo{width: 10%;}
-        .header .logo .logowidth{width:50%;}
-
+        .header .logo{width: 11%;}
+        
          /* serarch_bar */
         .header .search_bar{
             width: 32%;
             align-items: center;
-            display: flex;
         }
-        /* login */
         
-        .header .login_wrap{
+       .header .login_wrap{
         	display:flex;
         	justify-content:flex-end;
+        	width:12%;
         	
         }
+        
+        .header .logo .logowidth{width:50%;}
+
+
+        
+        .search_bar form{
+        	width:100%;
+        	display:flex;
+        	align-items:center;
+        }
+        
+        .search_bar form .search{
+        	width:89%;
+        	height:40px;
+        	border-radius: 18px 0 0 18px;
+        	padding-left:15px;
+        	border:1px solid #ccc;
+        }
+        
+       .search_bar form .search_btn{
+       		width:11%;
+        	border-radius: 0 18px 18px 0;
+        	height:40px;
+        	border:1px solid #ccc;
+        	background:#f8f8f8;
+        	border-left:0;
+        	cursor:pointer;
+        }
+        
+        /* login */
+        
+
         .header .login{display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; border-radius: 20px; padding:8px 15px;}
 
-        .header .search_bar .input{
-            width: 88.5%;
-            height: 40px;
-            border-radius: 20px 0 0 20px;
-            border: 1px solid #ccc;
-            padding: 15px;
-        }
 
-        .header .search_bar input{
-            height: 40px;
-            border-radius: 0 20px 20px 0;
-            border: 1px solid #ccc;
-            width: 11.5%;
-            border-left: none;
-            background: #f7f7f7;
-            cursor: pointer;
-        }
+
+ 
 
         .header .search_bar button i{
             font-size: 16px;
@@ -116,6 +134,7 @@
         
         
 </style>
+
    <div class="sec_header">
             <div class="inner">
                 <div class="header">
@@ -136,9 +155,9 @@
                 	</div>
                    
                     <div class="search_bar">
-                    	<form>
-                    		<input class="input" type="text" placeholder="검색" name="search">
-                        	<input type="submit"><i class="fa-solid fa-magnifying-glass"></i>
+                    	<form action="/" method="post">
+                    		<input class="search" type="text" placeholder="검색" name="search" th:value="${search}">
+                        	<button type="submit" class="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                     	</form>
                     </div>
                     <div class="login_wrap">
