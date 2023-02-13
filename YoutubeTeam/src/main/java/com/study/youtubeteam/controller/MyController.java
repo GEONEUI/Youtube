@@ -118,23 +118,31 @@ public class MyController {
 		return "redirect:/";
 	}
 	
-
-	
-
 	//예준
 
 	@RequestMapping("/play")
 	public String play() {
 		return "play";
 	}
-
 	// 준호
 	@RequestMapping("/channel")
 	public String channel() {
 		return "channel";
 	}
-
-	// 유진
+	
+	//준호
+	@RequestMapping("/channelBoard")
+	public String channelBoard() {
+		return "channelBoard";
+	}
+	
+	//준호
+	@RequestMapping("/channelIndex")
+	public String channelIndex() {
+		return "channelIndex";
+	}
+	
+	//유진
 	@RequestMapping("/mypage")
 	public String mypage() {
 		return "mypage";
