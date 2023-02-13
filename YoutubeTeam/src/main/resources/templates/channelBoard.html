@@ -109,41 +109,81 @@
     	flex-wrap: wrap;
    	}
    	
-   	#videoBD1 {
+    #board1 {
    		display: flex;
    		justify-content: center;
    	}
    	
-   	#videoBD2 {
+   	#board2 {
    		width: 1300px;
    		height: 100%;
    	}
    	
-   	#videoBtn {
-   		padding-left: 18px;
-   	    padding-top: 10px;
-		display: flex;
-   	 	justify-content: space-between;
-    	width: 291px;
-    	height: 50px;
+   	#boardList {
+   		padding-left: 21px;
+   		display: flex;
+   		padding-top: 30px;
    	}
    	
-   	#vdbtn1 {
+   	#bdBtn {
    		height: 30px;
-   		width: 160px;
+   		width: 62px;
    		border-radius: 10px;
    		border: none;
+   		color: white;
+   		background-color: black;
    	}
    	
-   	#vdbtn2 {
-   		height: 30px;
-   		width: 100px;
-   		border-radius: 10px;
-   		border: none;
+   	#bdlt {
+   		width: 850px;
+   		heigth: 100%;
    	}
    	
+   	#bdInsert {
+		padding-left: 40px; 	
+		padding-top: 30px;
+   	}
+   	
+   	.box2 {
+    	width: 45px;
+    	height: 45px;
+        border-radius: 70%;
+        overflow: hidden;
+    }
     
- 
+    .bd {
+    	display: flex;
+    	padding: 15px;
+    	border: 1px solid #e1dddd;
+    }
+ 	
+ 	#con {
+ 		padding-left: 20px;
+ 	}
+ 	
+ 	.bdTitle {
+ 		display: flex;
+ 	}
+ 	
+ 	.bdName {
+ 		font-size: 12px;
+ 		
+ 	}
+ 	
+ 	.bdDate {
+ 		padding-left: 15px;
+ 		font-size: 11px;
+ 		color: grey;
+ 	}
+ 	
+ 	
+ 	.bdOption {
+ 		padding-left: 150px;
+ 	}
+ 	
+ 	.bdBtn {
+ 		padding-top: 50px;
+ 	}
 	
 </style>
 <body>
@@ -195,18 +235,66 @@
 												<input type="text" id="chbtnSC"/>
 											</div>
 										</div>
-										
-									</div>
-								</div>	
-							</div>
-							<div id="videoBD1">
-								<div id="videoBD2">
-									<div id="videoBtn">
-										<button id="vdbtn1">최근에 업로드된 동영상</button>
-										<button id="vdbtn2">인기 동영상</button>
 									</div>
 								</div>
 							</div>
+							<div id="board1">
+								<div id="board2">
+									<div id="boardList">
+										<div id="bdlt">
+											<div class="bd">
+												<div>
+													<div class="box2">
+														<img id="img" src="/image/calm.jpg">
+													</div>
+												</div>
+												<div id="con">
+													<div class="bdTitle">
+														<div class="bdName">
+															<p>침착맨</p>
+														</div>
+														<div class="bdDate">
+															<p>2개월 전</p>
+														</div>
+													</div>
+													<div class="bdContent">
+														<div>
+															침하하 이벤트 나라 메뉴에 2022 침투부어워즈 투표장이 열렸습니다.<br/><br/>
+													
+															-올해의 게임<br/>
+															-올해의 인물<br/>
+															-올해의 컨텐츠<br/>
+															-올해의 영상<br/><br/>
+															
+															이렇게 4가지 부문이 있으며 전부 중복 투표가 가능합니다.<br/><br/>
+															
+															투표된 내용은 연말에 있을 2022 침투부 어워즈에 반영되어 발표할 예정입니다.<br/><br/>
+															
+															투표 기한: 22년 12월 22일 목 00:00 까지<br/><br/>
+															
+															투표하는 곳<br/>
+															https://docs.google.com/forms/d/e/1FA...<br/><br/>
+															
+															올해도 침투부를 봐주셔서 감사드리고 항상 건강하시길 바랍니다.
+														</div>
+													</div>
+													<div class="bdBtn">
+														<a>버튼</a>
+														<a>버튼</a>
+														<a>버튼</a>
+													</div>
+												</div>
+												<div class="bdOption">
+														<button>삭제</button>
+												</div>
+											</div>
+										</div>
+										<div id="bdInsert">
+											<button id="bdBtn">글쓰기</button>
+										</div>
+									</div>
+								</div>
+							</div>	
                         </div>
                    </div>
                 </div>
