@@ -12,14 +12,15 @@
         }
 
         .youtube_card .youtube_card_info{
-            padding: 20px 0;
+            padding: 15px 0;
             display: flex;
             align-items: flex-start;
-            justify-content: center;
+            justify-content: felx-start;
         }
 
         .youtube_card .youtube_card_info img{
             margin-right: 10px;
+            border-radius:50px;
         }
         .youtube_card .youtube_card_info .youtube_card_title .text_subject{
             font-size: 16px;
@@ -59,57 +60,134 @@
                                 <li>요리</li>
                                 <li>최근에 업로드된 동영상</li>
                             </ul>
-                                                        <div class="youtube_main_item">
-                                <div class="youtube_card">
-                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
-                                    <div class="youtube_card_info">
-                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
-                                        <div class="youtube_card_title">
-                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
-                                            <p class="text_writer">피식대학</p>
-                                            <p class="text_reacount">조회수 1만회</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="youtube_card">
-                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
-                                    <div class="youtube_card_info">
-                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
-                                        <div class="youtube_card_title">
-                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
-                                            <p class="text_writer">피식대학</p>
-                                            <p class="text_reacount">조회수 1만회</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="youtube_card">
-                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
-                                    <div class="youtube_card_info">
-                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
-                                        <div class="youtube_card_title">
-                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
-                                            <p class="text_writer">피식대학</p>
-                                            <p class="text_reacount">조회수 1만회</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="youtube_card">
-                                    <iframe onclick="location.href='www.naver.com'" width="100%" height="230" src="https://www.youtube.com/embed/nNh9bO5xdso" title="그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기ㅣBinge-Watch On Animal Hospital For Tiny Animals" frameborder="0"></iframe>
-                                    <div class="youtube_card_info">
-                                        <a href="#"><img src="./image/icon9.jpg" width="38"></a>
-                                        <div class="youtube_card_title">
-                                            <p class="text_subject">그 시절 우리가 사랑했던 💊쪼꼬미 동물병원💊 1~12화 모아보기</p>
-                                            <p class="text_writer">피식대학</p>
-                                            <p class="text_reacount">조회수 1만회</p>
-                                        </div>
-                                    </div>
-                                </div>
-                               
+                             <div class="youtube_main_item">
+
                             </div>
                         </div>
                    </div>
                 </div>
             </div>
         </div>
+        
+ 
+        <script th:inline="javascript">
+        
+        
+        	//데이터에서 가져온 모든 자료
+        	var list = [[${list}]];
+        	//무한스크롤
+        	var winTop;
+        	var onTop;
+        	var breakPoint = 80;
+        	var currentItem = 15;
+            var el = document.querySelector('.youtube_main_item');
+        
+        
+        	//생성자함수 로드되었을때 뿌려져있는 리스트 만들기
+                //20개만 뿌리기
+                for(var i=0; i<15 ;i++){
+                    new Card(i);
+                }
+                	
+          	      //생성자함수
+                    function Card(){      
+                        this.mainElem = document.createElement('div');
+                        this.mainElem.classList.add('youtube_card');
+                        this.mainElem.innerHTML = ""
+                                        +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
+                                        +'<div class="youtube_card_info">'
+                                        +'<a href="#"><img src="'+ list[i].thum +'" width="38"></a>'
+                                        +'<div class="youtube_card_title">'
+                                        +'<p class="text_subject">'+list[i].subject+'</p>'
+                                        +'<p class="text_writer">'+list[i].writer+'</p>'
+                                        +'<p class="text_reacount">조회수 1만회</p>'
+                                        +'</div>'
+                                        +'</div>';
+                        el.appendChild(this.mainElem);
+                        
+                    };
+                
+
+			//스크롤 할때 로딩되어 가져올 리스트 담을 함수
+        	function ylist(){
+        		currentItem ++ //현재 보일숫자
+        		
+        		var realList;
+        		
+        		if(currentItem >= breakPoint){ //조건만족시 그만뿌리기
+        			return null;
+        		}else{
+        			
+                	realList ='<div class="youtube_card">'
+						+'<iframe width="100%" height="230" src="' + list[currentItem].url + '" + title="' + list[currentItem].subject +'"frameborder="0"></iframe>'
+						+'<div class="youtube_card_info">'
+						+'<a href="#"><img src="'+ list[currentItem].thum +'" width="38"></a>'
+		    			+'<div class="youtube_card_title">'
+		    			+'<p class="text_subject">'+list[currentItem].subject+'</p>'
+		    			+'<p class="text_writer">'+list[currentItem].writer+'</p>'
+		    			+'<p class="text_reacount">조회수 1만회</p>'
+		    			+'</div>'
+		    			+'</div>'
+		    			+'</div>';	
+
+		            	
+
+        		}
+        		
+        		return realList;
+
+        		
+        		
+        	}
+        	
+        	
+        	//브라우저가 특정 위치에 도달하면 데이터 로드 시작 - 시작지점을 변수로 나타냄
+        	function setProperty(){
+        		winTop = window.pageYOffset;
+        		onTop = document.body.offsetHeight - window.innerHeight;
+        	}
+        	        	
+        	
+        	//메인이 되는 함수 시작지점을 지정해서 데이터 1개씩 추가로 넣기
+      		function getMain(){
+      			setProperty();
+      			if(winTop+300 >= onTop){ //데이터 조건1
+      				var data = ylist();
+      				if(data == null){ //데이터 조건2
+      					return false;
+      				}else{
+                        var datainfo = document.createElement('div'); //뿌려질 데이터의 부모생성
+                        datainfo.innerHTML = data; //부모안에 데이터 넣기
+                        var listArray = Array.from(datainfo.children); //자식들 리스트 뽑기
+                        
+                        console.log(listArray);
+
+                        listArray.forEach((element)=>{ //뽑은자식들 한개씩 el 에 넣기
+                            el.appendChild(element);
+                        })
+      				}
+      				
+
+                    
+      			}
+      			
+      		}
+        	
+        	
+        	//스크롤 이벤트 - 이벤트시 겟메인 함수를 호출
+        	window.addEventListener('scroll', ()=>{
+        			getMain();		
+        	});
+     
+        	
+        	//초기화 함수 시작시 겟 메인 호출
+        	function init(){
+        		getMain();
+        	}
+        	
+        	init();
+        	
+        	
+        </script>
 </body>
 </html>
