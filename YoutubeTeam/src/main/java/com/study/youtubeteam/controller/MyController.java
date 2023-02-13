@@ -129,8 +129,6 @@ public class MyController {
 	}
 	
 
-	
-	
 	//예준
 
 	@RequestMapping("/play")
