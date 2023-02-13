@@ -232,7 +232,7 @@
 	}
 	
 	.list {
-		width: 376px;
+		width: 395px;
 		height: 100vh;
 		background: #ccc;
 	}
@@ -354,6 +354,27 @@
 	    margin-top: 68px;
 	}
 	
+	/* play-body-right side */
+	.center-bar {
+		width: 100%;
+		height: 94px;
+		display: flex;
+		margin-bottom: 8px;
+	}
+	
+	.center-bar .left-bar {
+		width: 168px;
+		height: 94px;
+	}
+	
+	.center-bar .right-bar {
+		width: 208px;
+		height: 94px;
+		background: blue;
+	    margin-left: 6px;
+	}
+	
+	
 	/* footer 열릴 때 */
 	.sec_layout .layout .aside.active {
 		width: 241px;
@@ -372,7 +393,7 @@
 	}
 	
 	
-		
+	
 
 	
 </style>
@@ -479,14 +500,14 @@
 											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
 											<div>
 												<div class="view1">
-													<div>aaaa</div>
-													<div>aaaa</div>
+													<div>아이디</div>
+													<div>3년전</div>
 												</div>
-												<div class="view2">aaaa</div>
+												<div class="view2">댓글</div>
 												<div class="view3">
-													<div>aaaa</div>
-													<div>aaaa</div>
-													<div>aaaa</div>
+													<div><i class="fa-regular fa-thumbs-up"></i></div>
+													<div><i class="fa-regular fa-thumbs-down"></i></div>
+													<div>답글</div>
 												</div>
 											</div>
 										</div>
@@ -496,13 +517,12 @@
 							</div> <!-- print  -->
 								
 								<div class="list">
+									
+
 								</div>
 								
 								
 						</div> <!-- center  -->
-							
-							
-							
 							
                         </div>
                    </div>
@@ -534,8 +554,132 @@
         document.body.style.overflow = "unset";
         });
 		
+		
+		
+
+		
+		// 스크롤 시작
+		var winTop; // 화면 최상단값
+		var onTop; // 스크롤내렸을때 이부분에서부터 추가적인 데이터 호출
+		var el = document.querySelector('.list'); //
+		var ismove = false;
+		var stop = 50; //데이터 뿌릴 횟수
+		var current = 10; //10개부터 무한스크롤 시작하는거
+		
+		// 스크롤 전에 12개 미리 뿌리기
+		// 생성자 함수 대문자로 써야함
+		function PreList (){
+			thismain = document.createElement('div');
+			thismain.classList.add('center-bar');
+			thismain.innerHTML = ''
+							+'<div class="left-bar">'
+								+'<iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	'
+							+'</div>'
+							+'<div class="right-bar">'
+								+'<div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div>'
+								+'<div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div>'
+								+'<div style="display: flex; font-size: 12px;">'
+									+'<div>조회수 800만회</div>'
+									+'<div>2년 전</div>'
+								+'</div>'
+							+'</div>';
+			el.appendChild(thismain);
+		}
+		
+		
+		
+		//시작하면 10개뿌림 여기 데이터랑 위에 데이터랑 같아야함  - var current랑 같이 보기
+		for(var i=0; i<10;i++){
+			new PreList();
+		}
+		
+		
+		//리스트 담는 함수
+		function listCall(){
+			
+			var list;
+			
+			current++ //함수 호출할때마다 1씩 증가
+			
+			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
+				return null; //list 변수에 값 그만넣기
+			}else{
+				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'
+			     list += '<div class="right-bar"><div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div><div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
+			}
+			
+			return list;
+			    
+			    
+		}
+		
+		
+		
+		//스크롤 할때마다 값을 재할당
+		function setProperty(){
+			winTop = window.pageYOffset;
+			onTop = document.body.offsetHeight - window.innerHeight;
+		}
+		
+		
+		//메인함수
+		function getMain(){
+			setProperty();
+		}
+		
+		
+
+		//윈도우 이벤트
+		window.addEventListener('scroll', ()=>{
+			getMain();
+			//스크롤시 특정위치에 도달할때를 감지
+			if(winTop+200 >= onTop){
+				if(!ismove){ //스크롤 내릴때 여러번 내려지니깐 한번만 내리도록 false처리
+					ismove = true;
+					console.log("왜 존나 스크롤함?")
+					var data = listCall();
+					if(data == null){
+						return false;
+					}else{
+						var datainfo = document.createElement('div');
+						datainfo.innerHTML = data;
+						var dataArr = Array.from(datainfo.children);
+						console.log(dataArr);
+						dataArr.forEach((element)=>{
+							el.appendChild(element);
+							setTimeout(()=>{ //끋! 와 지림 떙규떙큐 ㄷㄷ 한시간넘게걸렸네 무친 ㅋㅋㅋ 근데 그래도 빨리한듯? 내껀 더오래걸렸음 ㅋㅋㅋㅋ 하 근데 먼가 이거 했는데도 막막하네 이거나중에 데이터 뿌릴때그
+								ismove = false;
+							}, 100); 
+						});
+					}
+			//	
+					
+				}
+				
+			}
+			
+			
+		});
+		
+		//초기화 함수
+		function init(){
+			getMain();
+		};
+		
+		
+		//초기화
+		init();
+		// 스크롤 끝남
         
         
         </script>
         
-</html>
+ 						 
+ 						  
+ 							
+ 							 
+ 							
+ 								
+ 								 
+ 							 
+ 						
