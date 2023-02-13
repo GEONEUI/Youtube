@@ -26,8 +26,8 @@ public interface YoutubeListMapper {
 	public int userCheck(String id, String pw);
 	
 	
-	@Select("SELECT FROM youtubeList WHERE subject LIKE '%${param1}%'")
-	public void search();
+	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%'")
+	public List<youtubeList> dataSearch(String search);
 	
 	
 

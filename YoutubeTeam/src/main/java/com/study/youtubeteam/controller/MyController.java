@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,20 +31,18 @@ public class MyController {
 
 	// 건의
 	@RequestMapping("/")
-	public String index(@RequestParam(value="category",required=false,defaultValue="7") int category, Model model, HttpSession session){
+	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){
 		String id = (String)session.getAttribute("id");
 		session.setMaxInactiveInterval(60*10);
 		if(id == null) {
 			id = "손님";
 		}
 		
-		System.out.println(category);
 		List<youtubeList> list = null;
 		
-		
-		
+
 		if(category==1) {
-			list = mapper.selectCate(category);
+			list = mapper.selectAll();
 		}
 		if(category==2) {
 			list = mapper.selectCate(category);
@@ -61,13 +60,24 @@ public class MyController {
 			list = mapper.selectCate(category);
 		}
 		if(category == 7) {
+			list = mapper.selectCate(category);
+		}
+		if(category == 8) {
 			list = mapper.selectAll();
+		}
+			
+		
+		if(search.equals("")) {
+			
+		}else {
+			list = mapper.dataSearch(search);
 		}
 		
 		
 		
 		model.addAttribute("list", list);
 		model.addAttribute("id", id);
+		model.addAttribute("search", search);
 		model.addAttribute("category", category);
 		
 		return "index";
@@ -117,6 +127,9 @@ public class MyController {
 		
 		return "redirect:/";
 	}
+	
+
+	
 	
 	//예준
 
