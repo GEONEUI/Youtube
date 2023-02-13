@@ -109,40 +109,49 @@
     	flex-wrap: wrap;
    	}
    	
-   	#videoBD1 {
-   		display: flex;
-   		justify-content: center;
-   	}
-   	
-   	#videoBD2 {
-   		width: 1300px;
+    #cnIndex1 {
+    	display: flex;
+    	justify-content: center;
+    }
+
+    #chIndex2 {
+    	display: flex;
+    	justify-content: space-between;
+    	width: 1300px;
    		height: 100%;
-   	}
-   	
-   	#videoBtn {
-   		padding-left: 18px;
-   	    padding-top: 10px;
-		display: flex;
-   	 	justify-content: space-between;
-    	width: 291px;
-    	height: 50px;
-   	}
-   	
-   	#vdbtn1 {
-   		height: 30px;
-   		width: 160px;
-   		border-radius: 10px;
-   		border: none;
-   	}
-   	
-   	#vdbtn2 {
-   		height: 30px;
-   		width: 100px;
-   		border-radius: 10px;
-   		border: none;
-   	}
-   	
+  		padding-left: 21px;
+    }
     
+    .indexContent {
+		height: 180px;
+		width: 800px;
+		display: flex;
+		align-content: center;
+		flex-wrap: wrap;
+		border-bottom: 1px solid #e1dddd;
+    }
+    
+    #emailBtn {
+    	height: 36px;
+   		width: 121px;
+   		border-radius: 10px;
+   		border: none;
+    }
+    
+    #cnIndex {
+    	width:400px;
+    	
+    }
+    
+    .indexContent2 {
+    	
+    	height: 50px;
+		width: 400px;
+		display: flex;
+		align-content: center;
+		flex-wrap: wrap;
+		border-bottom: 1px solid #e1dddd;
+    }
  
 	
 </style>
@@ -195,18 +204,50 @@
 												<input type="text" id="chbtnSC"/>
 											</div>
 										</div>
-										
 									</div>
 								</div>	
 							</div>
-							<div id="videoBD1">
-								<div id="videoBD2">
-									<div id="videoBtn">
-										<button id="vdbtn1">최근에 업로드된 동영상</button>
-										<button id="vdbtn2">인기 동영상</button>
+							<div id="cnIndex1">
+								<div id="chIndex2">
+									<div>
+										<div class="indexContent">
+											<div>
+												<p>설명</p><br/>
+												<p>반갑습니다. 오늘도 즐거운 날입니다.</p>
+											</div>
+										</div>
+										<div class="indexContent">
+											<div>
+												<p>세부정보</p><br/>
+												<div>비즈니스 문의: <button id="emailBtn">이메일 주소 보기</button></div><br/>
+												<p>위치: 대한민국</p>
+											</div>
+										</div>
+										<div class="indexContent">
+											<div>
+												<p>링크</p><br/>
+												<a href:"https://twitch.tv/zilioner">침착맨 트위치 생방송</a><br/><br/>
+												<a href:"https://youtube.com/channel/UCewitUbsXnyjvJjGgxa0IYw">침착맨 유튜브 생방송</a><br/><br/>
+												<a href:"https://chimhaha.net/">침하하</a>
+											</div>
+										</div>
+									</div>
+									<div>
+										<div id="cnIndex">
+											<br/><br/><br/>
+											<div class="indexContent2">
+												<p>통계</p>
+											</div>
+											<div class="indexContent2">
+												<p>가입일: 2014. 9. 30.</p>
+											</div>
+											<div class="indexContent2">
+												<p>조회수 1,512,708,980회</p>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							</div>	
                         </div>
                    </div>
                 </div>
