@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Document</title>
+</head>
+<style>
+* {
+	box-sizing: border-box
+}
+
+#wrap {
+	position: relative;
+}
+
+.main {
+	margin-left: 270px;
+}
+
+h1 {
+	text-align: center;
+}
+
+h5 {
+	text-align: center;
+	margin-top: 20px;
+}
+
+#comment_box {
+	display: flex;
+	padding: 60px 70px 0px 0;
+}
+
+#nickname {
+	align-items: center;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+#comment, i {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+#four {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+}
+
+.img_box {
+	width: 100px;
+	height: 100px;
+	border-radius: 70%;
+	overflow: hidden;
+	margin-left: 80px;
+	margin-top: 9px;
+}
+
+.later {
+	width: 1000px;
+}
+</style>
+<body>
+	<div id="wrap">
+		<div th:replace="fragments/header"></div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<section class="main">
+						<div class="youtube_main">
+							<div id="info_box">
+								<h1>내 YouTube 댓글</h1>
+								<h5>YouTube에서 직접 댓글을 수정 또는 삭제하고 답장할 수 있습니다. 댓글을 삭제하면 완전히
+									삭제되기까지 몇 시간이 걸릴 수 있습니다. 자세히 알아보기</h5>
+							</div>
+
+							<div id="comment_box">
+								<div class="img_box">
+
+									<img id="profile_img" src="images/her.jpg">
+								</div>
+								<div>
+									<div id="nickname">닉넴</div>
+									<div id="comment">아무말이나 아주 긴 내용을 적어야하는데 생각이 나지 않는다 프론트는
+										왜이렇게 어려운것인가 언제쯤 완성시킬수있을까</div>
+									<div id="more">
+										<div id="like">
+											<i class="fa-light fa-thumbs-up">158</i> <i
+												class="fa-light fa-thumbs-down"></i> <i
+												class="fa-light fa-comment-lines">11</i>
+											<div id="four">
+												<div>답글 4개 보기</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="comment_box">
+								<div class="img_box">
+
+									<img id="profile_img" src="images/her.jpg">
+								</div>
+								<div>
+									<div id="nickname">닉넴</div>
+									<div id="comment">아무말이나 아주 긴 내용을 적어야하는데 생각이 나지 않는다 프론트는
+										왜이렇게 어려운것인가 언제쯤 완성시킬수있을까</div>
+									<div id="more">
+										<div id="like">
+											<i class="fa-light fa-thumbs-up">158</i> <i
+												class="fa-light fa-thumbs-down"></i> <i
+												class="fa-light fa-comment-lines">11</i>
+											<div id="four">
+												<div>답글 4개 보기</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="comment_box">
+								<div class="img_box">
+
+									<img id="profile_img" src="images/her.jpg">
+								</div>
+								<div>
+									<div id="nickname">닉넴</div>
+									<div id="comment">아무말이나 아주 긴 내용을 적어야하는데 생각이 나지 않는다 프론트는
+										왜이렇게 어려운것인가 언제쯤 완성시킬수있을까</div>
+									<div id="more">
+										<div id="like">
+											<i class="fa-light fa-thumbs-up">158</i> <i
+												class="fa-light fa-thumbs-down"></i> <i
+												class="fa-light fa-comment-lines">11</i>
+											<div id="four">
+												<div>답글 4개 보기</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="comment_box">
+								<div class="img_box">
+
+									<img id="profile_img" src="images/her.jpg">
+								</div>
+								<div>
+									<div id="nickname">닉넴</div>
+									<div id="comment">아무말이나 아주 긴 내용을 적어야하는데 생각이 나지 않는다 프론트는
+										왜이렇게 어려운것인가 언제쯤 완성시킬수있을까</div>
+									<div id="more">
+										<div id="like">
+											<i class="fa-light fa-thumbs-up">158</i> <i
+												class="fa-light fa-thumbs-down"></i> <i
+												class="fa-light fa-comment-lines">11</i>
+											<div id="four">
+												<div>답글 4개 보기</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
