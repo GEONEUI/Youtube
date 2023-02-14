@@ -182,4 +182,16 @@ public class MyController {
 	public String comment() {
 		return "comment";
 	}
+	
+	// 유진-내정보 수정
+	@RequestMapping("/profile_update")
+	public String profile_update() {
+		return "profile_update";
+	}
+	
+	@RequestMapping("/profile")
+	public String profile() {
+		return "profile";
+	}
+
 }
