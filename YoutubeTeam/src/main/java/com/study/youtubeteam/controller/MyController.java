@@ -5,13 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeUserList;
+import com.study.youtubeteam.mapper.YoutubeFollowMapper;
 import com.study.youtubeteam.mapper.YoutubeListMapper;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,8 @@ import jakarta.servlet.http.HttpSession;
 public class MyController {
 	@Autowired
 	YoutubeListMapper mapper;
+	@Autowired
+	YoutubeFollowMapper flmapper;
 
 	//************************* 건의 *************************
 	
@@ -136,18 +139,37 @@ public class MyController {
 		return "play";
 	}
 	// 준호
+	
+	//채널 메인
 	@RequestMapping("/channel")
-	public String channel() {
+	public String channel(int idx, Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		List<youtubeChannel> list = flmapper.channelIdx(idx);
+//		int idNum = flmapper.getId(id);
+//		flmapper.followInsert(idNum, 3);
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("idx", idx);
 		return "channel";
 	}
 	
+	//구독
+	@PostMapping
+	
+	
+	//채널 커뮤니티
 	@RequestMapping("/channelBoard")
-	public String channelBoard() {
+	public String channelBoard(Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		model.addAttribute("id", id);
 		return "channelBoard";
 	}
 	
+	//채널 정보
 	@RequestMapping("/channelIndex")
-	public String channelIndex() {
+	public String channelIndex(Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		model.addAttribute("id", id);
 		return "channelIndex";
 	}
 	

@@ -29,6 +29,4 @@ public interface YoutubeListMapper {
 	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%'")
 	public List<youtubeList> dataSearch(String search);
 	
-	
-
 }
