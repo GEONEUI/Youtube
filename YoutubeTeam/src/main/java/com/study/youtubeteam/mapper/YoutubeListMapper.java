@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.study.youtubeteam.emtity.youtubeList;
@@ -22,12 +23,15 @@ public interface YoutubeListMapper {
 	public void userInsert(youtubeUserList vo);
 	
 	
-	@Select("select count(*) from youtubeUser where user_id = #{param1} and user_pw = #{param2}")
-	public int userCheck(String id, String pw);
+	@Select("select count(*) from youtubeUser where user_id = #{id} and user_pw = #{pw}")
+	public int userCheck(@Param("id") String id, @Param("pw") String pw);
 	
 	
 	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%'")
 	public List<youtubeList> dataSearch(String search);
+	
+	@Select("SELECT COUNT(*) FROM youtubeUser WHERE user_id = #{user_id}")
+	public int searchId(String user_id);
 	
 	
 

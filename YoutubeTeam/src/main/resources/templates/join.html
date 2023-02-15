@@ -110,6 +110,7 @@
 		color:#fff;
 		border-radius:5px;
 		border:none;
+		cursor:pointer;
 	}
 	
 	.login_btn .btn2:hover{
@@ -134,6 +135,12 @@
 		align-items:center;
 		justify-content:center;
 		color:#fff;
+		cursor:pointer;
+		
+	}
+	
+	.login .login_check .id_check:hover{
+		opacity:80%;
 	}
 	
 
@@ -162,17 +169,109 @@
 				</div>
 				<p class="login_title">회원가입</p>
 				<div class="login_check">
-					<input type="text" name="user_id" class="input" placeholder="아이디를 입력해주세요.">
-					<div class="id_check">중복확인</div>
+					<input id="user_id" type="text" name="user_id" class="input" placeholder="아이디를 입력해주세요.">
+					<div class="id_check" onclick="idCheck()">중복확인</div>
 				</div>
-				<input type="text" name="user_pw" class="input" placeholder="비밀번호 입력해주세요.">
-				<input type="text" name="user_nikname" class="input" placeholder="닉네임을 입력해주세요.">
-				<input type="email" name="user_email" class="input" placeholder="이메일을 입력해주세요.">
+				<input type="password" name="user_pw" id="user_pw" class="input" placeholder="비밀번호 입력해주세요.">
+				<input type="password" name="user_pw2" id="user_pw2" class="input" placeholder="비밀번호 확인">
+				<input type="text" name="user_nikname" id="user_nikname" class="input" placeholder="닉네임을 입력해주세요.">
+				<input type="email" name="user_email" id="user_email" class="input" placeholder="이메일을 입력해주세요.">
 				<div class="login_btn">
-					<input type="submit" class="btn2" value="회원가입">
+					<input type="submit" class="btn2" value="회원가입" onclick="return checkID()">
 				</div>
 			</form>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	<script>
+		//중복확인
+		
+		var id_checkValue;
+		var user_id;
+		var user_pw;
+		var user_pw2;
+		var user_nikname;
+		var user_email;
+		var flag = false;
+		
+		
+		function idCheck(){
+			id_checkValue = $('#user_id').val();
+			console.log(id_checkValue);
+			
+			
+			$.ajax({
+				url:"/loginCheck.do",
+				type:"post",
+				data:{"user_id":id_checkValue},
+				success: loca,
+				error: function(){ alert('error') }
+			})
+		}
+		
+		
+		function loca(data){
+			if(id_checkValue == ""){
+				alert('아이디를 입력해주세요.')
+				return;
+			}
+			if(data == 0){
+				alert('사용가능한 아이디 입니다.');
+				flag = true;
+			}else{
+				alert('다른 아이디를 입력해주세요.');
+			}
+		}
+		
+		function checkID(){
+			user_id = $('#user_id').val();
+			user_pw = $('#user_pw').val();
+			user_pw2 = $('#user_pw2').val();
+			user_nikname = $('#user_nikname').val();
+			user_email = $('#user_email').val();
+			
+			
+			if(user_id == ""){
+				alert("아이디를 입력해주세요.");
+				$('#user_id').focus();
+				return false;
+			}
+			if(user_pw == ""){
+				alert("비밀번호를 입력해주세요.");
+				$('#user_pw').focus();
+				return false;
+			}
+			if(user_pw2 == ""){
+				alert("비밀번호 확인을 입력해주세요.");
+				$('#user_pw').focus();
+				return false;
+			}
+			if(user_nikname == ""){
+				alert("닉네임을 입력해주세요.");
+				$('#user_nikname').focus();
+				return false;
+			}
+			if(user_email == ""){
+				alert("이메일을 입력해주세요.");
+				$('#user_email').focus();
+				return false;
+			}
+			
+			if(user_pw != user_pw2){
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
+			if(flag == false){
+				alert("중복체크를 완료해주세요.");
+				return false;
+			}else{
+				return true;
+			}
+		
+			
+			
+		}
+	</script>
 </body>
 </html>

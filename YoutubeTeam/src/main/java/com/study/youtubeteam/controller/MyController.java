@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeUserList;
@@ -127,6 +128,13 @@ public class MyController {
 		
 		return "redirect:/";
 	}
+	//로그인 중복체크
+	@RequestMapping("/loginCheck.do")
+	public @ResponseBody int loginCheck(@RequestParam("user_id") String userid, Model model) {
+		int result = mapper.searchId(userid);
+		return result;
+	}
+	
 	
 
 	//예준
