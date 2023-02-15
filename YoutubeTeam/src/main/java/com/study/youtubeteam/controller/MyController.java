@@ -141,17 +141,68 @@ public class MyController {
 		return "channel";
 	}
 	
-	//준호
 	@RequestMapping("/channelBoard")
 	public String channelBoard() {
 		return "channelBoard";
 	}
 	
-	//준호
 	@RequestMapping("/channelIndex")
 	public String channelIndex() {
 		return "channelIndex";
 	}
+	
+//	@RequestMapping("/")
+//	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){
+//		String id = (String)session.getAttribute("id");
+//		session.setMaxInactiveInterval(60*10);
+//		if(id == null) {
+//			id = "손님";
+//		}
+//		
+//		List<youtubeList> list = null;
+//		
+//
+//		if(category==1) {
+//			list = mapper.selectAll();
+//		}
+//		if(category==2) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category==3) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category==4) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category==5) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category==6) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category == 7) {
+//			list = mapper.selectCate(category);
+//		}
+//		if(category == 8) {
+//			list = mapper.selectAll();
+//		}
+//			
+//		
+//		if(search.equals("")) {
+//			
+//		}else {
+//			list = mapper.dataSearch(search);
+//		}
+//		
+//		
+//		
+//		model.addAttribute("list", list);
+//		model.addAttribute("id", id);
+//		model.addAttribute("search", search);
+//		model.addAttribute("category", category);
+//		
+//		return "channel";
+//	}
 	
 	//유진
 	@RequestMapping("/mypage")
