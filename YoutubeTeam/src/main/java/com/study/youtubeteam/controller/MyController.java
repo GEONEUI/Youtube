@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeUserList;
 import com.study.youtubeteam.mapper.YoutubeListMapper;
+import com.study.youtubeteam.mapper.YoutubePlayMapper;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,6 +26,7 @@ import jakarta.servlet.http.HttpSession;
 public class MyController {
 	@Autowired
 	YoutubeListMapper mapper;
+	YoutubePlayMapper playMapper;
 
 	//************************* 건의 *************************
 	
@@ -141,10 +143,22 @@ public class MyController {
 	//예준
 
 	@RequestMapping("/play")
-	public String play() {
+	public String play(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("id",id);
 		return "play";
 	}
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 준호
 	@RequestMapping("/channel")
 	public String channel() {
