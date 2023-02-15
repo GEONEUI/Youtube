@@ -8,7 +8,7 @@
 
 	/* header */
 	#wrap > div.sec_header > div > div > h1 {
-		margin-left: 2%;
+		margin-left: 2.7%;
 	}
 
 
@@ -68,7 +68,7 @@
     .subscribe .subscribeCh	{
     	width: 50%;
     	height: 43px;
-    	background: #ccc;
+/*     	background: #ccc; */
     	display: flex;
     }
     
@@ -78,6 +78,7 @@
   		background: #fff;
   		display: flex;
   		justify-content: space-around;
+  		padding-left: 5px;
     }
     
     #wrap > div.sec_layout > div > div > div.youtube_main > div > div.print > div > div:nth-child(1) > a	{
@@ -89,6 +90,10 @@
     	line-height: 20px;
     }    
     
+    .jtbc > li {
+    	font-size: 12px;
+    }
+    
     .sutak	{
     	width: 40px;
     	height: 40px;
@@ -98,14 +103,14 @@
     
     .gudok	{
     	width: 60px;
-	    height: 43px;
+	    height: 35px;
 	    background: darkgreen;
 	    display: flex;
 	    align-items: center;
 	    justify-content: center;
-	    border: 1px solid #3b8c9a;
+	    border: 1px solid #000000;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #000000;
 	  	color: white;
 	  	padding: 5px;
 	  	border-radius: 2em;
@@ -113,22 +118,23 @@
     
  
     .upDown	{
+    	height: 35px;
     	display: flex;
-    	border: 1px solid #3b8c9a;
+    	border: 1px solid #f2f2f2;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #f2f2f2;
 	  	color: white;
-	  	padding: 8px;
+	  	padding: 5px;
 	  	border-radius: 2em;
     }
     
     .upDown .upDownCh {
-    	margin-right:32px;
+    	margin-right:20px;
     	display: flex;
     }
     
     .upDown .upDownCh > div {
-    	border: 1px solid black;
+    	border: 1px solid #a9a9a9;
     }
   
     .upDown .upDownCh > a:nth-child(2) {
@@ -136,56 +142,63 @@
     }
     
     .share	{
+    	height: 35px;
     	display: flex;
-    	border: 1px solid #3b8c9a;
+    	border: 1px solid #f2f2f2;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #f2f2f2;
 	  	color: white;
-	  	padding: 8px;
+	  	padding: 5px;
 	  	border-radius: 2em;
     }
     
     .share > li{
     	margin: 0 10px;
+    	color: #000000;
     }
     
     .save	{
+    	height: 35px;
     	display: flex;
-    	border: 1px solid #3b8c9a;
+    	border: 1px solid #f2f2f2;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #f2f2f2;
 	  	color: white;
-	  	padding: 8px;
+	  	padding: 5px;
 	  	border-radius: 2em;
     }
     
     .save > li{
     	margin: 0 10px;
+    	color: #000000;
     }    
     
     .klip	{
+    	height: 35px;
     	display: flex;
-    	border: 1px solid #3b8c9a;
+    	border: 1px solid #f2f2f2;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #f2f2f2;
 	  	color: white;
-	  	padding: 8px;
+	  	padding: 5px;
 	  	border-radius: 2em;
     }
     
     .klip > li {
     	margin: 0 10px;
+    	color: #000000;
     }
     
     .dotMom	{
+    	height: 35px;
     	align-items: center;
     	justify-content: center;
     	display: flex;
-    	border: 1px solid #3b8c9a;
+    	border: 1px solid #f2f2f2;
     	cursor:pointer; cursor:hand;
-	  	background-color: #3b8c9a;
+	  	background-color: #f2f2f2;
 	  	color: white;
-	  	padding: 11px;
+	  	padding: 7px;
 	  	border-radius: 2em;
     }
     
@@ -207,19 +220,19 @@
 		top: 0px;
 		z-index: 999;
 		display: none;
-		transition:0.3s;
+		transition:1.5s;
 	}
 	
 	.burgerThema.active {
 		display: block;
 		opacity:0.6;
-		transition:0.3s;
+		transition:0.5s;
 	}
 	
 	.center {
 		width: 100%;
 		height: 100vh;
-		background: cornflowerblue;
+/* 		background: cornflowerblue; */
 		display: flex;
 		padding: 0 84px;
 	}
@@ -227,14 +240,14 @@
 	.print {
 		width: 1280px;
 	    height: 720px;
-	    background: lightseagreen;
+/* 	    background: lightseagreen; */
 	    margin-right: 30px;
 	}
 	
 	.list {
 		width: 395px;
 		height: 100vh;
-		background: #ccc;
+/* 		background: #ccc; */
 	}
 	
 	.below {
@@ -258,10 +271,11 @@
 	
 	.below .below-Ch2 {
 		display: flex;
+		cursor: pointer;
 	}
 	
 	.below .below-Ch2 > div:nth-child(1) {
-		margin-right: 15px;
+		margin-right: 8px;
 	}
 	
 	.comment {
@@ -276,9 +290,14 @@
 	}
 	
 	.comment .comment-Ch {
+		display: none;
+		cursor: pointer;
+	}
+	
+	.comment .comment-Ch.active {
 		width: 1200px;
 		display: flex;
-  		justify-content: space-between;
+  		justify-content: space-between;	
 	}
 	
 	.comment > div:nth-child(2) {
@@ -287,10 +306,65 @@
 	
 	.comment .comment-live {
 		width: 1200px;
+		border: none;
+		margin-bottom: 6px;
+		outline: none;
 	}
 	
 	.comment .comment-Ch .comment-Ch2	{
 		display: flex;
+	}
+	
+	.comment .comment-Ch .comment-Ch2 > div:nth-child(1) {
+		width: 60px;
+		height: 35px;
+    	display: flex;
+    	border: 1px solid #fff;
+	  	background-color: #fff;
+	  	color: #000000;
+	  	padding: 5px;
+	  	border-radius: 2em;
+	  	justify-content: center;
+	}
+	
+	.comment .comment-Ch .comment-Ch2 > div:nth-child(2) {
+		width: 60px;
+		height: 35px;
+    	display: flex;
+    	border: 1px solid #f2f2f2;
+	  	background-color: #f2f2f2;
+	  	color: #ccc;
+	  	padding: 5px;
+	  	border-radius: 2em;
+	  	justify-content: center;
+	  	fone-weight: bold;
+	}
+	
+	.comment > div > a > img {
+		border-radius: 70%;
+	}
+	
+	.comment .line {
+		margin-bottom: 8px;
+	}
+	
+	.comment .line.active {
+		margin-bottom: 8px;
+		border-color: #000;
+	}
+	
+	.comment .comment-Ch .comment-Ch2 .cancel {
+		margin-right: 5px;
+
+	}
+	.comment .comment-Ch .comment-Ch2 .cancel:hover {
+		margin-right: 5px;
+		background: #ccc;
+	}
+	
+	.comment .comment-Ch .comment-Ch2 .clear.active {
+		background: #065fd4;
+		color: #fff;
 	}
 	
 	.view {
@@ -322,8 +396,6 @@
 	    height: 50px;
 	    border-radius: 70%;
 	}
-	
-	
 	
 
 	/* 	footer */
@@ -370,7 +442,7 @@
 	.center-bar .right-bar {
 		width: 208px;
 		height: 94px;
-		background: blue;
+/* 		background: blue; */
 	    margin-left: 6px;
 	}
 	
@@ -379,17 +451,17 @@
 	.sec_layout .layout .aside.active {
 		width: 241px;
         height: 100vh;
-        position: fixed;
+/*         position: fixed; */
         left: 0px;
         top: 0px;
         z-index: 99;
         background: #fff;
-        transition: 0.2s;
+        transition: 0.25s;
 	}
 	
 	/* footer 닫힐 때 */
 	.sec_layout .layout .aside{
-        transition: 0.2s;
+        transition: 0.25s;
 	}
 	
 	
@@ -445,21 +517,21 @@
 									<div class="subscribeCh2">
 								 		<div class="upDown">
 									 		<div class="upDownCh">
-									 		<a><i class="fa-regular fa-thumbs-up"></i></a>
+									 		<a><i class="fa-regular fa-thumbs-up" style="font-size: 23px; color: #000000;"></i></a>
 									 		<a>up</a>
 									 		<div></div>
 									 		</div>
 								 		
-								 			<a><i class="fa-regular fa-thumbs-down"></i></a>
+								 			<a><i class="fa-regular fa-thumbs-down" style="font-size: 23px; color: #000000;"></i></a>
 								 		</div>
 								 		
-								 		<div class="share"><i class="fa-solid fa-share"></i> 
+								 		<div class="share"><i class="fa-solid fa-share" style="color: #000000;"></i> 
 								 		<li>공유</li></div>
 								 		
-								 		<div class="save"><i class="fa-solid fa-download"></i>
+								 		<div class="save"><i class="fa-solid fa-download" style="color: #000000;"></i>
 								 		<li>오프라인 저장</li></div>
 								 		
-								 		<div class="klip"><i class="fa-solid fa-scissors"></i>
+								 		<div class="klip"><i class="fa-solid fa-scissors" style="color: #000000;"></i>
 								 		<li>클립</li></div>
 								 		
 								 		<div class="dotMom">
@@ -481,16 +553,16 @@
 												<div>정렬 기준</div>
 											</div>
 										</div>
-										
 										<div class="comment">
-											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
+											<div><a href="#"><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></a></div>
 											<div>
-												<div class="comment-live">댓글 적는 칸</div>
+												<input type="text" class="comment-live" placeholder="댓글 추가...">
+												<hr class="line">
 												<div class="comment-Ch">
 													<div>이모티콘</div>
 													<div class="comment-Ch2">
-														<div>취소</div>
-														<div>작성</div>
+														<div class="cancel">취소</div>
+														<div class="clear">작성</div>
 													</div>
 												</div>
 											</div>
@@ -542,7 +614,7 @@
 		menuTrigger.addEventListener('click', () => {
         footerSide.classList.add('active');
         backColor.classList.add('active');
-        document.body.style.overflow = "hidden";
+//         document.body.style.overflow = "hidden";
         });
 		
 		const menuTrigger2 = document.querySelector('.burger2');
@@ -554,10 +626,36 @@
         document.body.style.overflow = "unset";
         });
 		
+		const openComment = document.querySelector('.comment-live');
+		const comCh = document.querySelector('.comment-Ch')
+		const lineB = document.querySelector('.line')
+		openComment.addEventListener('click', () => {
+		comCh.classList.add('active');
+		lineB.classList.add('active');
+		});
 		
+		const canC = document.querySelector('.cancel')
+		canC.addEventListener('click', () => {
+		comCh.classList.remove('active');
+		lineB.classList.remove('active');
+		});
 		
+		const clearC = document.querySelector('.clear');
+		var openCommentValue; // 자바스크립트의 scope 형식
+		openComment.addEventListener('keydown', (e)=>{
+				openCommentValue = openComment.value;
+				if(openCommentValue.length == 1 && e.code == "Backspace"){
+					clearC.style.background = '#f2f2f2';
+		 			clearC.style.color = '#ccc';
+				}else if(openCommentValue.length == 0 && e.code == "Backspace"){
+					clearC.style.background = '#f2f2f2';
+		 			clearC.style.color = '#ccc';
+				}else {
+					clearC.style.background = '#065fd4';
+		 			clearC.style.color = '#fff';
+				}
+		});
 
-		
 		// 스크롤 시작
 		var winTop; // 화면 최상단값
 		var onTop; // 스크롤내렸을때 이부분에서부터 추가적인 데이터 호출
@@ -589,29 +687,29 @@
 		
 		
 		//시작하면 10개뿌림 여기 데이터랑 위에 데이터랑 같아야함  - var current랑 같이 보기
-		for(var i=0; i<10;i++){
-			new PreList();
-		}
+// 		for(var i=0; i<10;i++){
+// 			new PreList();
+// 		}
 		
 		
 		//리스트 담는 함수
-		function listCall(){
+// 		function listCall(){
 			
-			var list;
+// 			var list;
 			
-			current++ //함수 호출할때마다 1씩 증가
+// 			current++ //함수 호출할때마다 1씩 증가
 			
-			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
-				return null; //list 변수에 값 그만넣기
-			}else{
-				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'
-			     list += '<div class="right-bar"><div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div><div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
-			}
+// 			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
+// 				return null; //list 변수에 값 그만넣기
+// 			}else{
+// 				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'
+// 			     list += '<div class="right-bar"><div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div><div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
+// 			}
 			
-			return list;
+// 			return list;
 			    
 			    
-		}
+// 		}
 		
 		
 		
