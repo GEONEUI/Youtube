@@ -101,7 +101,6 @@ body {
 
 
 #following {
-	display: none;
 	cursor: pointer;
 }
 
@@ -152,10 +151,17 @@ body {
 	flex-wrap: wrap;
 }
 
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
 /* ------content------- */
 #videoBD1 {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 #videoBD2 {
@@ -219,28 +225,36 @@ body {
 										<div class="box">
 											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
 										</div>
-										<table>
-											<tr th:each="aa : ${list}">
-												<td><div class="channelName" th:text="${aa.ch_name}"></div></td>
-											</tr>
-											<tr th:each="bb : ${list}">
-												<td><div class="channelId" th:text="${bb.ch_id}"></div></td>
-											</tr>
-											<tr th:each="cc : ${list}">
-												<td><div class="channelFollow" th:text="${cc.ch_follow}"></div></td>
-											</tr>
-										</table>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
+										</div>
 									</div>
 									<div id="followButton">
-										<div id="followBefore">
-											<a id="fBtn" onclick="">구독</a>
+										<div th:if="${flcheck == null}">
+											<div id="followBefore">
+												<a id="fBtn" onclick="flw()">구독</a>
+											</div>
 										</div>
-										<div id="following">
-											<a id="bell" onclick="">
-												<i class="fa-regular fa-bell"></i>
-												<p id="followFont">구독중</p>
-												<i class="fa-solid fa-check"></i>
-											</a>
+										<div th:unless="${flcheck == null}">
+											<div id="following">
+												<a id="bell" onclick="flw()">
+													<i class="fa-regular fa-bell"></i>
+													<p id="followFont">구독중</p>
+													<i class="fa-solid fa-check"></i>
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -267,7 +281,6 @@ body {
 									<button class="vdbtn1" onclick="vdfun1()">최근에 업로드된 동영상</button>
 									<button class="vdbtn2" onclick="vdfun2()">인기 동영상</button>
 								</div>
-								<div></div>
 							</div>
 						</div>
 					</div>
@@ -298,10 +311,17 @@ body {
         }
       	
       	/* 채널 구독 버튼 */
-      	let flw1 = document.querySelector("#followBefore");
-      	let flw2 = document.querySelector("#following");
+      	var flw1 = document.querySelector("#followBefore");
+      	var flw2 = document.querySelector("#following");
       	
       	function flw() {
+      		if([[${flcheck}]] == null) {
+      			flw1.off();
+      			flw2.css("display" ,"none");
+      		} else {
+      			flw2.off();
+      			flw1.css("display" ,"none");
+      		}
       	}
       	
       	

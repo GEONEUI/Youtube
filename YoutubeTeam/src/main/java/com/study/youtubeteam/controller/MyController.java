@@ -145,11 +145,12 @@ public class MyController {
 	public String channel(int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		List<youtubeChannel> list = flmapper.channelIdx(idx);
-//		int idNum = flmapper.getId(id);
-//		flmapper.followInsert(idNum, 3);
+		String idNum = flmapper.getId(id);
+		String flcheck = flmapper.followCheck(idNum);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("idx", idx);
+		model.addAttribute("flcheck", flcheck);
 		return "channel";
 	}
 	

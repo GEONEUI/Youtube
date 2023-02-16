@@ -15,10 +15,10 @@ public interface YoutubeFollowMapper {
 	public void followInsert(int loginUser, int followUser);
 	
 	@Select("select user_idx from followList where user_idx=#{user_idx}")
-	public int followCheck(int loginUser);
+	public String followCheck(String loginUser);
 	
 	@Select("select user_idx from youtubeUser where user_id=#{user_id}")
-	public int getId(String loginUser);
+	public String getId(String loginUser);
 	
 	//채널 정보
 	@Select("select * from channelList where idx=#{idx}")
