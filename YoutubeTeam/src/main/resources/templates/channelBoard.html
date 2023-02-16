@@ -121,6 +121,12 @@ body {
 	flex-wrap: wrap;
 }
 
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
 /* ------content------- */
 #board1 {
 	display: flex;
@@ -207,19 +213,29 @@ body {
 					</div>
 					<div class="youtube_main">
 						<div id="BannerLayout">
-							<img id="Banner" src='/image/bannerCalm.jpg'>
+							<img id="Banner" th:src='@{/image/banner}+${idx}+@{.png}'>
 						</div>
 						<div id="chbd">
 							<div id="ChannelHeader">
 								<div id="logoHeader">
 									<div class="chbox">
 										<div class="box">
-											<img id="img" src="/image/calm.jpg">
+											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
 										</div>
-										<div class="channelContent">
-											<div class="channelName">침착맨</div>
-											<div class="channelId">@아이디</div>
-											<div class="channelFollow">구독자 11명</div>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 									<div id="followButton">
@@ -227,10 +243,10 @@ body {
 									</div>
 								</div>
 								<div id="chbtnAll">
-									<a class="chbtn" th:href="@{/channel}">홈</a> 
-									<a class="chbtn" th:href="@{/channel}">동영상</a>
-									<a class="chbtn" th:href="@{/channelBoard}">커뮤니티</a>
-									<a class="chbtn" th:href="@{/channelIndex}">정보</a>
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
 									<div class="scbtn">
 										<div id="sc1">
 											<i class="fa-thin fa-magnifying-glass"></i>

@@ -243,26 +243,33 @@ body {
 									</div>
 									<div id="followButton">
 										<div th:if="${flcheck == null}">
-											<div id="followBefore">
-												<a id="fBtn" onclick="flw()">구독</a>
+											<div th:if="${id == null}">
+									 			<div id="followBefore">
+													<a id="fBtn">구독</a>
+												</div>
+											</div>
+											<div th:unless="${id == null}">
+												<div id="followBefore">
+													<a id="fBtn" th:onclick="location.th:href='@{/insertflw(${id},${idx})}'">구독</a>
+												</div>
 											</div>
 										</div>
 										<div th:unless="${flcheck == null}">
-											<div id="following">
-												<a id="bell" onclick="flw()">
+											<form id="following" th:action="@{/deleteflw}">
+												<a id="bell">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
 												</a>
-											</div>
+											</form>
 										</div>
 									</div>
 								</div>
 								<div id="chbtnAll">
-									<a class="chbtn" th:href="@{/channel(idx=3)}">홈</a> 
-									<a class="chbtn" th:href="@{/channel(idx=4)}">동영상</a>
-									<a class="chbtn" th:href="@{/channelBoard}">커뮤니티</a>
-									<a class="chbtn" th:href="@{/channelIndex}">정보</a>
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
 									<div class="scbtn">
 										<div id="sc1">
 											<i class="fa-thin fa-magnifying-glass"></i>
@@ -311,7 +318,7 @@ body {
         }
       	
       	/* 채널 구독 버튼 */
-      	var flw1 = document.querySelector("#followBefore");
+      	/* var flw1 = document.querySelector("#followBefore");
       	var flw2 = document.querySelector("#following");
       	
       	function flw() {
@@ -322,7 +329,7 @@ body {
       			flw2.off();
       			flw1.css("display" ,"none");
       		}
-      	}
+      	} */
       	
       	
       	
