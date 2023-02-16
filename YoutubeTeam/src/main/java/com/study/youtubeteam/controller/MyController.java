@@ -2,6 +2,7 @@ package com.study.youtubeteam.controller;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,9 @@ import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeUserList;
 import com.study.youtubeteam.mapper.YoutubeListMapper;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -34,12 +38,17 @@ public class MyController {
 	@RequestMapping("/")
 	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){
 		String id = (String)session.getAttribute("id");
-		session.setMaxInactiveInterval(60*10);
+		
+		//아이디를 알고있을때 해당 아이디의
+		
 		if(id == null) {
 			id = "손님";
 		}
 		
 		List<youtubeList> list = null;
+		
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
 		
 
 		if(category==1) {
@@ -80,6 +89,7 @@ public class MyController {
 		model.addAttribute("id", id);
 		model.addAttribute("search", search);
 		model.addAttribute("category", category);
+		model.addAttribute("userInfo", userInfo);
 		
 		return "index";
 	}
@@ -87,6 +97,8 @@ public class MyController {
 	//회원가입
 	@RequestMapping("/join.do")
 	public String join() {
+		
+
 		return "join";
 	}
 	
@@ -105,17 +117,61 @@ public class MyController {
 	
 	//로그인
 	@RequestMapping("/login.do")
-	public String login() {
+	public String login(HttpServletRequest request, Model model) {
+		
+		Cookie[] cookies = request.getCookies();
+		
+		String CookieID = "";
+		String CookiePW = "";
+		
+		if(cookies != null) {
+			for(int i=0; i<cookies.length ;i++) {
+				if(cookies[i].getName().equals("cookieID")) {
+					CookieID = cookies[i].getValue();
+					break;
+				}
+			}
+		}
+		
+		if(cookies != null) {
+			for(int i=0; i<cookies.length ;i++) {
+				if(cookies[i].getName().equals("cookiePW")) {
+					CookiePW = cookies[i].getValue();
+					break;
+				}
+			}
+		}
+		
+		
+		model.addAttribute("CookieID", CookieID);
+		model.addAttribute("CookieID", CookiePW);
+		
 		return "login";
 	}
 	
 	//로그인 처리하는곳
 	@PostMapping("/loginProc.do")
-	public String loginProc(@RequestParam("user_id") String id, @RequestParam("user_pw") String pw, Model model, HttpSession session) {
+	public String loginProc(@RequestParam("user_id") String id, @RequestParam("user_pw") String pw, @RequestParam(value="checkbox", required = false, defaultValue = "0") int check, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		int result = mapper.userCheck(id, pw);
 		
+		
+		//세션생성
 		session.setAttribute("id", id);
+		session.setMaxInactiveInterval(60*10);
 		model.addAttribute("result", result);
+		
+		//쿠키생성
+		if(check == 1) {
+			Cookie cookie = new Cookie("cookieID", id);
+			cookie.setMaxAge(60*1);
+			response.addCookie(cookie);
+			
+			Cookie cookiepw = new Cookie("cookiePW", pw);
+			cookiepw.setMaxAge(60*1);
+			response.addCookie(cookie);
+		}else {
+			
+		}
 		
 		return "loginMessage";
 	}

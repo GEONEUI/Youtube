@@ -157,10 +157,10 @@
 	                  </h1>
 				</div>
 				<p class="login_title">로그인</p>
-				<input type="text" name="user_id" class="inputID" placeholder="아이디를 입력해주세요.">
-				<input type="password" name="user_pw" class="inputPW" placeholder="비밀번호를 입력해주세요.">
+				<input type="text" name="user_id" class="inputID" placeholder="아이디를 입력해주세요." th:value="${CookieID}">
+				<input type="password" name="user_pw" class="inputPW" placeholder="비밀번호를 입력해주세요." th:value="${CookiePW}">
 				<p class="login_forget">아이디와 비밀번호를 잊으셨습니까?</p>
-				<div class="check"><input type="checkbox"><p class="login_check">내 컴퓨터 이신가요?<br> 아이디와 비빌번호를 저장해보세요.</p></div>
+				<div class="check"><input type="checkbox" name="checkbox" value="1"><p class="login_check">내 컴퓨터 이신가요?<br> 아이디와 비빌번호를 저장해보세요.</p></div>
 				<div class="login_btn">
 					<a href="join.do" class="btn1">계정만들기</a>
 					<input type="submit" class="btn2" value="로그인">

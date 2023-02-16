@@ -184,7 +184,7 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 	<script>
-		//중복확인
+
 		
 		var id_checkValue;
 		var user_id;
@@ -195,6 +195,7 @@
 		var flag = false;
 		
 		
+		//중복체크 #1
 		function idCheck(){
 			id_checkValue = $('#user_id').val();
 			console.log(id_checkValue);
@@ -210,6 +211,8 @@
 		}
 		
 		
+		
+		//중복체크 #2
 		function loca(data){
 			if(id_checkValue == ""){
 				alert('아이디를 입력해주세요.')
@@ -223,6 +226,8 @@
 			}
 		}
 		
+		
+		//유효성검사
 		function checkID(){
 			user_id = $('#user_id').val();
 			user_pw = $('#user_pw').val();
