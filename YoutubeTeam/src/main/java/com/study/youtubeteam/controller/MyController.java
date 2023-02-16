@@ -94,6 +94,7 @@ public class MyController {
 		model.addAttribute("category", category);
 		model.addAttribute("userInfo", userInfo);
 		
+		
 		return "index";
 	}
 	
@@ -146,8 +147,14 @@ public class MyController {
 		}
 		
 		
+		
+		System.out.println(CookieID);
+		System.out.println(CookiePW);
+		
 		model.addAttribute("CookieID", CookieID);
-		model.addAttribute("CookieID", CookiePW);
+		model.addAttribute("CookiePW", CookiePW);
+		
+		
 		
 		return "login";
 	}
@@ -171,7 +178,7 @@ public class MyController {
 			
 			Cookie cookiepw = new Cookie("cookiePW", pw);
 			cookiepw.setMaxAge(60*1);
-			response.addCookie(cookie);
+			response.addCookie(cookiepw);
 		}else {
 			
 		}
@@ -208,6 +215,16 @@ public class MyController {
 	@RequestMapping("/channel")
 	public String channel(int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
+		
+		//아이디를 알고있을때 해당 아이디의
+		
+		if(id == null) {
+			id = "손님";
+		}
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("userInfo", userInfo);
+		
 		List<youtubeChannel> list = flmapper.channelIdx(idx);
 		String idNum = flmapper.getId(id);
 		String flcheck = flmapper.followCheck(idNum);
@@ -234,62 +251,19 @@ public class MyController {
 	@RequestMapping("/channelIndex")
 	public String channelIndex(Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
+		
+		//아이디를 알고있을때 해당 아이디의
+		
+		if(id == null) {
+			id = "손님";
+		}
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("id", id);
 		return "channelIndex";
 	}
 	
-//	@RequestMapping("/")
-//	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){
-//		String id = (String)session.getAttribute("id");
-//		session.setMaxInactiveInterval(60*10);
-//		if(id == null) {
-//			id = "손님";
-//		}
-//		
-//		List<youtubeList> list = null;
-//		
-//
-//		if(category==1) {
-//			list = mapper.selectAll();
-//		}
-//		if(category==2) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category==3) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category==4) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category==5) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category==6) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category == 7) {
-//			list = mapper.selectCate(category);
-//		}
-//		if(category == 8) {
-//			list = mapper.selectAll();
-//		}
-//			
-//		
-//		if(search.equals("")) {
-//			
-//		}else {
-//			list = mapper.dataSearch(search);
-//		}
-//		
-//		
-//		
-//		model.addAttribute("list", list);
-//		model.addAttribute("id", id);
-//		model.addAttribute("search", search);
-//		model.addAttribute("category", category);
-//		
-//		return "channel";
-//	}
 	
 	//유진
 	@RequestMapping("/mypage")

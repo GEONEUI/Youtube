@@ -7,6 +7,7 @@
             width: 23%;
             margin:1%;
         }
+        
 
         .youtube_card iframe{
             border-radius: 15px;
@@ -88,6 +89,7 @@
         	var breakPoint = 80;
         	var currentItem = 15;
             var el = document.querySelector('.youtube_main_item');
+
         
         
         	//생성자함수 로드되었을때 뿌려져있는 리스트 만들기
@@ -98,7 +100,8 @@
                 	
           	      //생성자함수
                     function Card(){      
-                        this.mainElem = document.createElement('div');
+                        this.mainElem = document.createElement('a');
+                        this.mainElem.setAttribute('href', '/card' + i);
                         this.mainElem.classList.add('youtube_card');
                         this.mainElem.innerHTML = ""
                                         +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
