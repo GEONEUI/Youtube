@@ -2,20 +2,25 @@ package com.study.youtubeteam.controller;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeUserList;
+import com.study.youtubeteam.mapper.YoutubeFollowMapper;
 import com.study.youtubeteam.mapper.YoutubeListMapper;
 import com.study.youtubeteam.mapper.YoutubePlayMapper;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
@@ -27,6 +32,8 @@ public class MyController {
 	@Autowired
 	YoutubeListMapper mapper;
 	YoutubePlayMapper playMapper;
+	YoutubeFollowMapper flmapper;
+
 
 	//************************* 건의 *************************
 	
@@ -36,12 +43,17 @@ public class MyController {
 	@RequestMapping("/")
 	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){
 		String id = (String)session.getAttribute("id");
-		session.setMaxInactiveInterval(60*10);
+		
+		//아이디를 알고있을때 해당 아이디의
+		
 		if(id == null) {
 			id = "손님";
 		}
 		
 		List<youtubeList> list = null;
+		
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
 		
 
 		if(category==1) {
@@ -82,6 +94,8 @@ public class MyController {
 		model.addAttribute("id", id);
 		model.addAttribute("search", search);
 		model.addAttribute("category", category);
+		model.addAttribute("userInfo", userInfo);
+		
 		
 		return "index";
 	}
@@ -90,6 +104,8 @@ public class MyController {
 	//회원가입
 	@RequestMapping("/join.do")
 	public String join() {
+		
+
 		return "join";
 	}
 	
@@ -108,17 +124,67 @@ public class MyController {
 	
 	//로그인
 	@RequestMapping("/login.do")
-	public String login() {
+	public String login(HttpServletRequest request, Model model) {
+		
+		Cookie[] cookies = request.getCookies();
+		
+		String CookieID = "";
+		String CookiePW = "";
+		
+		if(cookies != null) {
+			for(int i=0; i<cookies.length ;i++) {
+				if(cookies[i].getName().equals("cookieID")) {
+					CookieID = cookies[i].getValue();
+					break;
+				}
+			}
+		}
+		
+		if(cookies != null) {
+			for(int i=0; i<cookies.length ;i++) {
+				if(cookies[i].getName().equals("cookiePW")) {
+					CookiePW = cookies[i].getValue();
+					break;
+				}
+			}
+		}
+		
+		
+		
+		System.out.println(CookieID);
+		System.out.println(CookiePW);
+		
+		model.addAttribute("CookieID", CookieID);
+		model.addAttribute("CookiePW", CookiePW);
+		
+		
+		
 		return "login";
 	}
 	
 	//로그인 처리하는곳
 	@PostMapping("/loginProc.do")
-	public String loginProc(@RequestParam("user_id") String id, @RequestParam("user_pw") String pw, Model model, HttpSession session) {
+	public String loginProc(@RequestParam("user_id") String id, @RequestParam("user_pw") String pw, @RequestParam(value="checkbox", required = false, defaultValue = "0") int check, Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		int result = mapper.userCheck(id, pw);
 		
+		
+		//세션생성
 		session.setAttribute("id", id);
+		session.setMaxInactiveInterval(60*10);
 		model.addAttribute("result", result);
+		
+		//쿠키생성
+		if(check == 1) {
+			Cookie cookie = new Cookie("cookieID", id);
+			cookie.setMaxAge(60*1);
+			response.addCookie(cookie);
+			
+			Cookie cookiepw = new Cookie("cookiePW", pw);
+			cookiepw.setMaxAge(60*1);
+			response.addCookie(cookiepw);
+		}else {
+			
+		}
 		
 		return "loginMessage";
 	}
@@ -160,22 +226,60 @@ public class MyController {
 	
 	
 	// 준호
+	
+	//채널 메인
 	@RequestMapping("/channel")
-	public String channel() {
+	public String channel(int idx, Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		//아이디를 알고있을때 해당 아이디의
+		
+		if(id == null) {
+			id = "손님";
+		}
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("userInfo", userInfo);
+		
+		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		String idNum = flmapper.getId(id);
+		String flcheck = flmapper.followCheck(idNum);
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("idx", idx);
+		model.addAttribute("flcheck", flcheck);
 		return "channel";
 	}
 	
-	//준호
+	//구독
+	@PostMapping
+	
+	
+	//채널 커뮤니티
 	@RequestMapping("/channelBoard")
-	public String channelBoard() {
+	public String channelBoard(Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		model.addAttribute("id", id);
 		return "channelBoard";
 	}
 	
-	//준호
+	//채널 정보
 	@RequestMapping("/channelIndex")
-	public String channelIndex() {
+	public String channelIndex(Model model, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
+		//아이디를 알고있을때 해당 아이디의
+		
+		if(id == null) {
+			id = "손님";
+		}
+		
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("id", id);
 		return "channelIndex";
 	}
+	
 	
 	//유진
 	@RequestMapping("/mypage")
