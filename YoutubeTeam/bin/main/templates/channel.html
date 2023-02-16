@@ -2,215 +2,330 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/front_header"></head>
 <style>
-	
-	body{
-		padding-top:60px;
-	}
-    #Banner {
-        height: 250px;
-        width: 100%;
-        position: relative;
-    }
-    #chbd {
-    	display: flex;
-		justify-content: center;
-		border-bottom: 1px solid #e1dddd;
-    }
-    #ChannelHeader {
-    	display: flex;
-   		flex-wrap: wrap;
-    	align-content: space-between;
-    	width: 1300px;
-    	height: 150px;
-    }
-    #logoHeader {
-    	display: flex;
-   	 	justify-content: space-between;
-    	height: 105px;
-    	width: 1300px;
-    }
-    
-    .chbox {
-    	display: flex;
-    }
-    
-  	.box {
-  		display: flex;
-  		top: 10px;
-  		left: 30px;
-  		margin: auto 20px;
-    	width: 90px;
-    	height: 90px;
-        border-radius: 70%;
-        overflow: hidden;
-    }
-    #img {
-    	height: 100%;
-    	width: 100%;
-    	object-fit: cover;
-   	}
-   	.channelContent {
-   		position: relative;
-   		float: left;
-   		top: 5px;
-   	}
-   	.channelName {
-   		font-size: 30px;
-   	}
-   	.channelId {
-   		color: grey;
-   	}
-   	
-   	.channelFollow {
-   		color: grey;
-   	}
-   	
-   	#followButton {
-   		display: flex;
-    	flex-wrap: wrap; 
-    	align-content: center;
-   	}
-   	#fBtn {
-   		height: 43px;
-   		width: 60px;
-   		border-radius: 20px;
-   		border: 0;
-   		color: white;
-   		font-size: 15px;
-   		background-color: black;
-   	}
-   	
-   	#chbtnAll {
-		display: flex;   	
-   	}
-   	
-   	.chbtn {
-   		display: inline-block;
-   		background-color: transparent;
-   		border: 0;
-   		height: 40px;
-   		width: 120px;
-   		font-size: 15px;
-   	}
-   	.scbtn {
-   		display: flex;
-   		justify-content: space-between;
-    	width: 200px;
-   	}
-   	
-   	#sc1 {
-   		display: flex;
-    	align-items: center;
-   	}
-   	
-   	#sc2 {
- 		display: flex;
-    	align-content: center;
-    	flex-wrap: wrap;
-   	}
-   	
-   	#videoBD1 {
-   		display: flex;
-   		justify-content: center;
-   	}
-   	
-   	#videoBD2 {
-   		width: 1300px;
-   		height: 100%;
-   	}
-   	
-   	#videoBtn {
-   		padding-left: 18px;
-   	    padding-top: 10px;
-		display: flex;
-   	 	justify-content: space-between;
-    	width: 291px;
-    	height: 50px;
-   	}
-   	
-   	#vdbtn1 {
-   		height: 30px;
-   		width: 160px;
-   		border-radius: 10px;
-   		border: none;
-   	}
-   	
-   	#vdbtn2 {
-   		height: 30px;
-   		width: 100px;
-   		border-radius: 10px;
-   		border: none;
-   	}
-   	
-    
- 
-	
+body {
+	padding-top: 60px;
+}
+
+/* --------header-------- */
+#Banner {
+	height: 250px;
+	width: 100%;
+	position: relative;
+}
+
+#chbd {
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid #e1dddd;
+}
+
+#ChannelHeader {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	width: 1300px;
+	height: 150px;
+}
+
+#logoHeader {
+	display: flex;
+	justify-content: space-between;
+	height: 105px;
+	width: 1300px;
+}
+
+.chbox {
+	display: flex;
+}
+
+.box {
+	display: flex;
+	top: 10px;
+	left: 30px;
+	margin: auto 20px;
+	width: 90px;
+	height: 90px;
+	border-radius: 70%;
+	overflow: hidden;
+}
+
+#img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.channelContent {
+	position: relative;
+	float: left;
+	top: 5px;
+}
+
+.channelName {
+	font-size: 30px;
+}
+
+/* 채널명 */
+.channelId {
+	color: grey;
+}
+
+/* 구독자 수 */
+.channelFollow {
+	color: grey;
+}
+
+/* 구독자 버튼 */
+#followButton {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+
+#followBefore {
+	cursor: pointer;
+	height: 43px;
+	width: 60px;
+	border-radius: 20px;
+	border: 0;
+	font-size: 15px;
+	background: black;
+	text-align: center;
+	line-height: 43px;
+}
+
+#fBtn {
+	color: white;
+}
+
+
+#following {
+	cursor: pointer;
+}
+
+#bell {
+	display: flex;
+	width: 122px;
+	height: 36px;
+	border-radius: 18px;
+	background: #ececec;
+	align-items: center;
+    justify-content: center;
+   
+}
+
+#followFont{
+	font-size: 15px;
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
+#chbtnAll {
+	display: flex;
+}
+
+.chbtn {
+	background-color: transparent;
+	height: 40px;
+	width: 120px;
+	font-size: 15px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.scbtn {
+	display: flex;
+	justify-content: space-between;
+	width: 200px;
+}
+
+#sc1 {
+	display: flex;
+	align-items: center;
+}
+
+#sc2 {
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+/* ------content------- */
+#videoBD1 {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#videoBD2 {
+	width: 1300px;
+	height: 100%;
+}
+
+#videoBtn {
+	padding-left: 18px;
+	padding-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	width: 291px;
+	height: 50px;
+}
+
+
+.vdbtn1 {
+	height: 30px;
+	width: 160px;
+	border-radius: 10px;
+	border: none;
+	background: #000;
+	color: white;	
+	cursor: pointer;
+}
+
+.vdbtn2 {
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	background: #ececec;
+	color: #000;
+	cursor: pointer;
+}
+
+
+
+
+
+
 </style>
 <body>
-    <div id="wrap">
+	<div id="wrap">
 		<div th:replace="fragments/header"></div>
-        <div class="sec_layout">
-                <div class="inner">
-                    <div class="layout">
-                        <div class="aside">
-							<div th:replace="fragments/aside"></div>
-                        </div>
-                        <div class="youtube_main">
-							<div id="BannerLayout">
-								<img id="Banner" src='/image/bannerCalm.jpg'>
-							</div>
-							<div id="chbd">
-								<div id="ChannelHeader">
-									<div id="logoHeader">
-										<div class="chbox">
-											<div class="box">
-												<img id="img" src="/image/calm.jpg">
-											</div>
-											<div class="channelContent">
-												<div class="channelName">
-													침착맨
-												</div>
-												<div class="channelId">
-													@아이디
-												</div>
-												<div class="channelFollow">
-													구독자 11명
-												</div>
-											</div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<div class="youtube_main">
+						<div id="BannerLayout">
+							<img id="Banner" th:src='@{/image/banner}+${idx}+@{.png}'>
+						</div>
+						<div id="chbd">
+							<div id="ChannelHeader">
+								<div id="logoHeader">
+									<div class="chbox">
+										<div class="box">
+											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
 										</div>
-										<div id="followButton">
-											<input type="button" id="fBtn" value="구독"/>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
-									<div id="chbtnAll">
-										<button class="chbtn">홈</button>
-										<button class="chbtn">동영상</button>
-										<button class="chbtn">커뮤니티</button>
-										<button class="chbtn">정보</button>
-										<div class="scbtn">
-											<div id="sc1">
-												<i class="fa-thin fa-magnifying-glass"></i>
-											</div>
-											<div id="sc2">
-												<input type="text" id="chbtnSC"/>
+									<div id="followButton">
+										<div th:if="${flcheck == null}">
+											<div id="followBefore">
+												<a id="fBtn" onclick="flw()">구독</a>
 											</div>
 										</div>
-										
-									</div>
-								</div>	
-							</div>
-							<div id="videoBD1">
-								<div id="videoBD2">
-									<div id="videoBtn">
-										<button id="vdbtn1">최근에 업로드된 동영상</button>
-										<button id="vdbtn2">인기 동영상</button>
+										<div th:unless="${flcheck == null}">
+											<div id="following">
+												<a id="bell" onclick="flw()">
+													<i class="fa-regular fa-bell"></i>
+													<p id="followFont">구독중</p>
+													<i class="fa-solid fa-check"></i>
+												</a>
+											</div>
+										</div>
 									</div>
 								</div>
+								<div id="chbtnAll">
+									<a class="chbtn" th:href="@{/channel(idx=3)}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=4)}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex}">정보</a>
+									<div class="scbtn">
+										<div id="sc1">
+											<i class="fa-thin fa-magnifying-glass"></i>
+										</div>
+										<div id="sc2">
+											<input type="text" id="chbtnSC" />
+										</div>
+									</div>
+
+								</div>
 							</div>
-                        </div>
-                   </div>
-                </div>
-            </div>
-        </div>
+						</div>
+						<div id="videoBD1">
+							<div id="videoBD2">
+								<div id="videoBtn">
+									<button class="vdbtn1" onclick="vdfun1()">최근에 업로드된 동영상</button>
+									<button class="vdbtn2" onclick="vdfun2()">인기 동영상</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script th:inline="javascript">
+    	
+		/* 채널 동영상 정렬 */
+        let vdbtn1 = document.querySelector(".vdbtn1");
+      	let vdbtn2 = document.querySelector(".vdbtn2");
+      	
+      	function vdfun1(){
+        	vdbtn1.style.color = "white";
+        	vdbtn1.style.background = "black"
+        	vdbtn2.style.color = "black";
+        	vdbtn2.style.background = "#ececec";
+        	
+        }
+        
+      	function vdfun2(){
+        	vdbtn1.style.color = "black";
+        	vdbtn1.style.background = "#ececec";
+        	vdbtn2.style.color = "white";
+        	vdbtn2.style.background = "black";
+        }
+      	
+      	/* 채널 구독 버튼 */
+      	var flw1 = document.querySelector("#followBefore");
+      	var flw2 = document.querySelector("#following");
+      	
+      	function flw() {
+      		if([[${flcheck}]] == null) {
+      			flw1.off();
+      			flw2.css("display" ,"none");
+      		} else {
+      			flw2.off();
+      			flw1.css("display" ,"none");
+      		}
+      	}
+      	
+      	
+      	
+	</script>	
 </body>
 </html>

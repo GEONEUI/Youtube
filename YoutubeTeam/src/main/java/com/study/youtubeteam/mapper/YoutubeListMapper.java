@@ -41,5 +41,5 @@ public interface YoutubeListMapper {
 	@Select("select * from youtubeUser where user_id = #{id}")
 	public youtubeUserList getOneUser(String id);
 	
-
 }
+	
