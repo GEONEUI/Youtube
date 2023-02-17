@@ -31,7 +31,9 @@ import jakarta.servlet.http.HttpSession;
 public class MyController {
 	@Autowired
 	YoutubeListMapper mapper;
+	@Autowired
 	YoutubePlayMapper playMapper;
+	@Autowired
 	YoutubeFollowMapper flmapper;
 
 
@@ -58,6 +60,7 @@ public class MyController {
 
 		if(category==1) {
 			list = mapper.selectAll();
+			System.out.println(list);
 		}
 		if(category==2) {
 			list = mapper.selectCate(category);
@@ -130,7 +133,7 @@ public class MyController {
 		
 		String CookieID = "";
 		String CookiePW = "";
-		
+	
 		if(cookies != null) {
 			for(int i=0; i<cookies.length ;i++) {
 				if(cookies[i].getName().equals("cookieID")) {
@@ -209,10 +212,25 @@ public class MyController {
 	//예준
 
 	@RequestMapping("/play")
-	public String play(HttpSession session, Model model) {
-		String id = (String) session.getAttribute("id");
-		model.addAttribute("id",id);
+	public String play(@RequestParam(value="idx",required=false,defaultValue="1") int idx, HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("id");
+		if(id == null) {
+			id = "손님";
+		}
+		
+		youtubeList list = playMapper.getOne(idx);
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		List<youtubeList> elst = mapper.selectAll();
+		model.addAttribute("userInfo", userInfo);
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("elst", elst);
+		
+		System.out.println(elst);
+		
 		return "play";
+		
 	}
 	
 

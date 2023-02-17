@@ -429,7 +429,7 @@
 		width: 100%;
 		height: 94px;
 		display: flex;
-		margin-bottom: 8px;
+		margin-bottom: 15px;
 	}
 	
 	.center-bar .left-bar {
@@ -442,6 +442,12 @@
 		height: 94px;
 /* 		background: blue; */
 	    margin-left: 6px;
+	}
+	
+	.center-bar .right-bar > div:first-child{
+		overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 	}
 	
 	
@@ -463,7 +469,7 @@
 	}
 	
 	
-	
+
 
 	
 </style>
@@ -498,15 +504,14 @@
                         <div class="youtube_main">
 							<div class="center">
 								<div class="print">
-								<iframe width="1280" height="720" src="https://www.youtube.com/embed/bUAOvY6SyJw" title="오랜만에 다시 도전하는 '그 공포게임' (그림자 복도/파괴자 난이도)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								<li class="title">[스페셜] 서로에게 벗어나지 못하는 유연석-문가영, 키스로 마음 확인 끝 | 사랑의 이해 | JTBC 230119 방송</li>
-								
+								<iframe width="1280" height="720" th:src="${list.url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<li class="title" th:text="${list.subject}"></li>
 								<div class="subscribe">
 									<div class="subscribeCh">
 								 		<a href="https://www.youtube.com/watch?v=bUAOvY6SyJw">
-								 			<img class="sutak" src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></a>
+								 			<img class="sutak" th:src="${list.thum}" alt="이모티콘"></a>
 								 		<div class="jtbc">
-									 		<a>JTBC Drama</a>
+									 		<a th:text="${list.writer}"></a>
 									 		<li>구독자 471만명</li>
 								 		</div>
 								 		<div class="gudok">구독</div>
@@ -604,8 +609,9 @@
         </div>
 </body>
 
-        <script>
-        
+        <script th:inline="javascript">
+
+		
         const menuTrigger = document.querySelector('.burger');
 		const footerSide = document.querySelector('.aside');
  		const backColor = document.querySelector('.burgerThema');
@@ -660,21 +666,23 @@
 		var onTop; // 스크롤내렸을때 이부분에서부터 추가적인 데이터 호출
 		var el = document.querySelector('.list'); //
 		var ismove = false;
-		var stop = 50; //데이터 뿌릴 횟수
+		var stop = 40; //데이터 뿌릴 횟수
 		var current = 10; //10개부터 무한스크롤 시작하는거
+		var listt = [[${elst}]];
 		
-		// 스크롤 전에 12개 미리 뿌리기
+	
+		// 스크롤 전에 9개 미리 뿌리기
 		// 생성자 함수 대문자로 써야함
-		function PreList (){
+		function PreList (i){
 			thismain = document.createElement('div');
 			thismain.classList.add('center-bar');
 			thismain.innerHTML = ''
 							+'<div class="left-bar">'
-								+'<iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>	'
+								+'<iframe width="100%" height="94px" src="' +listt[i].url +'" allowfullscreen></iframe>'
 							+'</div>'
 							+'<div class="right-bar">'
-								+'<div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div>'
-								+'<div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div>'
+								+'<div style="margin-bottom: 10px;">' +listt[i].subject +'</div>'
+								+'<div style="font-size: 12px;">' +listt[i].writer +'</div>'
 								+'<div style="display: flex; font-size: 12px;">'
 									+'<div>조회수 800만회</div>'
 									+'<div>2년 전</div>'
@@ -686,29 +694,28 @@
 		
 		
 		//시작하면 10개뿌림 여기 데이터랑 위에 데이터랑 같아야함  - var current랑 같이 보기
-// 		for(var i=0; i<10;i++){
-// 			new PreList();
-// 		}
+		for(var i=0; i<10;i++){
+			new PreList(i);
+		}
 		
 		
-		//리스트 담는 함수
-// 		function listCall(){
+// 		리스트 담는 함수
+		function listCall(){
 			
-// 			var list;
+			var list;
 			
-// 			current++ //함수 호출할때마다 1씩 증가
+			current++ //함수 호출할때마다 1씩 증가
 			
-// 			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
-// 				return null; //list 변수에 값 그만넣기
-// 			}else{
-// 				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="https://www.youtube.com/embed/DC14yr9EVn4" title="솔직하게 말했더라면 달라졌을까...? 그때라도 그렇게 말할걸 | 사랑의 이해 16회 | JTBC 230209 방송" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'
-// 			     list += '<div class="right-bar"><div style="margin-bottom: 10px;">10시간 따뜻한 수면음악</div><div style="font-size: 12px;">힐링트리 뮤직 Healing Tree</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
-// 			}
+			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
+				return null; //list 변수에 값 그만넣기
+			}else{
+				 list = '<div class="center-bar" onclick="ss()"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
+			}
 			
-// 			return list;
+			return list;
 			    
 			    
-// 		}
+		}
 		
 		
 		
@@ -746,7 +753,7 @@
 							el.appendChild(element);
 							setTimeout(()=>{ //끋! 와 지림 떙규떙큐 ㄷㄷ 한시간넘게걸렸네 무친 ㅋㅋㅋ 근데 그래도 빨리한듯? 내껀 더오래걸렸음 ㅋㅋㅋㅋ 하 근데 먼가 이거 했는데도 막막하네 이거나중에 데이터 뿌릴때그
 								ismove = false;
-							}, 100); 
+							}, 200); 
 						});
 					}
 			//	
@@ -757,6 +764,10 @@
 			
 			
 		});
+		
+		function ss(){
+			location.href='/play?idx=1';
+		}
 		
 		//초기화 함수
 		function init(){
