@@ -249,7 +249,6 @@
 	}
 	
 	.below {
-		border: 1px solid black;
 	}
 	
 	.below .below-Ch {
@@ -325,7 +324,7 @@
 	  	justify-content: center;
 	}
 	
-	.comment .comment-Ch .comment-Ch2 > div:nth-child(2) {
+	.comment .comment-Ch .comment-Ch2 .clear {
 		width: 60px;
 		height: 35px;
     	display: flex;
@@ -336,6 +335,8 @@
 	  	border-radius: 2em;
 	  	justify-content: center;
 	  	fone-weight: bold;
+	  	font-size: 16px;
+	  	cursor: pointer;
 	}
 	
 	.comment > div > a > img {
@@ -367,18 +368,22 @@
 	
 	.view {
 		display: flex;
+		margin: 20px 0;
 	}
 	
 	.view1 {
 		display: flex;
+		font-size: 13px;
 	}
 	
 	.view1 > div:nth-child(1) {
-		margin: 0 15px;
+		margin: -2px 15px;
+		font-weight: bold;
 	}
 	
 	.view2 {
-		margin: 0 15px;
+		margin: 10px 15px;
+		font-size: 13px;
 	}
 	
 	.view3 {
@@ -390,11 +395,21 @@
 	}
 	
 	.view > div > img {
-		width: 50px;
-	    height: 50px;
+		width: 42px;
+	    height: 42px;
 	    border-radius: 70%;
 	}
 	
+	.list .center-bar .before{
+         	width:100%;
+         	height:100%;
+         	position:absolute;
+         	top:0;
+         	left:0;
+         	z-index:1;
+         	cursor:pointer;
+         }
+         
 
 	/* 	footer */
 	
@@ -429,6 +444,7 @@
 		width: 100%;
 		height: 94px;
 		display: flex;
+		position: relative;
 		margin-bottom: 15px;
 	}
 	
@@ -520,21 +536,21 @@
 									<div class="subscribeCh2">
 								 		<div class="upDown">
 									 		<div class="upDownCh">
-									 		<a><i class="fa-regular fa-thumbs-up" style="font-size: 23px; color: #000000;"></i></a>
+									 		<a><i class="fa-regular fa-thumbs-up" style="font-size: 20px; color: #000000; font-weight: 300;"></i></a>
 									 		<a>up</a>
 									 		<div></div>
 									 		</div>
 								 		
-								 			<a><i class="fa-regular fa-thumbs-down" style="font-size: 23px; color: #000000;"></i></a>
+								 			<a><i class="fa-regular fa-thumbs-down" style="font-size: 20px; color: #000000; font-weight: 300;"></i></a>
 								 		</div>
 								 		
-								 		<div class="share"><i class="fa-solid fa-share" style="color: #000000;"></i> 
+								 		<div class="share"><i class="fa-solid fa-share" style="color: #000000; font-weight: 300;"></i> 
 								 		<li>공유</li></div>
 								 		
-								 		<div class="save"><i class="fa-solid fa-download" style="color: #000000;"></i>
+								 		<div class="save"><i class="fa-solid fa-download" style="color: #000000; font-weight: 300;"></i>
 								 		<li>오프라인 저장</li></div>
 								 		
-								 		<div class="klip"><i class="fa-solid fa-scissors" style="color: #000000;"></i>
+								 		<div class="klip"><i class="fa-solid fa-scissors" style="color: #000000; font-weight: 300;"></i>
 								 		<li>클립</li></div>
 								 		
 								 		<div class="dotMom">
@@ -558,32 +574,35 @@
 										</div>
 										<div class="comment">
 											<div><a href="#"><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></a></div>
+											<form action="/write" method="get">
 											<div>
-												<input type="text" class="comment-live" placeholder="댓글 추가...">
+												<input type="hidden" name="idx" th:value="${list.idx}" >
+												<input type="text" name="content" class="comment-live" placeholder="댓글 추가...">
+												<input type="hidden" name="nikname" th:value="${userInfo.user_nikname}">
 												<hr class="line">
 												<div class="comment-Ch">	
 													<div>이모티콘</div>
 													<div class="comment-Ch2">
 														<div class="cancel">취소</div>
-														<div class="clear" onClick="clearBtn">작성</div>
+														<input type="submit" class="clear" value="작성">
 													</div>
 												</div>
 												</form>
 											</div>
 										</div>
 										
-										<div class="view"> <!-- 댓글 보이는 부분 -->
+										<div th:each="vo : ${pp}" class="view"> <!-- 댓글 보이는 부분 -->
 											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
 											<div>
 												<div class="view1">
-													<div>아이디</div>
-													<div>3년전</div>
+													<div th:text="${vo.nikname}"></div>
+													<div th:text="${#strings.setSplit(vo.nowdate,' ')[0]}"></div>
 												</div>
-												<div class="view2">댓글</div>
+												<div class="view2" th:text="${vo.content}"></div>
 												<div class="view3">
-													<div><i class="fa-regular fa-thumbs-up"></i></div>
-													<div><i class="fa-regular fa-thumbs-down"></i></div>
-													<div>답글</div>
+													<div><i class="fa-regular fa-thumbs-up" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
+													<div><i class="fa-regular fa-thumbs-down" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
+													<div style="font-size: 13px; margin-left:25px;">답글</div>
 												</div>
 											</div>
 										</div>
@@ -687,10 +706,15 @@
 									+'<div>조회수 800만회</div>'
 									+'<div>2년 전</div>'
 								+'</div>'
+								+'<div onclick="move(' + listt[i].idx +')" class="before"></div>'
 							+'</div>';
 			el.appendChild(thismain);
 		}
 		
+		//이동함수
+		function move(idx){
+			location.href='/play?idx='+idx;
+		}
 		
 		
 		//시작하면 10개뿌림 여기 데이터랑 위에 데이터랑 같아야함  - var current랑 같이 보기
@@ -706,10 +730,10 @@
 			
 			current++ //함수 호출할때마다 1씩 증가
 			
-			if(current >= stop){ //함수 호출할때마다 1시증가시켜서 10번 되면 그만 호출하게끔 만듬
+			if(current >= stop){ //함수 호출할때마다 1씩 증가시켜서 10번 되면 그만 호출하게끔 만듬
 				return null; //list 변수에 값 그만넣기
 			}else{
-				 list = '<div class="center-bar" onclick="ss()"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div></div>';
+				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div><div onclick="move(' + listt[current].idx +')" class="before"></div></div>';
 			}
 			
 			return list;
@@ -765,9 +789,6 @@
 			
 		});
 		
-		function ss(){
-			location.href='/play?idx=1';
-		}
 		
 		//초기화 함수
 		function init(){

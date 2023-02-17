@@ -6,6 +6,7 @@ import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeList;
+import com.study.youtubeteam.emtity.youtubePlayComment;
 import com.study.youtubeteam.emtity.youtubeUserList;
 import com.study.youtubeteam.mapper.YoutubeFollowMapper;
 import com.study.youtubeteam.mapper.YoutubeListMapper;
@@ -209,8 +211,7 @@ public class MyController {
 	
 	
 
-	//예준
-
+	//예준-재생 메인 페이지
 	@RequestMapping("/play")
 	public String play(@RequestParam(value="idx",required=false,defaultValue="1") int idx, HttpSession session, Model model) {
 		
@@ -222,19 +223,22 @@ public class MyController {
 		youtubeList list = playMapper.getOne(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		List<youtubeList> elst = mapper.selectAll();
+		List<youtubePlayComment> pp = playMapper.selectOne(idx);
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("elst", elst);
-		
-		System.out.println(elst);
-		
+		model.addAttribute("pp", pp);
 		return "play";
 		
 	}
 	
-
-	
+	//예준-댓글 작성 메소드로 이동
+	@GetMapping("/write")
+	public String write(youtubePlayComment pc) {
+		playMapper.write(pc);
+		return "redirect:/play?idx=" + pc.getIdx();
+	}
 	
 	
 	
