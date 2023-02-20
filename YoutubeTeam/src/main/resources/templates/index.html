@@ -6,7 +6,9 @@
         .youtube_card{
             width: 23%;
             margin:1%;
+            position:relative;
         }
+        
 
         .youtube_card iframe{
             border-radius: 15px;
@@ -18,6 +20,16 @@
             align-items: flex-start;
             justify-content: felx-start;
         }
+        
+         .youtube_card .before{
+         	width:100%;
+         	height:100%;
+         	position:absolute;
+         	top:0;
+         	left:0;
+         	z-index:1;
+         	cursor:pointer;
+         }
 
         .youtube_card .youtube_card_info img{
             margin-right: 10px;
@@ -41,8 +53,9 @@
         .youtube_main_gnb li:nth-child([[${category}]]){
         	background:#0F0F0F;
         	color:#fff;
-        };
+        }
         
+
         
         
 </style>
@@ -86,8 +99,9 @@
         	var winTop;
         	var onTop;
         	var breakPoint = 80;
-        	var currentItem = 15;
+        	var currentItem = 14;
             var el = document.querySelector('.youtube_main_item');
+
         
         
         	//생성자함수 로드되었을때 뿌려져있는 리스트 만들기
@@ -109,6 +123,7 @@
                                         +'<p class="text_writer">'+list[i].writer+'</p>'
                                         +'<p class="text_reacount">조회수 1만회</p>'
                                         +'</div>'
+                                        +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
                                         +'</div>';
                         el.appendChild(this.mainElem);
                         
@@ -135,6 +150,7 @@
 		    			+'<p class="text_reacount">조회수 1만회</p>'
 		    			+'</div>'
 		    			+'</div>'
+		    			+'<div onclick="move(' + list[currentItem].idx +')" class="before"></div>'
 		    			+'</div>';	
 
 		            	
@@ -146,6 +162,12 @@
         		
         		
         	}
+			
+			//이동함수
+			function move(idx){
+				location.href='/play?idx='+idx;
+			}
+			
         	
         	
         	//브라우저가 특정 위치에 도달하면 데이터 로드 시작 - 시작지점을 변수로 나타냄

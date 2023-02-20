@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<script th:inline="javascript">
+	var result = [[${result}]];
+	
+	
+	//아이디 없음
+	if(result == 0){
+		alert('가능합니다.');
+		history.go(-1);
+	}else{
+		alert('불가능');
+		history.go(-1);
+	}
+	
+</script>
+
+</body>
+</html>
