@@ -220,20 +220,21 @@ public class MyController {
 			id = "손님";
 		}
 		
+		String url = "/channel?idx=";
 		youtubeList list = playMapper.getOne(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		List<youtubeList> elst = mapper.selectAll();
 		List<youtubePlayComment> pp = playMapper.selectOne(idx);
 		int rr = playMapper.view(idx);
-//		int ss = playMapper.chView(idx);
+		int ss = playMapper.chView(idx);
+		String rjsdml = url + ss;
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("elst", elst);
 		model.addAttribute("pp", pp);
 		model.addAttribute("rr", rr);
-//		model.addAttribute("ss", ss);
-//		System.out.println(ss);
+		model.addAttribute("ss", rjsdml);
 		return "play";
 		
 	}

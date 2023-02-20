@@ -93,6 +93,7 @@
     }
     
     .sutak	{
+    
     	width: 40px;
     	height: 40px;
     	border-radius: 70%;
@@ -522,7 +523,7 @@
 								<li class="title" th:text="${list.subject}"></li>
 								<div class="subscribe">
 									<div class="subscribeCh">
-								 		<a href="https://www.youtube.com/watch?v=bUAOvY6SyJw">
+								 		<a th:href="${ss}">
 								 			<img class="sutak" th:src="${list.thum}" alt="이모티콘"></a>
 								 		<div class="jtbc">
 									 		<a th:text="${list.writer}"></a>
