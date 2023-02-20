@@ -6,9 +6,11 @@ public class youtubePlayComment {
 	private int idx;
 	private int comment_id;
 	private String content;
-	private String writer;
+	private String user_id;
 	private String nowdate;
 	private String nikname;
+	
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -27,11 +29,11 @@ public class youtubePlayComment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWriter() {
-		return writer;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getNowdate() {
 		return nowdate;
@@ -45,11 +47,10 @@ public class youtubePlayComment {
 	public void setNikname(String nikname) {
 		this.nikname = nikname;
 	}
-	
 	@Override
 	public String toString() {
-		return "youtubePlayComment [idx=" + idx + ", comment_id=" + comment_id + ", content=" + content + ", writer="
-				+ writer + ", nowdate=" + nowdate + ", nikname=" + nikname + "]";
+		return "youtubePlayComment [idx=" + idx + ", comment_id=" + comment_id + ", content=" + content + ", user_id="
+				+ user_id + ", nowdate=" + nowdate + ", nikname=" + nikname + "]";
 	}
 	
 	
