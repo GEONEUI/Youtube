@@ -139,35 +139,25 @@ public class MyController {
 	public String play() {
 		return "play";
 	}
+	
 	// 준호
 	
 	//채널 메인
 	@RequestMapping("/channel")
-	public String channel(int idx, Model model, HttpSession session) {
+	public String channel(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		String writer = flmapper.getWriter(idx);
+		List<youtubeList> list2 = flmapper.selectVideo(writer);
 		String idNum = flmapper.getId(id);
 		String flcheck = flmapper.followCheck(idNum);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
 		model.addAttribute("idx", idx);
 		model.addAttribute("flcheck", flcheck);
 		return "channel";
 	}
-	
-	//구독
-	@RequestMapping("/insertflw")
-	public String insertflw(String id, String idx) {
-		flmapper.followInsert(id,idx);
-		return "channel";
-	}
-	
-	//구독 취소
-	@RequestMapping("/deleteflw")
-	public void deleteflw(String id) {
-		flmapper.followDelete(id);
-	}
-	
 	
 	//채널 커뮤니티
 	@RequestMapping("/channelBoard")
@@ -196,6 +186,23 @@ public class MyController {
 		model.addAttribute("flcheck", flcheck);
 		return "channelIndex";
 	}
+	
+	//구독
+	@RequestMapping("/insertflw")
+	public String insertflw(String id, String idx) {
+		flmapper.followInsert(id,idx);
+		return "channel";
+	}
+	
+	//구독 취소
+	@RequestMapping("/deleteflw")
+	public void deleteflw(String id) {
+		flmapper.followDelete(id);
+	}
+	
+	
+	
+	
 	
 //	@RequestMapping("/")
 //	public String index(@RequestParam(value="category",required=false,defaultValue="1") int category, @RequestParam(value="search",required=false,defaultValue="") String search, Model model, HttpSession session){

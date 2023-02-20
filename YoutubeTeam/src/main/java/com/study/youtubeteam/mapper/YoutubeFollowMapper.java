@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.study.youtubeteam.emtity.youtubeChannel;
+import com.study.youtubeteam.emtity.youtubeList;
 
 @Mapper
 public interface YoutubeFollowMapper {
@@ -27,4 +28,11 @@ public interface YoutubeFollowMapper {
 	//채널 정보
 	@Select("select * from channelList where idx=#{idx}")
 	public List<youtubeChannel> channelIdx(int idx);
+	
+	//동영상 정보
+	@Select("select writer from channelList where idx=#{idx}")
+	public String getWriter(int idx);
+	
+	@Select("SELECT a1.* FROM youtubeList a1, channelList a2 WHERE a1.writer = a2.writer")
+	public List<youtubeList> selectVideo(String writer);
 }
