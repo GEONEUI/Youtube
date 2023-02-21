@@ -85,7 +85,7 @@ body {
 }
 
 
-#followBefore {
+.followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -99,14 +99,24 @@ body {
 
 #fBtn {
 	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
 }
 
 
 #following {
-	cursor: pointer;
-}
-
-#bell {
 	display: flex;
 	width: 122px;
 	height: 36px;
@@ -114,7 +124,19 @@ body {
 	background: #ececec;
 	align-items: center;
     justify-content: center;
-   
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
 }
 
 #followFont{
@@ -306,24 +328,26 @@ body {
 									</div>
 									<div id="followButton">
 										<div th:if="${flcheck == null}">
-											<div th:if="${id == null}">
-									 			<div id="followBefore">
-													<a id="fBtn">구독</a>
+											<div th:if="${id == '손님'}">
+									 			<div class="followBefore">
+													<button type="submit" id="fBtn" disabled>구독</button>
 												</div>
 											</div>
-											<div th:unless="${id == null}">
-												<div id="followBefore">
-													<a id="fBtn" th:href="@{/insertflw(${id},${idx})}">구독</a>
+											<div th:unless="${id == '손님'}">
+												<div class="followBefore">
+													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
+														<button type="submit" id="flBtn">구독</button>
+													</form>
 												</div>
 											</div>
 										</div>
 										<div th:unless="${flcheck == null}">
-											<form id="following" th:action="@{/deleteflw}">
-												<a id="bell">
+											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
+												<button id="bell">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
-												</a>
+												</button>
 											</form>
 										</div>
 									</div>

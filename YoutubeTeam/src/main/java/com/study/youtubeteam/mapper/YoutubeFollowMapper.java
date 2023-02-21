@@ -13,17 +13,17 @@ import com.study.youtubeteam.emtity.youtubeList;
 @Mapper
 public interface YoutubeFollowMapper {
 	
-	@Insert("insert into followList values(#{user_idx}, #{follow}")
-	public void followInsert(String loginUser, String followUser);
+	@Insert("insert into followList values(#{param1}, #{param2})")
+	public void followInsert(int loginUser, int idx);
 	
-	@Delete("delete from followList where user_idx=#{user_idx}")
-	public void followDelete(String loginUser);
+	@Delete("delete from followList where user_idx=#{param1} and idx=#{param2}")
+	public void followDelete(int loginUser, int idx);
 	
-	@Select("select user_idx from followList where user_idx=#{user_idx}")
-	public String followCheck(String loginUser);
+	@Select("select user_idx from followList where user_idx=#{param1} and idx=#{param2}")
+	public Integer followCheck(int loginUser, int idx);
 	
 	@Select("select user_idx from youtubeUser where user_id=#{user_id}")
-	public String getId(String loginUser);
+	public int getId(String loginUser);
 	
 	//채널 정보
 	@Select("select * from channelList where idx=#{idx}")
@@ -37,6 +37,6 @@ public interface YoutubeFollowMapper {
 	public List<youtubeList> selectVideo(String writer);
 	
 	//검색 기능
-	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%' && writer=#{writer}")
+	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%' and writer like '%${param2}%'")
 	public List<youtubeList> vdSearch(String search, String writer);
 }
