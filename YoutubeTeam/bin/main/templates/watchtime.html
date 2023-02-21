@@ -218,6 +218,7 @@ footer {
 													<div class="video_readcount" th:text="${mylist.readcount}"></div>
 													<div>회</div>
 												</div>
+												<form th:action="@{/delete((id=${id}), (idx=${mylist.idx}))}" method="post"><button>x</button></form>
 											</div>
 										</div>
 									</div>
@@ -238,10 +239,6 @@ footer {
 												checked="checked">
 										</div>
 										<div class="profile_item">
-											<p>커뮤니티</p>
-											<input type="radio" name="chk_info" value="check">
-										</div>
-										<div class="profile_item">
 											<div class="trash">
 												<div class="remove">
 													<i class="fa-light fa-trash-can"></i>
@@ -252,6 +249,7 @@ footer {
 										</div>
 									</div>
 								</div>
+							</div>
 						</section>
 
 						<footer> </footer>

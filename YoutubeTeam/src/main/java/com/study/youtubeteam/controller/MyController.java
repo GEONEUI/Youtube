@@ -213,8 +213,6 @@ public class MyController {
 		int result = mapper.searchId(userid);
 		return result;
 	}
-<<<<<<< HEAD
-=======
 	
 	//채팅입력
 	@GetMapping("/chatInsert.do")
@@ -231,7 +229,6 @@ public class MyController {
 	
 	
 	
->>>>>>> 01547a5fb9b260942de214aada2a13d9fc640cb3
 
 	// 예준-재생 메인 페이지
 	@RequestMapping("/play")
@@ -273,13 +270,7 @@ public class MyController {
 		playMapper.write(pc);
 		return "redirect:/play?idx=" + pc.getIdx();
 	}
-<<<<<<< HEAD
 
-=======
-	
-
-	
->>>>>>> 01547a5fb9b260942de214aada2a13d9fc640cb3
 	// 준호
 
 	// 채널 메인
@@ -373,14 +364,22 @@ public class MyController {
 		if (id == null) {
 			id = "손님";
 		}
-		youtubeUserList userInfo = mapper.getOneUser(id);
-		model.addAttribute("userInfo", userInfo);
 		
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("id", id);
+		model.addAttribute("userInfo", userInfo);
 		List<youtubeMyView> mylist = profileMapper.selectMyView(id);
 		model.addAttribute("mylist", mylist);
 		
-		
 		return "watchtime";
+	}
+	
+	// 시청기록 하나 삭제
+	@PostMapping("/delete")
+	public String delete(String id, int idx) {
+	
+	profileMapper.delete(id, idx);
+	return "redirect:/watchtime";
 	}
 
 	// 유진-구독
