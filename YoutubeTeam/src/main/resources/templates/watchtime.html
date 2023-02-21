@@ -58,11 +58,10 @@ body {
 
 .videoandtitle {
 	display: flex;
-	
 }
 
 .video_title {
-	width:65%;
+	font-size: 20px;
 	padding: 0 17px;
 }
 
@@ -72,7 +71,7 @@ body {
 	height: 140px;
 	margin-bottom: 15px;
 	border-radius: 12px;
-	overflow:hidden;
+	overflow: hidden;
 }
 
 .line {
@@ -165,6 +164,21 @@ div.profile-info>div:nth-child(2) {
 	align-items: center;
 }
 
+.writercount {
+	padding: 0 17px;
+	display: flex;
+	font-size: 15px;
+}
+
+.video_readcount {
+	display: flex;
+	align-items: center;
+}
+
+.readcount {
+	padding-left: 12px;
+}
+
 footer {
 	height: 40px;
 	text-align: center;
@@ -187,18 +201,25 @@ footer {
 									<div class="record">
 										<div class="records">
 											<p>시청 기록</p>
-											<p>오늘</p>
 										</div>
 									</div>
 									<div class="cont1">
-									
+
 										<div class="videoandtitle" th:each=" mylist : ${mylist}">
 											<div class="video">
-												<iframe width="100%" height="230" th:src="${mylist.url}" frameborder="0"></iframe>
+												<iframe width="100%" height="230" th:src="${mylist.url}"
+													frameborder="0"></iframe>
 											</div>
-											<div class="video_title" th:text="${mylist.subject}"></div>
+											<div class="twr">
+												<div class="video_title" th:text="${mylist.subject}"></div>
+												<div class="writercount">
+													<div class="video_writer" th:text="${mylist.writer}"></div>
+													<div class="readcount">조회수</div>
+													<div class="video_readcount" th:text="${mylist.readcount}"></div>
+													<div>회</div>
+												</div>
+											</div>
 										</div>
-
 									</div>
 								</div>
 								<div class="cont2">
@@ -213,7 +234,8 @@ footer {
 										<div class="spacies">기록 유형</div>
 										<div class="profile_item">
 											<p>시청기록</p>
-											<input type="radio" name="chk_info" value="check" checked="checked">
+											<input type="radio" name="chk_info" value="check"
+												checked="checked">
 										</div>
 										<div class="profile_item">
 											<p>커뮤니티</p>

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.study.youtubeteam.emtity.Chat;
 import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeMyView;
@@ -212,6 +213,25 @@ public class MyController {
 		int result = mapper.searchId(userid);
 		return result;
 	}
+<<<<<<< HEAD
+=======
+	
+	//채팅입력
+	@GetMapping("/chatInsert.do")
+	public @ResponseBody void chatInsert(Chat vo) {
+		mapper.chatInsert(vo);
+	}
+	
+	@GetMapping("/chat.do")
+	public @ResponseBody List<Chat> chat(){
+		List<Chat> clist = mapper.selectChat();
+		
+		return clist;
+	}
+	
+	
+	
+>>>>>>> 01547a5fb9b260942de214aada2a13d9fc640cb3
 
 	// 예준-재생 메인 페이지
 	@RequestMapping("/play")
@@ -227,6 +247,7 @@ public class MyController {
 		youtubeList list = playMapper.getOne(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		List<youtubeList> elst = mapper.selectAll();
+		playMapper.getCount(idx);
 		List<youtubePlayComment> pp = playMapper.selectOne(idx);
 		
 		//유진 기록
@@ -252,7 +273,13 @@ public class MyController {
 		playMapper.write(pc);
 		return "redirect:/play?idx=" + pc.getIdx();
 	}
+<<<<<<< HEAD
 
+=======
+	
+
+	
+>>>>>>> 01547a5fb9b260942de214aada2a13d9fc640cb3
 	// 준호
 
 	// 채널 메인
