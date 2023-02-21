@@ -231,6 +231,7 @@ public class MyController {
 		youtubeList list = playMapper.getOne(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		List<youtubeList> elst = mapper.selectAll();
+		playMapper.getCount(idx);
 		List<youtubePlayComment> pp = playMapper.selectOne(idx);
 		int rr = playMapper.view(idx);
 		int ss = playMapper.chView(idx);
@@ -242,7 +243,7 @@ public class MyController {
 		model.addAttribute("pp", pp);
 		model.addAttribute("rr", rr);
 		model.addAttribute("ss", rjsdml);
-		System.out.println(userInfo);
+		System.out.println(pp);
 		return "play";
 		
 	}

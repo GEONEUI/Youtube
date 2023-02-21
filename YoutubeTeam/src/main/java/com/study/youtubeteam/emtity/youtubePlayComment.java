@@ -9,7 +9,7 @@ public class youtubePlayComment {
 	private String user_id;
 	private String nowdate;
 	private String nikname;
-	
+	private String user_img;
 	
 	public int getIdx() {
 		return idx;
@@ -47,12 +47,17 @@ public class youtubePlayComment {
 	public void setNikname(String nikname) {
 		this.nikname = nikname;
 	}
+	public String getUser_img() {
+		return user_img;
+	}
+	public void setUser_img(String user_img) {
+		this.user_img = user_img;
+	}
 	@Override
 	public String toString() {
 		return "youtubePlayComment [idx=" + idx + ", comment_id=" + comment_id + ", content=" + content + ", user_id="
-				+ user_id + ", nowdate=" + nowdate + ", nikname=" + nikname + "]";
+				+ user_id + ", nowdate=" + nowdate + ", nikname=" + nikname + ", user_img=" + user_img + "]";
 	}
-	
 	
 	
 	

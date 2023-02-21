@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubePlayComment;
@@ -13,12 +14,15 @@ import com.study.youtubeteam.emtity.youtubePlayComment;
 @Mapper
 public interface YoutubePlayMapper {
 	
+	@Update("update youtubeList set readcount = readcount+1 where idx = #{a}")
+	public void getCount(int a);
+	
 	// 유튜브 목록 가져와 메인 화면에 뿌리기
-	@Select("select * from youtubeList where idx = #{a}")
-	public youtubeList getOne(@Param("a") int a);
+	@Select("select * from youtubeList where idx = #{idx}")
+	public youtubeList getOne(int idx);
 	
 	// 댓글 입력시 저장되는 목록
-	@Insert("insert into youtubePlayComment(idx, content, nikname, user_id) values (#{idx}, #{content}, #{nikname}, #{user_id})")
+	@Insert("insert into youtubePlayComment(idx, content, nikname, user_id, user_img) values (#{idx}, #{content}, #{nikname}, #{user_id}, #{user_img})")
 	public void write(youtubePlayComment pc);
 	
 	// 댓글 보여주는 부분

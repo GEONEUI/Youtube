@@ -70,6 +70,12 @@
     	display: flex;
     }
     
+     .subscribe .subscribeCh .eyes	{
+	     margin-left: 40px;
+	     padding: 8px 0px;
+	     font-weight: bold;
+    }
+    
     .subscribe .subscribeCh2 {
     	width: 50%;
   		height: 43px;
@@ -530,6 +536,7 @@
 									 		<li>구독자 471만명</li>
 								 		</div>
 								 		<div class="gudok">구독</div>
+								 		<div class="eyes">조회수 1,000,000회</div>
 									</div>
 								 
 									<div class="subscribeCh2">
@@ -579,6 +586,7 @@
 												<input type="hidden" name="user_id" th:value="${userInfo.user_id}" >
 												<input type="text" name="content" class="comment-live" placeholder="댓글 추가..." id="comment">
 												<input type="hidden" name="nikname" th:value="${userInfo.user_nikname}">
+												<input type="hidden" name="user_img" th:value="${userInfo.user_img}">
 												<hr class="line">
 												<div class="comment-Ch">	
 													<div class="comment-Ch2">
@@ -591,7 +599,7 @@
 										</div>
 										
 										<div th:each="vo : ${pp}" class="view"> <!-- 댓글 보이는 부분 -->
-											<div><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></div>
+											<div><img th:src="${vo.user_img}" alt="이모티콘"></div>
 											<div>
 												<div class="view1">
 													<div th:text="${vo.nikname}"></div>
