@@ -37,9 +37,11 @@ public interface YoutubeListMapper {
 	@Select("SELECT COUNT(*) FROM youtubeUser WHERE user_id = #{user_id}")
 	public int searchId(String user_id);
 	
-	
+	//아이디를 알고있을때 정보를 가져오기
 	@Select("select * from youtubeUser where user_id = #{id}")
 	public youtubeUserList getOneUser(String id);
+	
+	//
 	
 }
 	

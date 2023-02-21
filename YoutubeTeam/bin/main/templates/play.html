@@ -573,7 +573,7 @@
 											</div>
 										</div>
 										<div class="comment">
-											<div><a href="#"><img src="https://yt3.ggpht.com/ytc/AL5GRJXTNkeni5hPZJphc-1CBck-s2z-2SCiL7fL-EOAOA=s48-c-k-c0x00ffffff-no-rj" alt="이모티콘"></a></div>
+											<div><a href="#"><img th:src="${userInfo.user_img}" alt="이모티콘" width="42"></a></div>
 											<form action="/write" method="get">
 											<div>
 												<input type="hidden" name="idx" th:value="${list.idx}" >

@@ -209,6 +209,13 @@ public class MyController {
 		return result;
 	}
 	
+	//실시간 채팅
+	@GetMapping("/chat.do")
+	public @ResponseBody void chatInsert() {
+		
+	}
+	
+	
 	
 
 	//예준-재생 메인 페이지
@@ -229,6 +236,7 @@ public class MyController {
 		model.addAttribute("list", list);
 		model.addAttribute("elst", elst);
 		model.addAttribute("pp", pp);
+		System.out.println(userInfo);
 		return "play";
 		
 	}

@@ -8,6 +8,7 @@ public class youtubeUserList {
 	private String user_pw;
 	private String user_nikname;
 	private String user_email;
+	private String user_img;
 	public String getUser_idx() {
 		return user_idx;
 	}
@@ -38,4 +39,11 @@ public class youtubeUserList {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
+	public String getUser_img() {
+		return user_img;
+	}
+	public void setUser_img(String user_img) {
+		this.user_img = user_img;
+	}
+	
 }
