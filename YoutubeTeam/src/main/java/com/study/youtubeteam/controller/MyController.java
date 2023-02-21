@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.study.youtubeteam.emtity.Chat;
 import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubePlayComment;
@@ -209,10 +210,17 @@ public class MyController {
 		return result;
 	}
 	
-	//실시간 채팅
+	//채팅입력
+	@GetMapping("/chatInsert.do")
+	public @ResponseBody void chatInsert(Chat vo) {
+		mapper.chatInsert(vo);
+	}
+	
 	@GetMapping("/chat.do")
-	public @ResponseBody void chatInsert() {
+	public @ResponseBody List<Chat> chat(){
+		List<Chat> clist = mapper.selectChat();
 		
+		return clist;
 	}
 	
 	
@@ -255,11 +263,7 @@ public class MyController {
 		return "redirect:/play?idx=" + pc.getIdx();
 	}
 	
-	
-	
-	
-	
-	
+
 	
 	// 준호
 	
