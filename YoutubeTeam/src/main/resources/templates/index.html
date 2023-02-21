@@ -88,8 +88,88 @@
                 </div>
             </div>
         </div>
-        
+        <style>
+        	.chat{
+        		width:350px;
+        		position:fixed;
+        		bottom:50px;
+        		right:50px;
+        		background:#fff;
+        		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        		z-index:9999;
+        		border-radius:12px;
+        		border:1px solid #ccc;
+        	}
+        	.chat .chat_header{
+        		padding:25px 0;
+        		background:#f2f2f2;
+        	}
+        	
+        	.chat .chat_header p{
+        		text-align:center;
+        		
+        	}
+        	
+        	.chat .chat_body{
+        		height:300px;
+        		overflow-Y:scroll;
+        	}
+        	
+        	.chat .chat_body .chat_contents{
+        		display:flex;
+        		padding:3px;
+        		align-items:center;
+        	}
+        	
+        	
+        	.chat .chat_body .chat_contents p{
+        		font-size:14px;
+        	}
+        	
+        	.chat .chat_body .chat_contents figure{
+        		margin-right:15px;
+        	}
+        	
+        	.chat .chat_body .chat_contents figure figcaption{
+        		font-size:14px;
+        	}
+        	
+        	
+        	.chat .chat_footer{
+        		padding:10px 0;
+        	}
+        	
+        	.chat .chat_footer form{
+        		display:flex;
+        		
+        	}
 
+        	
+        </style>
+        <div class="chat">
+        	<div class="chat_header">
+        		<p>실시간 채팅</p>
+        	</div>
+        	<div class="chat_body">
+        		<div class="chat_contents">
+        			<figure>
+        				<img src="">프로필
+        				<figcaption>건짱</figcaption>
+        			</figure>
+        			<p> :&nbsp&nbsp대화내용</p>
+        		</div>
+        	</div>
+        	<div class="chat_footer">
+        		<form id="frm">
+        			<textarea type="text" style="width:80%; padding:5px;" rows="3" name="chat_area"></textarea>
+        			<input type="hidden" name="chat_id" th:value="${userInfo.user_id}">
+        			<input type="hidden" name="chat_img" th:value="${userInfo.user_img}">
+        			<input type="button" onclick="chatInsert()" value="전송" style="width:20%;">
+        		</form>
+        	</div>
+        </div>
+        
+		<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
         <script th:inline="javascript">
         
         
@@ -216,6 +296,33 @@
         	
         	init();
         	
+        </script>
+        <script>
+
+			//실시간 채팅
+        	$(function(){
+        		chatView();
+        	});
+			
+			
+			function chatView(){
+				
+			}
+			
+			
+			function chatInsert(){
+				var info = $('#frm').serialize();
+				alert(info);
+				$.ajax({
+					url:"/chat.do",
+					type:"get",
+					data:info,
+					success:chatView,
+					error: function(){ alert('error')}
+				})
+			}
+			
+        
         </script>
         
         
