@@ -536,7 +536,7 @@
 									 		<li>구독자 471만명</li>
 								 		</div>
 								 		<div class="gudok">구독</div>
-								 		<div class="eyes">조회수 1,000,000회</div>
+								 		<div class="eyes" th:text="조회수+ ${list.readcount} +회"></div>
 									</div>
 								 
 									<div class="subscribeCh2">
@@ -695,7 +695,6 @@
 		var stop = 40; //데이터 뿌릴 횟수
 		var current = 10; //10개부터 무한스크롤 시작하는거
 		var listt = [[${elst}]];
-		
 	
 		// 스크롤 전에 9개 미리 뿌리기
 		// 생성자 함수 대문자로 써야함
@@ -710,7 +709,7 @@
 								+'<div style="margin-bottom: 10px;">' +listt[i].subject +'</div>'
 								+'<div style="font-size: 12px;">' +listt[i].writer +'</div>'
 								+'<div style="display: flex; font-size: 12px;">'
-									+'<div>조회수 800만회</div>'
+									+'<div>조회수 '+ listt[i].readcount +'회</div> &nbsp&nbsp&nbsp'
 									+'<div>2년 전</div>'
 								+'</div>'
 								+'<div onclick="move(' + listt[i].idx +')" class="before"></div>'
@@ -740,7 +739,7 @@
 			if(current >= stop){ //함수 호출할때마다 1씩 증가시켜서 10번 되면 그만 호출하게끔 만듬
 				return null; //list 변수에 값 그만넣기
 			}else{
-				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div style="display: flex; font-size: 12px;"><div>조회수 800만회</div></div></div><div onclick="move(' + listt[current].idx +')" class="before"></div></div>';
+				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div>조회수 '+ listt[current].readcount +'회 &nbsp&nbsp&nbsp</div><div>2년 전</div></div><div onclick="move(' + listt[current].idx +')" class="before"></div>';
 			}
 			
 			return list;

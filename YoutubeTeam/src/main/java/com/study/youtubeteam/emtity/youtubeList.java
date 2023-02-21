@@ -5,9 +5,10 @@ public class youtubeList {
 	private int idx;
 	private String subject;
 	private String writer;
-	private int readcout;
+	private int readcount;
 	private String thum;
 	private String url;
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -26,11 +27,11 @@ public class youtubeList {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getReadcout() {
-		return readcout;
+	public int getReadcount() {
+		return readcount;
 	}
-	public void setReadcout(int readcout) {
-		this.readcout = readcout;
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
 	}
 	public String getThum() {
 		return thum;
@@ -44,6 +45,13 @@ public class youtubeList {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	@Override
+	public String toString() {
+		return "youtubeList [idx=" + idx + ", subject=" + subject + ", writer=" + writer + ", readcount=" + readcount
+				+ ", thum=" + thum + ", url=" + url + "]";
+	}
+	
+	
 	
 	
 }

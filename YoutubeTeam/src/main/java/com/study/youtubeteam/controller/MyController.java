@@ -251,7 +251,6 @@ public class MyController {
 		model.addAttribute("pp", pp);
 		model.addAttribute("rr", rr);
 		model.addAttribute("ss", rjsdml);
-		System.out.println(pp);
 		return "play";
 		
 	}
