@@ -33,6 +33,10 @@ public interface YoutubeFollowMapper {
 	@Select("select writer from channelList where idx=#{idx}")
 	public String getWriter(int idx);
 	
-	@Select("SELECT a1.* FROM youtubeList a1, channelList a2 WHERE a1.writer = a2.writer")
+	@Select("SELECT * FROM youtubeList WHERE writer = #{writer}")
 	public List<youtubeList> selectVideo(String writer);
+	
+	//검색 기능
+	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%' && writer=#{writer}")
+	public List<youtubeList> vdSearch(String search, String writer);
 }

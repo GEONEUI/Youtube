@@ -178,12 +178,12 @@
         
          <div class="modal">
         	<div class="modal_myinfo dflex">
-        		<p class="modal_id">
-        			유건의
+        		<p class="modal_id" th:text="${userInfo.user_nikname}">
+        			
         		</p>
         		<p class="modal_name_email">
-        			<span>geon yu</span><br>
-        			<span>yugeonei@gmail.com</span>
+        		    <span th:text="${userInfo.user_id}"></span><br>
+        			<span th:text="${userInfo.user_email}"></span>
         		</p>
         	</div>
         	<a href="#">

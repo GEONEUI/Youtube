@@ -5,7 +5,7 @@ public class youtubeChannel {
 	private String ch_name;
 	private String ch_id;
 	private String ch_follow;
-	
+	private String writer;
 	public int getIdx() {
 		return idx;
 	}
@@ -30,6 +30,14 @@ public class youtubeChannel {
 	public void setCh_follow(String ch_follow) {
 		this.ch_follow = ch_follow;
 	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	
+	
 	
 	
 }
