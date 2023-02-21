@@ -38,4 +38,11 @@ public class youtubeUserList {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
+	@Override
+	public String toString() {
+		return "youtubeUserList [user_idx=" + user_idx + ", user_id=" + user_id + ", user_pw=" + user_pw
+				+ ", user_nikname=" + user_nikname + ", user_email=" + user_email + "]";
+	}
+	
+	
 }

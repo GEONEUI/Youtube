@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/front_header">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Document</title>
-</head>
+<head th:replace="fragments/front_header"></head>
 <style>
 * {
 	box-sizing: border-box
@@ -44,7 +39,6 @@
 }
 
 #nickname {
-	width: 100px;
 	height: 50px;
 	font-size: 35px;
 }
@@ -61,10 +55,11 @@
 
 #button_2 {
 	width: 100px;
-	height: 26px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 	background-color: black;
 	border-radius: 20px;
-	text-align: center;
 }
 
 #profile_22 {
@@ -74,6 +69,7 @@
 
 #button a {
 	color: white;
+	padding:4px;
 }
 
 .content {
@@ -252,8 +248,8 @@
 										<img class="profile_img" src="images/her.jpg">
 									</div>
 									<div class="info">
-										<div id="nickname">닉넴</div>
-										<div id="email">이메일</div>
+										<div id="nickname" th:text="${userInfo.user_nikname}"></div>
+										<div id="email" th:text="${userInfo.user_email}"></div>
 									</div>
 								</div>
 								<div id="button">

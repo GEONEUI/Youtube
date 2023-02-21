@@ -4,6 +4,7 @@ public class Profile {
 	private String profile_img;
 	private String user_id;
 	private String user_email;
+	private String user_pw;
 	
 	public String getProfile_img() {
 		return profile_img;
@@ -23,6 +24,11 @@ public class Profile {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
-	
+	public String getUser_pw() {
+		return user_pw;
+	}
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
+	}
 	
 }

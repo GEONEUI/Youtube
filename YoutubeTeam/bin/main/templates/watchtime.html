@@ -58,18 +58,21 @@ body {
 
 .videoandtitle {
 	display: flex;
+	
 }
 
 .video_title {
+	width:65%;
 	padding: 0 17px;
 }
 
 .video {
-	width: 24.5%;
+	width: 24%;
 	background: #000;
 	height: 140px;
 	margin-bottom: 15px;
 	border-radius: 12px;
+	overflow:hidden;
 }
 
 .line {
@@ -188,32 +191,14 @@ footer {
 										</div>
 									</div>
 									<div class="cont1">
-										<div class="videoandtitle">
-											<div class="video">동영상</div>
-											<div class="video_title">제목</div>
+									
+										<div class="videoandtitle" th:each=" mylist : ${mylist}">
+											<div class="video">
+												<iframe width="100%" height="230" th:src="${mylist.url}" frameborder="0"></iframe>
+											</div>
+											<div class="video_title" th:text="${mylist.subject}"></div>
 										</div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<p>어제</p>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<p>그제</p>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<p>그그제</p>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
-										<div class="video"></div>
+
 									</div>
 								</div>
 								<div class="cont2">

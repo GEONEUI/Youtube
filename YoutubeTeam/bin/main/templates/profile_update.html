@@ -110,28 +110,32 @@ input[type="submit"] {
 								<img class="prof_img" src="images/camera.jpg">
 							</figure>
 							<div class="profile_right">
-								<form>
+								<form action="/profile_updateProc.do" method="post">
 									<div class="title">
 										<h2>내정보변경</h2>
 										<p>상세한 계정정보를 관리할 수 있어요.</p>
 									</div>
 									<div class="line">
 										<p>아이디</p>
-										<input type="text" name="user_nikname" value="데이터에서" readonly>
+										<input type="text" name="user_id" th:value="${userInfo.user_id}" readonly="readonly">
 									</div>
 									<div class="line">
 										<p>닉네임</p>
-										<input type="text" name="user_nikname" value="데이터에서">
+										<input type="text" name="user_nikname" th:value="${userInfo.user_nikname}">
 									</div>
 									<div class="line">
 										<p>이메일</p>
-										<input type="text" name="user_email" value="데이터에서">
+										<input type="text" name="user_email" th:value="${userInfo.user_email}">
 									</div>
 									<div class="line">
 										<p>비밀번호</p>
-										<input type="password" name="user_pw" value="데이터에서">
+										<input type="password" name="user_pw" value="">
 									</div>
-									<input type="submit" value="저장하기">
+									<div class="line">
+										<p>비밀번호</p>
+										<input type="password" name="user_pw2" value="">
+									</div>
+										<input type="submit" value="저장하기">
 								</form>
 							</div>
 						</div>
