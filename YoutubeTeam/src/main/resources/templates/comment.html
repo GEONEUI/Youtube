@@ -53,7 +53,16 @@ h5 {
 }
 
 .omg {
+	width: 89%;
 	padding: 0 23px;
+}
+
+.id {
+	padding-bottom: 10px;
+}
+
+.content {
+	padding-bottom: 35px;
 }
 
 .later {
@@ -81,10 +90,10 @@ h5 {
 									<img id="profile_img" src="images/her.jpg">
 								</div>
 								<div class="omg">
-									<div class="nickname" th:text="${aa.user_id}"></div>
-									<div class="comment" th:text="${aa.content}"></div>
+									<div class="id" th:text="${aa.user_id}"></div>
+									<div class="content" th:text="${aa.content}"></div>
 									<div id="like">
-										<i class="fa-light fa-thumbs-up">158</i> <i
+										<i class="fa-light fa-thumbs-up"></i> <i
 											class="fa-light fa-thumbs-down"></i>
 									</div>
 								</div>
