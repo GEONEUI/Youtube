@@ -38,10 +38,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-<<<<<<< HEAD
-=======
 import profile.Profile;
->>>>>>> 434f5e7077ba113702a318c45073ea7ad29a5eb1
 
 @Controller
 public class MyController {
