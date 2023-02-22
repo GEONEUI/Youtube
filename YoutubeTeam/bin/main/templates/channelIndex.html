@@ -85,7 +85,7 @@ body {
 }
 
 
-#followBefore {
+.followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -99,14 +99,24 @@ body {
 
 #fBtn {
 	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
 }
 
 
 #following {
-	cursor: pointer;
-}
-
-#bell {
 	display: flex;
 	width: 122px;
 	height: 36px;
@@ -114,7 +124,27 @@ body {
 	background: #ececec;
 	align-items: center;
     justify-content: center;
-   
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
+}
+
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
 }
 
 #followFont{
@@ -140,12 +170,17 @@ body {
 .scbtn {
 	display: flex;
 	justify-content: space-between;
-	width: 200px;
+	width: 220px;
 }
 
 #sc1 {
 	display: flex;
 	align-items: center;
+	border: none;
+    background: transparent;
+    padding-left: 50px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 #sc2 {
@@ -158,6 +193,21 @@ body {
 	display:flex;
 	align-content: center;
 	flex-wrap: wrap;
+}
+
+#chbtnSC {
+	width: 190px;
+	height: 32px;
+	border: 0;
+}
+
+#scbtnAll {
+	display: flex;
+
+}
+
+.fa-magnifying-glass:before, .fa-search:before {
+    font-size: 19px;
 }
 
 /* ------content------- */
@@ -241,24 +291,26 @@ body {
 									</div>
 									<div id="followButton">
 										<div th:if="${flcheck == null}">
-											<div th:if="${id == null}">
-									 			<div id="followBefore">
-													<a id="fBtn">구독</a>
+											<div th:if="${id == '손님'}">
+									 			<div class="followBefore">
+													<button type="submit" id="fBtn" disabled>구독</button>
 												</div>
 											</div>
-											<div th:unless="${id == null}">
-												<div id="followBefore">
-													<a id="fBtn" th:href="@{/insertflw(${id},${idx})}">구독</a>
+											<div th:unless="${id == '손님'}">
+												<div class="followBefore">
+													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
+														<button type="submit" id="flBtn">구독</button>
+													</form>
 												</div>
 											</div>
 										</div>
 										<div th:unless="${flcheck == null}">
-											<form id="following" th:action="@{/deleteflw}">
-												<a id="bell">
+											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
+												<button id="bell">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
-												</a>
+												</button>
 											</form>
 										</div>
 									</div>
@@ -269,13 +321,16 @@ body {
 									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
 									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
 									<div class="scbtn">
-										<div id="sc1">
-											<i class="fa-thin fa-magnifying-glass"></i>
-										</div>
-										<div id="sc2">
-											<input type="text" id="chbtnSC" />
-										</div>
+										<form th:action="@{/channel(idx=${idx})}" method="post" id="scbtnAll">
+											<button type="submit" id="sc1">
+												<i class="fa-thin fa-magnifying-glass" id="chbtnIcon"></i>
+											</button>
+											<div id="sc2">
+												<input id="chbtnSC" type="text" placeholder="검색" name="search" th:value="${search}">
+											</div>
+										</form>
 									</div>
+
 								</div>
 							</div>
 						</div>

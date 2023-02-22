@@ -139,6 +139,14 @@ body {
 	cursor: pointer;
 }
 
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
+}
+
 #followFont{
 	font-size: 15px;
 	padding-left: 10px;
@@ -199,6 +207,7 @@ body {
 }
 
 /* ------content------- */
+
 #videoBD1 {
 	display: flex;
 	flex-wrap: wrap;
@@ -247,9 +256,11 @@ body {
 /* -------videos-------- */
 
 .youtube_card{
-    width: 23%;
-    margin:1%;
+	width: 23%;
+   	margin:1%;
+   	position:relative;
 }
+       
 
 .youtube_card iframe{
     border-radius: 15px;
@@ -260,6 +271,15 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: felx-start;
+}
+
+.youtube_card .before{
+    width: 100%;
+    height: 100%;
+    top:0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .youtube_card .youtube_card_info img{
@@ -389,33 +409,11 @@ body {
 	</div>
 	
 	<script th:inline="javascript">
-    	
-		/* 채널 동영상 정렬 */
-        let vdbtn1 = document.querySelector(".vdbtn1");
-      	let vdbtn2 = document.querySelector(".vdbtn2");
-      	
-      	function vdfun1(){
-        	vdbtn1.style.color = "white";
-        	vdbtn1.style.background = "black"
-        	vdbtn2.style.color = "black";
-        	vdbtn2.style.background = "#ececec";
-        	
-        }
-        
-      	function vdfun2(){
-        	vdbtn1.style.color = "black";
-        	vdbtn1.style.background = "#ececec";
-        	vdbtn2.style.color = "white";
-        	vdbtn2.style.background = "black";
-        }
-      	
+	
+	
       	//동영상 뿌리기
       	var list = [[${list2}]]
       	//스크롤
-      	var winTop;
-      	var onTop;
-    	var breakPoint = 10;
-    	var currentItem = 10;
         var el = document.querySelector('.youtube_main_item');
       	
       //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
@@ -426,9 +424,9 @@ body {
         	
       //생성자함수
       function Card(){      
-          this.mainElem = document.createElement('div');
-          this.mainElem.classList.add('youtube_card');
-          this.mainElem.innerHTML = ""
+          mainElem = document.createElement('div');
+          mainElem.classList.add('youtube_card');
+          mainElem.innerHTML = ""
                           +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
                           +'<div class="youtube_card_info">'
                           +'<a href="#"><img src="'+ list[i].thum +'" width="38"></a>'
@@ -439,12 +437,15 @@ body {
                           +'</div>'
                           +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
                           +'</div>';
-          el.appendChild(this.mainElem);
+          el.appendChild(mainElem);
           
       };
         
-        
-        
+	  //이동함수
+	  function move(idx){
+	  	location.href='/play?idx='+idx;
+	  }
+		
         
         
 	</script>	

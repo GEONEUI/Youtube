@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.study.youtubeteam.emtity.youtubeChannel;
+import com.study.youtubeteam.emtity.youtubeIndex;
 import com.study.youtubeteam.emtity.youtubeList;
 
 @Mapper
@@ -39,4 +40,9 @@ public interface YoutubeFollowMapper {
 	//검색 기능
 	@Select("SELECT * FROM youtubeList WHERE subject LIKE '%${param1}%' and writer like '%${param2}%'")
 	public List<youtubeList> vdSearch(String search, String writer);
+	
+	//Index 페이지 정보
+	@Select("select * from channelIndex where idx=#{idx}")
+	public List<youtubeIndex> indexList(int idx);
+	
 }
