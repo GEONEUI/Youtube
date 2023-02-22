@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.youtubeteam.emtity.Chat;
-import com.study.youtubeteam.emtity.youtubeChannel;
-import com.study.youtubeteam.emtity.youtubeIndex;
+import com.study.youtubeteam.emtity.youtubeChannelList;
+import com.study.youtubeteam.emtity.youtubeChannelIndex;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeMyView;
 import com.study.youtubeteam.emtity.youtubePlayComment;
@@ -285,13 +285,15 @@ public class MyController {
 				}
 				
 		youtubeUserList userInfo = mapper.getOneUser(id);
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		String writer = flmapper.getWriter(idx);
 		
 		List<youtubeList> list2 = flmapper.selectVideo(writer);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
 		
+		List<youtubeList> list3 = flmapper.selectHotVideo(writer);
+				
 		//검색 부분
 		if(search.equals("")) {
 			 
@@ -303,6 +305,7 @@ public class MyController {
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
+		model.addAttribute("list3", list3);
 		model.addAttribute("idx", idx);
 		model.addAttribute("flcheck", flcheck);
 		model.addAttribute("userInfo", userInfo);
@@ -324,7 +327,7 @@ public class MyController {
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
 
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
 		model.addAttribute("id", id);
@@ -345,11 +348,11 @@ public class MyController {
 			id = "손님";
 		}
 		
-		List<youtubeIndex> idxInfo = flmapper.indexList(idx);
+		List<youtubeChannelIndex> idxInfo = flmapper.indexList(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
 
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
 

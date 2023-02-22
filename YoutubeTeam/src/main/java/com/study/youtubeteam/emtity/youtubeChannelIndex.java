@@ -1,6 +1,6 @@
 package com.study.youtubeteam.emtity;
 
-public class youtubeIndex {
+public class youtubeChannelIndex {
 	private int idx;
 	private String c_info;
 	private String c_email;

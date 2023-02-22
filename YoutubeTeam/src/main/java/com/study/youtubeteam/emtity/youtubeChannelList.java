@@ -1,6 +1,6 @@
 package com.study.youtubeteam.emtity;
 
-public class youtubeChannel {
+public class youtubeChannelList {
 	private int idx;
 	private String ch_name;
 	private String ch_id;
