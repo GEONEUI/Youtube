@@ -37,7 +37,11 @@
         }
         .youtube_card .youtube_card_info .youtube_card_title .text_subject{
             font-size: 16px;
-            margin-bottom: 10px;
+		    margin-bottom: 10px;
+		    height: 42px;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		    white-space: normal;
         }
         .youtube_card .youtube_card_info .youtube_card_title .text_writer{
             font-size: 14px;
@@ -146,7 +150,7 @@
 
         	
         </style>
-        <div class="chat">
+<!--         <div class="chat">
         	<div class="chat_header">
         		<p>실시간 채팅</p>
         	</div>
@@ -161,12 +165,12 @@
         			<input type="button" onclick="chatInsert()" value="전송" style="width:20%;">
         		</form>
         	</div>
-        </div>
+        </div> -->
         
 
         <script th:inline="javascript">
         
-		//실시간 채팅
+		/* //실시간 채팅
     	$(function(){
     		selectChat();
     	});
@@ -216,7 +220,7 @@
 			})
 		}
         
-        
+         */
         	//데이터에서 가져온 모든 자료
         	var list = [[${list}]];
         	//무한스크롤
@@ -245,7 +249,7 @@
                                         +'<div class="youtube_card_title">'
                                         +'<p class="text_subject">'+list[i].subject+'</p>'
                                         +'<p class="text_writer">'+list[i].writer+'</p>'
-                                        +'<p class="text_reacount">조회수 1만회</p>'
+                                        +'<p class="text_reacount">'+ list[i].readcount +'회</p>'
                                         +'</div>'
                                         +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
                                         +'</div>';

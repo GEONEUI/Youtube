@@ -124,6 +124,7 @@ public class MyController {
 	// 회원가입 데이터 받는곳
 	@PostMapping("/joinProc.do")
 	public String joinProc(youtubeUserList vo) {
+		vo.setUser_img("./image/default.jpg");
 		mapper.userInsert(vo);
 		return "redirect:/joinMessage.do";
 	}
@@ -177,27 +178,29 @@ public class MyController {
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		int result = mapper.userCheck(id, pw);
 		
+		if(result == 1) { //로그인 성공
+			// 세션생성
+			session.setAttribute("id", id);
+			session.setMaxInactiveInterval(60 * 10);
+			model.addAttribute("result", result);
+			
+			// 쿠키생성
+			if (check == 1) {
+				Cookie cookie = new Cookie("cookieID", id);
+				cookie.setMaxAge(60 * 1);
+				response.addCookie(cookie);
 
-
-		// 세션생성
-		session.setAttribute("id", id);
-		session.setMaxInactiveInterval(60 * 10);
-		model.addAttribute("result", result);
-
-		// 쿠키생성
-		if (check == 1) {
-			Cookie cookie = new Cookie("cookieID", id);
-			cookie.setMaxAge(60 * 1);
-			response.addCookie(cookie);
-
-			Cookie cookiepw = new Cookie("cookiePW", pw);
-			cookiepw.setMaxAge(60 * 1);
-			response.addCookie(cookiepw);
+				Cookie cookiepw = new Cookie("cookiePW", pw);
+				cookiepw.setMaxAge(60 * 1);
+				response.addCookie(cookiepw);
+			}
+			
+			return "redirect:/";
 		} else {
-
+			return "loginMessage";
 		}
+		
 
-		return "loginMessage";
 	}
 
 	// 로그아웃 처리하는곳
@@ -206,6 +209,7 @@ public class MyController {
 		session.setAttribute("id", null);
 		session.setMaxInactiveInterval(0);
 
+		
 		return "redirect:/";
 	}
 
