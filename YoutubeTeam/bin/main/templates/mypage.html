@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/front_header">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Document</title>
-</head>
+<head th:replace="fragments/front_header"></head>
 <style>
 * {
 	box-sizing: border-box
 }
 
+.main {
+	margin-top: 2px;
+	padding: 0 75px;
+}
+
 .profile {
 	width: 100%;
 	height: 120px;
-	background-color: #dfdfdf;
+	box-shadow: rgb(99 99 99/ 20%) 0px 2px 8px 0px;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	padding: 0 30px;
 }
 
 .box {
@@ -25,8 +26,6 @@
 	height: 100px;
 	border-radius: 70%;
 	overflow: hidden;
-	margin-left: 80px;
-	margin-top: 9px;
 }
 
 .info {
@@ -40,52 +39,53 @@
 }
 
 #nickname {
-	width: 100px;
 	height: 50px;
 	font-size: 35px;
-	margin-top: 31px;
 }
 
 #email {
 	width: 100px;
-	height: 50px;
 	font-size: 15px;
 }
 
 #button {
 	display: flex;
 	align-items: center;
-	margin-right: 30px;
 }
 
 #button_2 {
-	width: 72px;
-	height: 26px;
+	width: 100px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 	background-color: black;
 	border-radius: 20px;
-	text-align: center;
 }
 
 #profile_22 {
 	display: flex;
+	align-items: center;
 }
 
 #button a {
 	color: white;
+	padding:4px;
 }
 
 .content {
 	padding: 30px;
 }
 
+.content_box {
+	display: flex;
+	justify-content: space-around;
+}
+
 .storage_box { /* 보관함 */
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 10px;
-	width: 25%;
+	width: 49%;
 	height: 100px;
-	background-color: #dfdfdf;
-	font-size: 30px;
+	background-color: #f1f1f1;
+	font-size: 17px;
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
@@ -93,13 +93,10 @@
 }
 
 .watchtime_box { /* 시청기록 */
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 10px;
-	width: 25%;
+	width: 49%;
 	height: 100px;
-	background-color: #dfdfdf;
-	font-size: 30px;
+	background-color: #f1f1f1;
+	font-size: 17px;
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
@@ -107,13 +104,10 @@
 }
 
 .comment_box { /* 작성한 댓글 */
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 10px;
-	width: 25%;
+	width: 49%;
 	height: 100px;
-	background-color: #dfdfdf;
-	font-size: 30px;
+	background-color: #f1f1f1;
+	font-size: 17px;
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
@@ -121,13 +115,10 @@
 }
 
 .subscribe_box { /* 구독 */
-	margin-top: 20px;
-	margin-left: 5px;
-	margin-right: 10px;
-	width: 25%;
+	width: 49%;
 	height: 100px;
-	background-color: #dfdfdf;
-	font-size: 30px;
+	background-color: #f1f1f1;
+	font-size: 17px;
 	border-radius: 20px;
 	display: flex;
 	align-items: center;
@@ -135,7 +126,9 @@
 }
 
 .cont1 {
+	width: 49%;
 	display: flex;
+	justify-content: space-between;
 }
 
 .line {
@@ -147,14 +140,13 @@
 
 .cont2 {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .ad_box {
 	height: 150px;
-	width: 49.3%;
-	margin-left: 5px;
-	background-color: #dfdfdf;
+	width: 49%;
+	background-color: #f1f1f1;
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
@@ -169,7 +161,7 @@
 	margin-left: 11px;
 }
 
-.ad_box i{
+.ad_box i {
 	margin-right: 22px;
 }
 
@@ -202,9 +194,7 @@
 }
 
 .ads {
-	height: 150px;
-	width: 25%;
-	margin-left: 5px;
+	width: 49%;
 }
 
 #p1 {
@@ -218,12 +208,19 @@
 
 .cont3 {
 	display: flex;
+	justify-content: space-around;
+	
+}
+
+.cont3_1{
+	width:49%;
+	display: flex;
+	justify-content: space-around;
 }
 
 .ads_img {
 	width: 100%;
-	height: 175%;
-	overflow: hidden;
+	height: 100%;
 }
 
 .footer {
@@ -251,36 +248,48 @@
 										<img class="profile_img" src="images/her.jpg">
 									</div>
 									<div class="info">
-										<div id="nickname">닉넴</div>
-										<div id="email">이메일</div>
+										<div id="nickname" th:text="${userInfo.user_nikname}"></div>
+										<div id="email" th:text="${userInfo.user_email}"></div>
 									</div>
 								</div>
 								<div id="button">
 									<div id="button_2">
-										<a href="#">수정하기</a>
+										<a th:href="@{/profile_update}">내정보 보기</a>
 									</div>
 								</div>
 							</div>
 							<div class="content">
-								<div class="cont1">
-									<div class="storage_box">
-										<div class="storage_box2">
-											<i class="fa-light fa-clapperboard-play"></i>보관함
+								<div class="content_box">
+									<div class="cont1">
+										<div class="storage_box">
+											<div class="storage_box2">
+												<a th:href="@{/videos}"> <i
+													class="fa-light fa-clapperboard-play"> </i>보관함
+												</a>
+											</div>
+										</div>
+										<div class="watchtime_box">
+											<div class="watchtime_2">
+												<a th:href="@{/watchtime}"> <i
+													class="fa-light fa-clock-rotate-left"> </i>시청기록
+												</a>
+											</div>
 										</div>
 									</div>
-									<div class="watchtime_box">
-										<div class="watchtime_2">
-											<i class="fa-light fa-clock-rotate-left"></i>시청기록
+									<div class="cont1">
+										<div class="comment_box">
+											<div class="comment_2">
+												<a th:href="@{/comment}"> <i
+													class="fa-light fa-comment-lines"> </i>내 댓글
+												</a>
+											</div>
 										</div>
-									</div>
-									<div class="comment_box">
-										<div class="comment_2">
-											<i class="fa-light fa-comment-lines"></i>내 댓글
-										</div>
-									</div>
-									<div class="subscribe_box">
-										<div class="subscribe_2">
-											<i class="fa-light fa-films"></i>구독
+										<div class="subscribe_box">
+											<div class="subscribe_2">
+												<a th:href="@{/subscribe}"> <i class="fa-light fa-films">
+												</i>구독
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -296,7 +305,6 @@
 												<p>사용 가능한 기능이 없으므로 나중에 다시 확인하세요</p>
 											</div>
 										</div>
-										<i class="fa-light fa-greater-than"></i>
 									</div>
 									<div class="ad_box">
 										<div class="than">
@@ -308,26 +316,29 @@
 												<p>Premium 멤버십으로 고품질 오디오를 광고 없이 감상하세요</p>
 											</div>
 										</div>
-										<i class="fa-light fa-greater-than"></i>
 									</div>
 								</div>
 								<div class="line"></div>
 								<div class="cont3">
-									<div class="ads">
-										<p id="p1">YouTube Music에서 좋아하는 아티스트의 노래를 감상하세요</p>
-										<p id="p2">premium 멤버십에 포함된 혜택: 고품질 오디오</p>
+									<div class="cont3_1">
+										<div class="ads">
+											<p id="p1">YouTube Music에서 좋아하는 아티스트의 노래를 감상하세요</p>
+											<p id="p2">premium 멤버십에 포함된 혜택: 고품질 오디오</p>
+										</div>
+										<div class="ads">
+											<img class="ads_img" src="images/black.jpg">
+											<p>Black Pink</p>
+										</div>
 									</div>
-									<div class="ads">
-										<img class="ads_img" src="images/black.jpg">
-										<p>Black Pink</p>
-									</div>
-									<div class="ads">
-										<img class="ads_img" src="images/who.jpg">
-										<p>BTS</p>
-									</div>
-									<div class="ads">
-										<img class="ads_img" src="images/new.jpg">
-										<p>NewJeans</p>
+									<div class="cont3_1">
+										<div class="ads">
+											<img class="ads_img" src="images/who.jpg">
+											<p>BTS</p>
+										</div>
+										<div class="ads">
+											<img class="ads_img" src="images/new.jpg">
+											<p>NewJeans</p>
+										</div>
 									</div>
 								</div>
 							</div>
