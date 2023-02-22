@@ -225,7 +225,7 @@ body {
 }
 
 .indexContent {
-	height: 180px;
+	height: 170px;
 	width: 800px;
 	display: flex;
 	align-content: center;
@@ -252,6 +252,24 @@ body {
 	flex-wrap: wrap;
 	border-bottom: 1px solid #e1dddd;
 }
+
+.cInfo {
+	white-space:pre;
+	font-size: 14px;
+}
+
+.infoFlex {
+	display: flex;
+}
+
+.infoPadding {
+	padding-left: 6px;
+}
+
+.infoText {
+	font-size: 14px;
+}
+
 </style>
 <body>
 	<div id="wrap">
@@ -334,35 +352,39 @@ body {
 								</div>
 							</div>
 						</div>
-						<div id="cnIndex1">
+						<div id="cnIndex1"  th:each="qq : ${idxInfo}">
 							<div id="chIndex2">
 								<div>
 									<div class="indexContent">
 										<div>
-											<p>설명</p>
-											<br />
-											<p>반갑습니다. 오늘도 즐거운 날입니다.</p>
+											<div>설명</div>
+											<br/> 
+											<div class="cInfo" th:text="${qq.c_info}"></div>
 										</div>
 									</div>
 									<div class="indexContent">
 										<div>
 											<p>세부정보</p>
 											<br />
-											<div>
-												비즈니스 문의:
-												<button id="emailBtn">이메일 주소 보기</button>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>비즈니스 문의: </div> 
+													<div class="infoPadding" th:text="${qq.c_email}"></div>
+												</div>
+												<br />
+												<div class="infoFlex">
+													<div>위치: </div> 
+													<div class="infoPadding" th:text="${qq.c_location}"></div>
+												</div>
 											</div>
-											<br />
-											<p>위치: 대한민국</p>
 										</div>
 									</div>
 									<div class="indexContent">
 										<div>
-											<p>링크</p>
-											<br /> <ahref:"https://twitch.tv/zilioner">침착맨 트위치 생방송</a><br/><br/>
-												<a href:"https://youtube.com/channel/UCewitUbsXnyjvJjGgxa0IYw">침착맨 유튜브 생방송</a><br/><br/>
-												<a href:"https://chimhaha.net/">침하하</a>
-											</div>
+											<div>링크</div> 
+											<br/>
+											<a class="infoText" th:href="@{${qq.c_link}}">[[${qq.c_link}]]</a>
+										</div>
 									</div>
 								</div>
 								<div>
@@ -374,10 +396,20 @@ body {
 											<p>통계</p>
 										</div>
 										<div class="indexContent2">
-											<p>가입일: 2014. 9. 30.</p>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>가입일: </div> 
+													<div class="infoPadding" th:text="${qq.c_day}"></div>
+												</div>
+											</div>
 										</div>
 										<div class="indexContent2">
-											<p>조회수 1,512,708,980회</p>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>조회수: </div> 
+													<div class="infoPadding" th:text="${qq.c_view}"></div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
