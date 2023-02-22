@@ -15,7 +15,7 @@ body {
 
 #chbd {
 	display: flex;
-	justify-content: center;
+	
 	border-bottom: 1px solid #e1dddd;
 }
 
@@ -23,15 +23,17 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-between;
-	width: 1300px;
+	width: 100%;
 	height: 150px;
 }
 
 #logoHeader {
 	display: flex;
 	justify-content: space-between;
+	padding-left: 53px;
+    padding-right: 140px;
 	height: 105px;
-	width: 1300px;
+	width: 100%;
 }
 
 .chbox {
@@ -65,34 +67,95 @@ body {
 	font-size: 30px;
 }
 
+/* 채널명 */
 .channelId {
 	color: grey;
 }
 
+/* 구독자 수 */
 .channelFollow {
 	color: grey;
 }
 
+/* 구독자 버튼 */
 #followButton {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
 }
 
-#fBtn {
+
+.followBefore {
+	cursor: pointer;
 	height: 43px;
 	width: 60px;
 	border-radius: 20px;
 	border: 0;
-	color: white;
 	font-size: 15px;
-	background-color: black;
+	background: black;
 	text-align: center;
 	line-height: 43px;
 }
 
+#fBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+
+#following {
+	display: flex;
+	width: 122px;
+	height: 36px;
+	border-radius: 18px;
+	background: #ececec;
+	align-items: center;
+    justify-content: center;
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
+}
+
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
+}
+
+#followFont{
+	font-size: 15px;
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
 #chbtnAll {
 	display: flex;
+	padding-left: 57px;
 }
 
 .chbtn {
@@ -107,18 +170,44 @@ body {
 .scbtn {
 	display: flex;
 	justify-content: space-between;
-	width: 200px;
+	width: 220px;
 }
 
 #sc1 {
 	display: flex;
 	align-items: center;
+	border: none;
+    background: transparent;
+    padding-left: 50px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 #sc2 {
 	display: flex;
 	align-content: center;
 	flex-wrap: wrap;
+}
+
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chbtnSC {
+	width: 190px;
+	height: 32px;
+	border: 0;
+}
+
+#scbtnAll {
+	display: flex;
+
+}
+
+.fa-magnifying-glass:before, .fa-search:before {
+    font-size: 19px;
 }
 
 /* ------content------- */
@@ -136,7 +225,7 @@ body {
 }
 
 .indexContent {
-	height: 180px;
+	height: 170px;
 	width: 800px;
 	display: flex;
 	align-content: center;
@@ -163,6 +252,24 @@ body {
 	flex-wrap: wrap;
 	border-bottom: 1px solid #e1dddd;
 }
+
+.cInfo {
+	white-space:pre;
+	font-size: 14px;
+}
+
+.infoFlex {
+	display: flex;
+}
+
+.infoPadding {
+	padding-left: 6px;
+}
+
+.infoText {
+	font-size: 14px;
+}
+
 </style>
 <body>
 	<div id="wrap">
@@ -175,70 +282,109 @@ body {
 					</div>
 					<div class="youtube_main">
 						<div id="BannerLayout">
-							<img id="Banner" src='/image/bannerCalm.jpg'>
+							<img id="Banner" th:src='@{/image/banner}+${idx}+@{.png}'>
 						</div>
 						<div id="chbd">
 							<div id="ChannelHeader">
 								<div id="logoHeader">
 									<div class="chbox">
 										<div class="box">
-											<img id="img" src="/image/calm.jpg">
+											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
 										</div>
-										<div class="channelContent">
-											<div class="channelName">침착맨</div>
-											<div class="channelId">@아이디</div>
-											<div class="channelFollow">구독자 11명</div>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 									<div id="followButton">
-										<a id="fBtn" >구독</a>
+										<div th:if="${flcheck == null}">
+											<div th:if="${id == '손님'}">
+									 			<div class="followBefore">
+													<button type="submit" id="fBtn" disabled>구독</button>
+												</div>
+											</div>
+											<div th:unless="${id == '손님'}">
+												<div class="followBefore">
+													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
+														<button type="submit" id="flBtn">구독</button>
+													</form>
+												</div>
+											</div>
+										</div>
+										<div th:unless="${flcheck == null}">
+											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
+												<button id="bell">
+													<i class="fa-regular fa-bell"></i>
+													<p id="followFont">구독중</p>
+													<i class="fa-solid fa-check"></i>
+												</button>
+											</form>
+										</div>
 									</div>
 								</div>
 								<div id="chbtnAll">
-									<a class="chbtn" th:href="@{/channel(idx=3)}">홈</a> 
-									<a class="chbtn" th:href="@{/channel(idx=4)}">동영상</a>
-									<a class="chbtn" th:href="@{/channelBoard}">커뮤니티</a>
-									<a class="chbtn" th:href="@{/channelIndex}">정보</a>
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
 									<div class="scbtn">
-										<div id="sc1">
-											<i class="fa-thin fa-magnifying-glass"></i>
-										</div>
-										<div id="sc2">
-											<input type="text" id="chbtnSC" />
-										</div>
+										<form th:action="@{/channel(idx=${idx})}" method="post" id="scbtnAll">
+											<button type="submit" id="sc1">
+												<i class="fa-thin fa-magnifying-glass" id="chbtnIcon"></i>
+											</button>
+											<div id="sc2">
+												<input id="chbtnSC" type="text" placeholder="검색" name="search" th:value="${search}">
+											</div>
+										</form>
 									</div>
+
 								</div>
 							</div>
 						</div>
-						<div id="cnIndex1">
+						<div id="cnIndex1"  th:each="qq : ${idxInfo}">
 							<div id="chIndex2">
 								<div>
 									<div class="indexContent">
 										<div>
-											<p>설명</p>
-											<br />
-											<p>반갑습니다. 오늘도 즐거운 날입니다.</p>
+											<div>설명</div>
+											<br/> 
+											<div class="cInfo" th:text="${qq.c_info}"></div>
 										</div>
 									</div>
 									<div class="indexContent">
 										<div>
 											<p>세부정보</p>
 											<br />
-											<div>
-												비즈니스 문의:
-												<button id="emailBtn">이메일 주소 보기</button>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>비즈니스 문의: </div> 
+													<div class="infoPadding" th:text="${qq.c_email}"></div>
+												</div>
+												<br />
+												<div class="infoFlex">
+													<div>위치: </div> 
+													<div class="infoPadding" th:text="${qq.c_location}"></div>
+												</div>
 											</div>
-											<br />
-											<p>위치: 대한민국</p>
 										</div>
 									</div>
 									<div class="indexContent">
 										<div>
-											<p>링크</p>
-											<br /> <ahref:"https://twitch.tv/zilioner">침착맨 트위치 생방송</a><br/><br/>
-												<a href:"https://youtube.com/channel/UCewitUbsXnyjvJjGgxa0IYw">침착맨 유튜브 생방송</a><br/><br/>
-												<a href:"https://chimhaha.net/">침하하</a>
-											</div>
+											<div>링크</div> 
+											<br/>
+											<a class="infoText" th:href="@{${qq.c_link}}">[[${qq.c_link}]]</a>
+										</div>
 									</div>
 								</div>
 								<div>
@@ -250,10 +396,20 @@ body {
 											<p>통계</p>
 										</div>
 										<div class="indexContent2">
-											<p>가입일: 2014. 9. 30.</p>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>가입일: </div> 
+													<div class="infoPadding" th:text="${qq.c_day}"></div>
+												</div>
+											</div>
 										</div>
 										<div class="indexContent2">
-											<p>조회수 1,512,708,980회</p>
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>조회수: </div> 
+													<div class="infoPadding" th:text="${qq.c_view}"></div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>

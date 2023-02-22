@@ -15,7 +15,7 @@ body {
 
 #chbd {
 	display: flex;
-	justify-content: center;
+	
 	border-bottom: 1px solid #e1dddd;
 }
 
@@ -23,15 +23,17 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-between;
-	width: 1300px;
+	width: 100%;
 	height: 150px;
 }
 
 #logoHeader {
 	display: flex;
 	justify-content: space-between;
+	padding-left: 53px;
+    padding-right: 140px;
 	height: 105px;
-	width: 1300px;
+	width: 100%;
 }
 
 .chbox {
@@ -83,7 +85,7 @@ body {
 }
 
 
-#followBefore {
+.followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -97,14 +99,24 @@ body {
 
 #fBtn {
 	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
 }
 
 
 #following {
-	cursor: pointer;
-}
-
-#bell {
 	display: flex;
 	width: 122px;
 	height: 36px;
@@ -112,7 +124,27 @@ body {
 	background: #ececec;
 	align-items: center;
     justify-content: center;
-   
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
+}
+
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
 }
 
 #followFont{
@@ -123,6 +155,7 @@ body {
 
 #chbtnAll {
 	display: flex;
+	padding-left: 57px;
 }
 
 .chbtn {
@@ -137,12 +170,17 @@ body {
 .scbtn {
 	display: flex;
 	justify-content: space-between;
-	width: 200px;
+	width: 220px;
 }
 
 #sc1 {
 	display: flex;
 	align-items: center;
+	border: none;
+    background: transparent;
+    padding-left: 50px;
+    padding-right: 10px;
+    cursor: pointer;
 }
 
 #sc2 {
@@ -157,16 +195,28 @@ body {
 	flex-wrap: wrap;
 }
 
+#chbtnSC {
+	width: 190px;
+	height: 32px;
+	border: 0;
+}
+
+#scbtnAll {
+	display: flex;
+
+}
+
 /* ------content------- */
+
 #videoBD1 {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
 }
 
 #videoBD2 {
 	width: 1300px;
 	height: 100%;
+	padding-left: 62px;
 }
 
 #videoBtn {
@@ -199,7 +249,62 @@ body {
 	cursor: pointer;
 }
 
+.fa-magnifying-glass:before, .fa-search:before{
+	font-size: 19px;
+}
 
+/* -------videos-------- */
+
+.youtube_card{
+	width: 23%;
+   	margin:1%;
+   	position:relative;
+}
+       
+
+.youtube_card iframe{
+    border-radius: 15px;
+}
+
+.youtube_card .youtube_card_info{
+    padding: 15px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: felx-start;
+}
+
+.youtube_card .before{
+    width: 100%;
+    height: 100%;
+    top:0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.youtube_card .youtube_card_info img{
+    margin-right: 10px;
+    border-radius:50px;
+}
+.youtube_card .youtube_card_info .youtube_card_title .text_subject{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.youtube_card .youtube_card_info .youtube_card_title .text_writer{
+    font-size: 14px;
+    color: #606060;
+}
+
+.youtube_card .youtube_card_info .youtube_card_title .text_reacount{
+    font-size: 14px;
+    color: #606060;
+}
+
+
+.youtube_main_gnb li:nth-child([[${category}]]){
+	background:#0F0F0F;
+	color:#fff;
+}
 
 
 
@@ -243,33 +348,44 @@ body {
 									</div>
 									<div id="followButton">
 										<div th:if="${flcheck == null}">
-											<div id="followBefore">
-												<a id="fBtn" onclick="flw()">구독</a>
+											<div th:if="${id == '손님'}">
+									 			<div class="followBefore">
+													<button type="submit" id="fBtn" disabled>구독</button>
+												</div>
+											</div>
+											<div th:unless="${id == '손님'}">
+												<div class="followBefore">
+													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
+														<button type="submit" id="flBtn">구독</button>
+													</form>
+												</div>
 											</div>
 										</div>
 										<div th:unless="${flcheck == null}">
-											<div id="following">
-												<a id="bell" onclick="flw()">
+											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
+												<button id="bell">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
-												</a>
-											</div>
+												</button>
+											</form>
 										</div>
 									</div>
 								</div>
 								<div id="chbtnAll">
-									<a class="chbtn" th:href="@{/channel(idx=3)}">홈</a> 
-									<a class="chbtn" th:href="@{/channel(idx=4)}">동영상</a>
-									<a class="chbtn" th:href="@{/channelBoard}">커뮤니티</a>
-									<a class="chbtn" th:href="@{/channelIndex}">정보</a>
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
 									<div class="scbtn">
-										<div id="sc1">
-											<i class="fa-thin fa-magnifying-glass"></i>
-										</div>
-										<div id="sc2">
-											<input type="text" id="chbtnSC" />
-										</div>
+										<form th:action="@{/channel(idx=${idx})}" method="post" id="scbtnAll">
+											<button type="submit" id="sc1">
+												<i class="fa-thin fa-magnifying-glass" id="chbtnIcon"></i>
+											</button>
+											<div id="sc2">
+												<input id="chbtnSC" type="text" placeholder="검색" name="search" th:value="${search}">
+											</div>
+										</form>
 									</div>
 
 								</div>
@@ -282,6 +398,9 @@ body {
 									<button class="vdbtn2" onclick="vdfun2()">인기 동영상</button>
 								</div>
 							</div>
+							<div class="youtube_main_item">
+								
+	                        </div>
 						</div>
 					</div>
 				</div>
@@ -290,42 +409,45 @@ body {
 	</div>
 	
 	<script th:inline="javascript">
-    	
-		/* 채널 동영상 정렬 */
-        let vdbtn1 = document.querySelector(".vdbtn1");
-      	let vdbtn2 = document.querySelector(".vdbtn2");
+	
+	
+      	//동영상 뿌리기
+      	var list = [[${list2}]]
+      	//스크롤
+        var el = document.querySelector('.youtube_main_item');
       	
-      	function vdfun1(){
-        	vdbtn1.style.color = "white";
-        	vdbtn1.style.background = "black"
-        	vdbtn2.style.color = "black";
-        	vdbtn2.style.background = "#ececec";
+      //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
+      //10개 뿌리기
+      for(var i=0; i<10 ;i++){
+          new Card(i);
+      }
         	
-        }
+      //생성자함수
+      function Card(){      
+          mainElem = document.createElement('div');
+          mainElem.classList.add('youtube_card');
+          mainElem.innerHTML = ""
+                          +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
+                          +'<div class="youtube_card_info">'
+                          +'<a href="#"><img src="'+ list[i].thum +'" width="38"></a>'
+                          +'<div class="youtube_card_title">'
+                          +'<p class="text_subject">'+list[i].subject+'</p>'
+                          +'<p class="text_writer">'+list[i].writer+'</p>'
+                          +'<p class="text_reacount">조회수 1만회</p>'
+                          +'</div>'
+                          +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
+                          +'</div>';
+          el.appendChild(mainElem);
+          
+      };
         
-      	function vdfun2(){
-        	vdbtn1.style.color = "black";
-        	vdbtn1.style.background = "#ececec";
-        	vdbtn2.style.color = "white";
-        	vdbtn2.style.background = "black";
-        }
-      	
-      	/* 채널 구독 버튼 */
-      	var flw1 = document.querySelector("#followBefore");
-      	var flw2 = document.querySelector("#following");
-      	
-      	function flw() {
-      		if([[${flcheck}]] == null) {
-      			flw1.off();
-      			flw2.css("display" ,"none");
-      		} else {
-      			flw2.off();
-      			flw1.css("display" ,"none");
-      		}
-      	}
-      	
-      	
-      	
+	  //이동함수
+	  function move(idx){
+	  	location.href='/play?idx='+idx;
+	  }
+		
+        
+        
 	</script>	
 </body>
 </html>

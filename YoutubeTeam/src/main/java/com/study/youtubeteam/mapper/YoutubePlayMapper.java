@@ -14,7 +14,8 @@ import com.study.youtubeteam.emtity.youtubePlayComment;
 @Mapper
 public interface YoutubePlayMapper {
 	
-	@Update("update youtubeList set readcount = readcount+rand()*100000 where idx = #{a}")
+	//조회수 count
+	@Update("update youtubeList set readcount = readcount+rand()+1 where idx = #{a}")
 	public int getCount(int a);
 	
 	// 유튜브 목록 가져와 메인 화면에 뿌리기

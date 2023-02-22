@@ -2,7 +2,6 @@ package com.study.youtubeteam.controller;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.youtubeteam.emtity.Chat;
 import com.study.youtubeteam.emtity.youtubeChannel;
+import com.study.youtubeteam.emtity.youtubeIndex;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubePlayComment;
 import com.study.youtubeteam.emtity.youtubeUserList;
@@ -25,10 +26,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-
-
-
 
 @Controller
 public class MyController {
@@ -262,13 +259,45 @@ public class MyController {
 		return "redirect:/play?idx=" + pc.getIdx();
 	}
 	
-
-	
 	// 준호
-	
 	//채널 메인
 	@RequestMapping("/channel")
-	public String channel(int idx, Model model, HttpSession session) {
+	public String channel(@RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session, Object aaa) {
+		String id = (String)session.getAttribute("id");
+		//아이디를 알고있을때 해당 아이디의
+		
+				if(id == null) {
+					id = "손님";
+				}
+				
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		String writer = flmapper.getWriter(idx);
+		
+		List<youtubeList> list2 = flmapper.selectVideo(writer);
+		int idNum = flmapper.getId(id);
+		Integer flcheck = flmapper.followCheck(idNum, idx);
+		
+		//검색 부분
+		if(search.equals("")) {
+			 
+		}else {
+			list2 = flmapper.vdSearch(search, writer);
+		}
+		
+		model.addAttribute("writer", writer);
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("idx", idx);
+		model.addAttribute("flcheck", flcheck);
+		model.addAttribute("userInfo", userInfo);
+		return "channel";
+	}
+	
+	//채널 커뮤니티
+	@RequestMapping("/channelBoard")
+	public String channelBoard(int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		
 		//아이디를 알고있을때 해당 아이디의
@@ -281,44 +310,60 @@ public class MyController {
 		model.addAttribute("userInfo", userInfo);
 		
 		List<youtubeChannel> list = flmapper.channelIdx(idx);
-		String idNum = flmapper.getId(id);
-		String flcheck = flmapper.followCheck(idNum);
+		int idNum = flmapper.getId(id);
+		Integer flcheck = flmapper.followCheck(idNum, idx);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("idx", idx);
 		model.addAttribute("flcheck", flcheck);
-		return "channel";
-	}
-	
-	//구독
-	@PostMapping
-	
-	
-	//채널 커뮤니티
-	@RequestMapping("/channelBoard")
-	public String channelBoard(Model model, HttpSession session) {
-		String id = (String)session.getAttribute("id");
-		model.addAttribute("id", id);
 		return "channelBoard";
 	}
 	
 	//채널 정보
 	@RequestMapping("/channelIndex")
-	public String channelIndex(Model model, HttpSession session) {
-		String id = (String)session.getAttribute("id");
+	public String channelIndex(int idx, Model model, HttpSession session) {
 		
 		//아이디를 알고있을때 해당 아이디의
+		String id = (String)session.getAttribute("id");
 		
 		if(id == null) {
 			id = "손님";
 		}
 		
+		List<youtubeIndex> idxInfo = flmapper.indexList(idx);
+		
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
+
+		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		int idNum = flmapper.getId(id);
+		Integer flcheck = flmapper.followCheck(idNum, idx);
+
 		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("idx", idx);
+		model.addAttribute("flcheck", flcheck);
+		model.addAttribute("idxInfo", idxInfo);
 		return "channelIndex";
 	}
 	
+	//follow 부분
+	@PostMapping("/following")
+	public String following(int idx, String id, RedirectAttributes redirectAttributes) {
+		int idNum = flmapper.getId(id);
+		flmapper.followInsert(idNum, idx);
+		redirectAttributes.addAttribute("idx", idx);
+		return "redirect:/channel";
+	}
+	
+	@PostMapping("/deleteflw")
+	public String deleteflw(int idx, String id, RedirectAttributes redirectAttributes) {
+		int idNum = flmapper.getId(id);
+		flmapper.followDelete(idNum, idx);
+		redirectAttributes.addAttribute("idx", idx);
+		return "redirect:/channel";
+	}
+		
 	
 	//유진
 	@RequestMapping("/mypage")
@@ -349,4 +394,7 @@ public class MyController {
 	public String comment() {
 		return "comment";
 	}
+	
+
+
 }
