@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header"></head>
+<style>
+body {
+	padding-top: 60px;
+}
+
+/* --------header-------- */
+#Banner {
+	height: 250px;
+	width: 100%;
+	position: relative;
+}
+
+#chbd {
+	display: flex;
+	
+	border-bottom: 1px solid #e1dddd;
+}
+
+#ChannelHeader {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	width: 100%;
+	height: 150px;
+}
+
+#logoHeader {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 53px;
+    padding-right: 140px;
+	height: 105px;
+	width: 100%;
+}
+
+.chbox {
+	display: flex;
+}
+
+.box {
+	display: flex;
+	top: 10px;
+	left: 30px;
+	margin: auto 20px;
+	width: 90px;
+	height: 90px;
+	border-radius: 70%;
+	overflow: hidden;
+}
+
+#img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.channelContent {
+	position: relative;
+	float: left;
+	top: 5px;
+}
+
+.channelName {
+	font-size: 30px;
+}
+
+/* 채널명 */
+.channelId {
+	color: grey;
+}
+
+/* 구독자 수 */
+.channelFollow {
+	color: grey;
+}
+
+/* 구독자 버튼 */
+#followButton {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+
+.followBefore {
+	cursor: pointer;
+	height: 43px;
+	width: 60px;
+	border-radius: 20px;
+	border: 0;
+	font-size: 15px;
+	background: black;
+	text-align: center;
+	line-height: 43px;
+}
+
+#fBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+
+#following {
+	display: flex;
+	width: 122px;
+	height: 36px;
+	border-radius: 18px;
+	background: #ececec;
+	align-items: center;
+    justify-content: center;
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
+}
+
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
+}
+
+#followFont{
+	font-size: 15px;
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
+#chbtnAll {
+	display: flex;
+	padding-left: 57px;
+}
+
+.chbtn {
+	background-color: transparent;
+	height: 40px;
+	width: 120px;
+	font-size: 15px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.scbtn {
+	display: flex;
+	justify-content: space-between;
+	width: 220px;
+}
+
+#sc1 {
+	display: flex;
+	align-items: center;
+	border: none;
+    background: transparent;
+    padding-left: 50px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+#sc2 {
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chbtnSC {
+	width: 190px;
+	height: 32px;
+	border: 0;
+}
+
+#scbtnAll {
+	display: flex;
+
+}
+
+/* ------content------- */
+
+#videoBD1 {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#videoBD2 {
+	width: 1300px;
+	height: 100%;
+	padding-left: 62px;
+}
+
+#videoBtn {
+	padding-left: 18px;
+	padding-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	width: 291px;
+	height: 50px;
+}
+
+
+.vdbtn1 {
+	height: 30px;
+	width: 160px;
+	border-radius: 10px;
+	border: none;
+	background: #000;
+	color: white;	
+	cursor: pointer;
+}
+
+.vdbtn2 {
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	background: #ececec;
+	color: #000;
+	cursor: pointer;
+}
+
+.fa-magnifying-glass:before, .fa-search:before{
+	font-size: 19px;
+}
+
+/* -------videos-------- */
+
+.youtube_card{
+	width: 23%;
+   	margin:1%;
+   	position:relative;
+}
+       
+
+.youtube_card iframe{
+    border-radius: 15px;
+}
+
+.youtube_card .youtube_card_info{
+    padding: 15px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: felx-start;
+}
+
+.youtube_card .before{
+    width: 100%;
+    height: 100%;
+    top:0;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.youtube_card .youtube_card_info img{
+    margin-right: 10px;
+    border-radius:50px;
+}
+.youtube_card .youtube_card_info .youtube_card_title .text_subject{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.youtube_card .youtube_card_info .youtube_card_title .text_writer{
+    font-size: 14px;
+    color: #606060;
+}
+
+.youtube_card .youtube_card_info .youtube_card_title .text_reacount{
+    font-size: 14px;
+    color: #606060;
+}
+
+
+.youtube_main_gnb li:nth-child([[${category}]]){
+	background:#0F0F0F;
+	color:#fff;
+}
+
+
+
+
+</style>
+<body>
+	<div id="wrap">
+		<div th:replace="fragments/header"></div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<div class="youtube_main">
+						<div id="BannerLayout">
+							<img id="Banner" th:src='@{/image/banner}+${idx}+@{.png}'>
+						</div>
+						<div id="chbd">
+							<div id="ChannelHeader">
+								<div id="logoHeader">
+									<div class="chbox">
+										<div class="box">
+											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
+										</div>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div id="followButton">
+										<div th:if="${flcheck == null}">
+											<div th:if="${id == '손님'}">
+									 			<div class="followBefore">
+													<button type="submit" id="fBtn" disabled>구독</button>
+												</div>
+											</div>
+											<div th:unless="${id == '손님'}">
+												<div class="followBefore">
+													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
+														<button type="submit" id="flBtn">구독</button>
+													</form>
+												</div>
+											</div>
+										</div>
+										<div th:unless="${flcheck == null}">
+											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
+												<button id="bell">
+													<i class="fa-regular fa-bell"></i>
+													<p id="followFont">구독중</p>
+													<i class="fa-solid fa-check"></i>
+												</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div id="chbtnAll">
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
+									<div class="scbtn">
+										<form th:action="@{/channel(idx=${idx})}" method="post" id="scbtnAll">
+											<button type="submit" id="sc1">
+												<i class="fa-thin fa-magnifying-glass" id="chbtnIcon"></i>
+											</button>
+											<div id="sc2">
+												<input id="chbtnSC" type="text" placeholder="검색" name="search" th:value="${search}">
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div id="videoBD1">
+							<div id="videoBD2">
+								<div id="videoBtn">
+									<button class="vdbtn1" onclick="vdfun1()">최근에 업로드된 동영상</button>
+									<button class="vdbtn2" onclick="vdfun2()">인기 동영상</button>
+								</div>
+							</div>
+							<div class="youtube_main_item">
+								
+	                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script th:inline="javascript">
+	
+	
+      	//동영상 뿌리기
+      	var list = [[${list2}]]
+      	//스크롤
+        var el = document.querySelector('.youtube_main_item');
+      	
+      //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
+      //10개 뿌리기
+      for(var i=0; i<10 ;i++){
+          new Card(i);
+      }
+        	
+      //생성자함수
+      function Card(){      
+          mainElem = document.createElement('div');
+          mainElem.classList.add('youtube_card');
+          mainElem.innerHTML = ""
+                          +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
+                          +'<div class="youtube_card_info">'
+                          +'<a href="#"><img src="'+ list[i].thum +'" width="38"></a>'
+                          +'<div class="youtube_card_title">'
+                          +'<p class="text_subject">'+list[i].subject+'</p>'
+                          +'<p class="text_writer">'+list[i].writer+'</p>'
+                          +'<p class="text_reacount">조회수 1만회</p>'
+                          +'</div>'
+                          +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
+                          +'</div>';
+          el.appendChild(mainElem);
+          
+      };
+        
+	  //이동함수
+	  function move(idx){
+	  	location.href='/play?idx='+idx;
+	  }
+		
+        
+        
+	</script>	
+</body>
+</html>
