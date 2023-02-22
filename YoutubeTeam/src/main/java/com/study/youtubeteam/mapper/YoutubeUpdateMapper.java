@@ -37,7 +37,7 @@ public interface YoutubeUpdateMapper {
 	public void deleteAll(String user_id);
 		
 	//내가 쓴 댓글
-	@Select("SELECT * FROM youtubePlayComment WHERE user_id=#{user_id}")
+	@Select("SELECT a1.user_id, a1.content, a1.nowdate, a2.subject, a2.writer, a2.readcount, a2.url FROM youtubePlayComment a1, youtubeList a2 WHERE a1.user_id = #{id} AND a1.idx=a2.idx")
 	public List<youtubePlayComment> selectMyComment(String id);
 	
 }

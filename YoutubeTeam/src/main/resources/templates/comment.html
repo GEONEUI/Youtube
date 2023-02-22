@@ -20,7 +20,7 @@
 }
 
 .youtube_main {
-	padding-left: 232px;
+	
 }
 
 h1 {
@@ -32,37 +32,27 @@ h5 {
 }
 
 #comment_box {
-	display: flex;
+	/* display: flex; */
 	padding-top: 60px;
+	padding-left: 47px;
+	text-align-last: center;
 }
 
 #info_box {
 	padding-left: 17px;
 }
 
-#profile_img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+.profile_img {
+	width: 700px;
+	height: 400px;
 }
 
 .img_box {
-	width: 100px;
-	height: 100px;
-	border-radius: 70%;
+	
 }
 
 .omg {
-	width: 89%;
 	padding: 0 23px;
-}
-
-.id {
-	padding-bottom: 10px;
-}
-
-.content {
-	padding-bottom: 35px;
 }
 
 .later {
@@ -86,16 +76,11 @@ h5 {
 									삭제되기까지 몇 시간이 걸릴 수 있습니다. 자세히 알아보기</h5>
 							</div>
 							<div id="comment_box" th:each="aa:${mycomm}">
-								<div class="img_box">
-									<img id="profile_img" src="images/her.jpg">
-								</div>
+
 								<div class="omg">
-									<div class="id" th:text="${aa.user_id}"></div>
-									<div class="content" th:text="${aa.content}"></div>
-									<div id="like">
-										<i class="fa-light fa-thumbs-up"></i> <i
-											class="fa-light fa-thumbs-down"></i>
-									</div>
+									<div th:text="${aa.user_id}"></div>
+									<div th:text="${aa.content}"></div>
+									<div th:text="${aa.nowdate}"></div>
 								</div>
 							</div>
 						</div>
