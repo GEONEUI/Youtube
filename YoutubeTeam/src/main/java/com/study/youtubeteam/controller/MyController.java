@@ -26,6 +26,7 @@ import com.study.youtubeteam.emtity.Chat;
 import com.study.youtubeteam.emtity.youtubeChannel;
 import com.study.youtubeteam.emtity.youtubeIndex;
 import com.study.youtubeteam.emtity.youtubeList;
+import com.study.youtubeteam.emtity.youtubeMyComment;
 import com.study.youtubeteam.emtity.youtubeMyView;
 import com.study.youtubeteam.emtity.youtubePlayComment;
 import com.study.youtubeteam.emtity.youtubeUserList;
@@ -447,7 +448,7 @@ public class MyController {
 		return "subscribe";
 	}
 
-	// 유진-댓글
+	// 유진-내가 쓴 댓글
 	@RequestMapping("/comment")
 	public String comment(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
@@ -455,8 +456,13 @@ public class MyController {
 		if (id == null) {
 			id = "손님";
 		}
+		
 		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("id", id);
 		model.addAttribute("userInfo", userInfo);
+		List<youtubePlayComment> mycomm = profileMapper.selectMyComment(id);
+		model.addAttribute("mycomm", mycomm);
+		
 		return "comment";
 	}
 

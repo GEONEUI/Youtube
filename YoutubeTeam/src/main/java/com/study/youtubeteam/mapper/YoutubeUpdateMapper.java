@@ -9,7 +9,9 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.study.youtubeteam.emtity.youtubeMyComment;
 import com.study.youtubeteam.emtity.youtubeMyView;
+import com.study.youtubeteam.emtity.youtubePlayComment;
 import com.study.youtubeteam.emtity.youtubeUserList;
 
 
@@ -29,5 +31,13 @@ public interface YoutubeUpdateMapper {
 	//시청기록 하나 삭제
 	@Delete("delete from youtubeMyView where user_id=#{param1} and idx=#{param2}")
 	public void delete(String user_id, int idx);
+	
+	//시청기록 전체 삭제
+	@Delete("delete from youtubeMyView where user_id=#{user_id}")
+	public void deleteAll(String user_id);
+		
+	//내가 쓴 댓글
+	@Select("SELECT * FROM youtubePlayComment WHERE user_id=#{user_id}")
+	public List<youtubePlayComment> selectMyComment(String id);
 	
 }
