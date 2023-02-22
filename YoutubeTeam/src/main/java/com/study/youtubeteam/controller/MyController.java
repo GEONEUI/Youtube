@@ -293,7 +293,7 @@ public class MyController {
 		List<youtubeList> list2 = flmapper.selectVideo(writer);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
-		List<youtubeList> list3 = flmapper.selectHotVideo(writer);
+		
 		//검색 부분
 		if(search.equals("")) {
 			 
@@ -305,7 +305,6 @@ public class MyController {
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
-		model.addAttribute("list3", list3);
 		model.addAttribute("idx", idx);
 		model.addAttribute("flcheck", flcheck);
 		model.addAttribute("userInfo", userInfo);
@@ -373,6 +372,7 @@ public class MyController {
 		return "redirect:/channel";
 	}
 	
+	//follow 삭제
 	@PostMapping("/deleteflw")
 	public String deleteflw(int idx, String id, RedirectAttributes redirectAttributes) {
 		int idNum = flmapper.getId(id);
@@ -380,6 +380,14 @@ public class MyController {
 		redirectAttributes.addAttribute("idx", idx);
 		return "redirect:/channel";
 	}
+	
+	//채널 동영상 최다뷰 정렬
+	@GetMapping("/vdhot.do")
+	public @ResponseBody List<youtubeList> vdhot(String writer){
+		List<youtubeList> list2 = flmapper.selectHotVideo(writer);
+		return list2;
+	}
+	
 		
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
@@ -393,7 +401,6 @@ public class MyController {
 		
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
-		System.out.println(userInfo);
 
 		return "mypage";
 	}
