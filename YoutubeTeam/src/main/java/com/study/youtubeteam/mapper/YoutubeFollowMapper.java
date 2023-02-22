@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
 import com.study.youtubeteam.emtity.youtubeChannelList;
 import com.study.youtubeteam.emtity.youtubeChannelIndex;
 import com.study.youtubeteam.emtity.youtubeList;
@@ -53,7 +52,4 @@ public interface YoutubeFollowMapper {
 	//Index 페이지 정보
 	@Select("select * from youtubeChannelIndex where idx=#{idx}")
 	public List<youtubeChannelIndex> indexList(int idx);
-	
-	
-	
 }

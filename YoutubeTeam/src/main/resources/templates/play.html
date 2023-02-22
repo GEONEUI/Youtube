@@ -408,15 +408,30 @@
 	}
 	
 	.list .center-bar .before{
-         	width:100%;
-         	height:100%;
-         	position:absolute;
-         	top:0;
-         	left:0;
-         	z-index:1;
-         	cursor:pointer;
-         }
+       	width:100%;
+       	height:100%;
+       	position:absolute;
+       	top:0;
+       	left:0;
+       	z-index:1;
+       	cursor:pointer;
+     }
          
+     .view .crud {
+     	align-self: center;
+  	    margin-left: auto;
+  	    cursor: pointer;
+  	    font-size: 14px;
+  	    opacity: 0;
+     }
+     
+     .view:hover > .crud {
+     	opacity: 1;
+     }
+     
+     .view .view2 {
+        word-break: break-all;
+     }
 
 	/* 	footer */
 	
@@ -533,10 +548,10 @@
 								 			<img class="sutak" th:src="${list.thum}" alt="이모티콘"></a>
 								 		<div class="jtbc">
 									 		<a th:text="${list.writer}"></a>
-									 		<li>구독자 471만명</li>
+									 		<li th:text="${subs}"></li> <!-- 구독자수 표시 --> 
 								 		</div>
 								 		<div class="gudok">구독</div>
-								 		<div class="eyes" th:text="조회수+ ${list.readcount} +회"></div>
+								 		<div class="eyes" th:text="조회수 +' '+${list.readcount} +회"></div>
 									</div>
 								 
 									<div class="subscribeCh2">
@@ -605,13 +620,14 @@
 													<div th:text="${vo.nikname}"></div>
 													<div th:text="${#strings.setSplit(vo.nowdate,' ')[0]}"></div>
 												</div>
-												<div class="view2" th:text="${vo.content}"></div>
+												<p class="view2" th:text="${vo.content}"></p>
 												<div class="view3">
 													<div><i class="fa-regular fa-thumbs-up" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
 													<div><i class="fa-regular fa-thumbs-down" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
 													<div style="font-size: 13px; margin-left:25px;">답글</div>
 												</div>
 											</div>
+										<a class="crud"><i class="fa-solid fa-ellipsis-vertical"></i></a> <!-- 수정, 삭제 hover -->
 										</div>
 										
 									</div> <!-- comment  -->
@@ -739,7 +755,7 @@
 			if(current >= stop){ //함수 호출할때마다 1씩 증가시켜서 10번 되면 그만 호출하게끔 만듬
 				return null; //list 변수에 값 그만넣기
 			}else{
-				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div>조회수 '+ listt[current].readcount +'회 &nbsp&nbsp&nbsp</div><div>2년 전</div></div><div onclick="move(' + listt[current].idx +')" class="before"></div>';
+				list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div>조회수 '+ listt[current].readcount +'회 &nbsp&nbsp&nbsp</div><div>2년 전</div></div><div onclick="move(' + listt[current].idx +')" class="before"></div>';
 			}
 			
 			return list;

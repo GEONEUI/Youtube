@@ -234,8 +234,8 @@ public class MyController {
 
 	// 예준-재생 메인 페이지
 	@RequestMapping("/play")
-	public String play(@RequestParam(value = "idx", required = false, defaultValue = "1") int idx, HttpSession session,
-			Model model) {
+	public String play(@RequestParam(value = "idx", required = false, defaultValue = "1") int idx, String sub,
+			HttpSession session, Model model) {
 
 		String id = (String) session.getAttribute("id");
 		if (id == null) {
@@ -255,6 +255,7 @@ public class MyController {
 		int rr = playMapper.view(idx);
 		int ss = playMapper.chView(idx);
 		String rjsdml = url + ss;
+		String subs = playMapper.subscribe(ss);
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
@@ -262,6 +263,7 @@ public class MyController {
 		model.addAttribute("pp", pp);
 		model.addAttribute("rr", rr);
 		model.addAttribute("ss", rjsdml);
+		model.addAttribute("subs", subs);
 		return "play";
 
 	}
@@ -291,9 +293,7 @@ public class MyController {
 		List<youtubeList> list2 = flmapper.selectVideo(writer);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
-		
 		List<youtubeList> list3 = flmapper.selectHotVideo(writer);
-				
 		//검색 부분
 		if(search.equals("")) {
 			 
