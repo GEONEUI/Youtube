@@ -19,8 +19,12 @@
 	width: 69%;
 }
 
-.youtube_main {
-	
+.realmain {
+	text-align: center;
+}
+
+iframe {
+	padding-top: 30px;
 }
 
 h1 {
@@ -31,28 +35,41 @@ h5 {
 	text-align: center;
 }
 
-#comment_box {
-	/* display: flex; */
-	padding-top: 60px;
-	padding-left: 47px;
-	text-align-last: center;
+.info_box {
+	width: 100%;
 }
 
-#info_box {
-	padding-left: 17px;
-}
-
-.profile_img {
-	width: 700px;
-	height: 400px;
-}
-
-.img_box {
-	
+.sub {
+	font-size: 25px;
 }
 
 .omg {
-	padding: 0 23px;
+	padding: 33px 0;
+	text-align-last: center;
+}
+
+.omg div {
+	padding-top: 10px;
+	justify-content: center;
+}
+
+.pic {
+	display: flex;
+	text-align: center;
+}
+
+.pic img {
+	width: 50px;
+	height: 50px;
+}
+
+.count {
+	display: flex;
+	align-items: center;
+}
+
+.channel {
+	display: flex;
 }
 
 .later {
@@ -70,17 +87,33 @@ h5 {
 					</div>
 					<section class="main">
 						<div class="youtube_main">
-							<div id="info_box">
-								<h1>내 YouTube 댓글</h1>
-								<h5>YouTube에서 직접 댓글을 수정 또는 삭제하고 답장할 수 있습니다. 댓글을 삭제하면 완전히
-									삭제되기까지 몇 시간이 걸릴 수 있습니다. 자세히 알아보기</h5>
-							</div>
-							<div id="comment_box" th:each="aa:${mycomm}">
-
-								<div class="omg">
-									<div th:text="${aa.user_id}"></div>
-									<div th:text="${aa.content}"></div>
-									<div th:text="${aa.nowdate}"></div>
+							<div class="realmain">
+								<div class="info_box">
+									<h1>내 YouTube 댓글</h1>
+									<h5>YouTube에서 직접 댓글을 수정 또는 삭제하고 답장할 수 있습니다. 댓글을 삭제하면 완전히
+										삭제되기까지 몇 시간이 걸릴 수 있습니다. 자세히 알아보기</h5>
+								</div>
+								<div class="videoandtitle" th:each=" mycomm : ${mycomm}">
+									<iframe width="50%" height="500px" th:src="${mycomm.url}"
+										frameborder="0"></iframe>
+									<div th:each="aa:${mycomm}">
+										<div class="omg">
+											<div class="sub"></div>
+											<div class="channel"></div>
+											<div class="pic">
+												<img th:src="${aa.thum}">
+												<div th:text="${aa.writer}"></div>
+											</div>
+											<div class="count">
+												<div class="readcount">조회수</div>
+												<div class="video_readcount" th:text="${aa.readcount}"></div>
+												<div>회</div>
+											</div>
+											<div th:text="${aa.user_id}"></div>
+											<div th:text="${aa.nowdate}"></div>
+											<div th:text="${aa.content}"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -89,6 +122,5 @@ h5 {
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

@@ -43,7 +43,6 @@ public class youtubeMyView {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
 	@Override
 	public String toString() {
 		return "youtubeMyView [idx=" + idx + ", user_id=" + user_id + ", subject=" + subject + ", writer=" + writer

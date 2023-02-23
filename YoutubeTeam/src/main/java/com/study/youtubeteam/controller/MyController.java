@@ -409,7 +409,7 @@ public class MyController {
 		return "videos";
 	}
 
-	// 유진-시청기록
+	// 시청기록
 	@RequestMapping("/watchtime")
 	public String watchtime(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
@@ -434,8 +434,16 @@ public class MyController {
 	profileMapper.delete(id, idx);
 	return "redirect:/watchtime";
 	}
+	
+	// 시청기록 전체 삭제
+	@PostMapping("/deleteAll")
+	public String delete(String id) {
+			
+	profileMapper.deleteAll(id);
+	return "redirect:/watchtime";
+	}
 
-	// 유진-구독
+	// 구독
 	@RequestMapping("/subscribe")
 	public String subscribe(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
@@ -448,11 +456,11 @@ public class MyController {
 		return "subscribe";
 	}
 
-	// 유진-내가 쓴 댓글
+	// 내가 쓴 댓글
 	@RequestMapping("/comment")
 	public String comment(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
-
+		
 		if (id == null) {
 			id = "손님";
 		}
@@ -460,13 +468,18 @@ public class MyController {
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("id", id);
 		model.addAttribute("userInfo", userInfo);
-		List<youtubePlayComment> mycomm = profileMapper.selectMyComment(id);
+		System.out.println("yygyfyyfyf 위 ");
+		
+		
+		List<youtubeMyComment> mycomm = profileMapper.selectMyComment(id);
+		System.out.println("yygyfyyfyf 아래 ");
 		model.addAttribute("mycomm", mycomm);
+		System.out.println("yygyfyyfyf"+mycomm);
 		
 		return "comment";
 	}
 
-	// 유진-내정보 수정페이지
+	// 내정보 수정페이지
 	@RequestMapping("/profile_update")
 	public String profile_update(HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
