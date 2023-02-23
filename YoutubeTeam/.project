@@ -35,14 +35,6 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-<<<<<<< HEAD
-=======
-		<buildCommand>
-			<name>org.thymeleaf.extras.eclipse.core.ThymeleafBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
->>>>>>> e072eaba352984af61be06f7da230b2bb0375878
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
