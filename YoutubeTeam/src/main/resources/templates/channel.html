@@ -85,7 +85,7 @@ body {
 }
 
 
-.followBefore {
+#followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -347,28 +347,17 @@ body {
 										</div>
 									</div>
 									<div id="followButton">
-										<div th:if="${flcheck == null}">
-											<div th:if="${id == '손님'}">
-									 			<div class="followBefore">
-													<button type="submit" id="fBtn" disabled>구독</button>
-												</div>
+										<div>
+											<div id="followBefore">
+												<button type="submit" id="flBtn" onclick="chfl()">구독</button>
 											</div>
-											<div th:unless="${id == '손님'}">
-												<div class="followBefore">
-													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
-														<button type="submit" id="flBtn">구독</button>
-													</form>
-												</div>
-											</div>
-										</div>
-										<div th:unless="${flcheck == null}">
-											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
-												<button id="bell">
+											<div id="following">
+												<button id="bell" onclick="chufl()">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
 												</button>
-											</form>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -413,11 +402,31 @@ body {
 	
 	<script th:inline="javascript">
 	
+	var id = [[${id}]];
+	var flcheck = [[${flcheck}]];
 	
-      	//동영상 뿌리기
-      	var list = [[${list2}]]
-      	//스크롤
-        var el = document.querySelector('#test');
+	
+
+	if(id == '손님') {
+		$("#following").hide();
+		$("#flBtn").attr("disabled",true);
+	} else {
+		if(flcheck == null) {
+			$("#following").hide();
+		} else {
+			$("#followBefore").hide();
+			$("#flBtn").attr("disabled",false);
+		}
+	}
+	
+
+	  
+	  
+	
+      //동영상 뿌리기
+      var list = [[${list2}]]
+   	  //스크롤
+      var el = document.querySelector('#test');
       	
       //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
       //10개 뿌리기
@@ -425,7 +434,7 @@ body {
           new Card(i);
       }
         	
-      //생성자함수
+      //접근시 기본 동영상 뿌리기
       function Card(){      
           mainElem = document.createElement('div');
           mainElem.classList.add('youtube_card');
@@ -447,6 +456,7 @@ body {
 		
       var writer = [[${writer}]];
       
+      //일반정렬 동영상 뿌리기
       function nomalvd(){
     	  $.ajax({
     		  url:"/vdnomal.do",
@@ -477,9 +487,12 @@ body {
     	  $('#test2').css('display','none');
     	  $('#test').css('display','');
     	  $('#test').html(videoHtml);
+    	  $('#vdbtn1').css({'background':'#000','color':'white'});
+    	  $('#vdbtn2').css({'background':'#ececec','color':'#000'});
     	}
       
-
+	 
+      //뷰 높은순 동영상 정렬
       function hotvd(){
     	  $.ajax({
 				url:"/vdhot.do",
@@ -510,9 +523,52 @@ body {
     	  $('#test').css('display','none');
     	  $('#test2').css('display','');
     	  $('#test2').html(videoHtml);
+    	  $('#vdbtn2').css({'background':'#000','color':'white'});
+    	  $('#vdbtn1').css({'background':'#ececec','color':'#000'});
     	}
-
-
+		
+      var id = [[${id}]];
+      var idx = [[${idx}]];
+      
+      //구독
+      function chfl(){
+    	  $.ajax({
+				url:"/following.do",
+				type:"get",
+				data:{"id":id,"idx":idx},
+				success: flfl,
+				error: function(){ alert('error') }
+			})
+      }
+      
+      function flfl(){
+    	  $("#followBefore").hide();
+    	  $("#following").show();
+      }
+      
+      
+      //구독 취소
+      function chufl(){
+    	  
+    	  if(confirm('구독 취소하시겠습니까?')){
+    		  $.ajax({
+  				url:"/deleteflw.do",
+  				type:"get",
+  				data:{"id":id,"idx":idx},
+  				success: uflufl,
+  				error: function(){ alert('error') }
+  				});
+    	  } else {
+    		  
+    	  };
+    	 
+      }
+      
+      
+      function uflufl(){
+   			$("#followBefore").show();
+   	  		$("#following").hide();
+      }
         
 	  //이동함수
 	  function move(idx){

@@ -85,7 +85,7 @@ body {
 }
 
 
-.followBefore {
+#followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -322,28 +322,17 @@ body {
 										</div>
 									</div>
 									<div id="followButton">
-										<div th:if="${flcheck == null}">
-											<div th:if="${id == '손님'}">
-									 			<div class="followBefore">
-													<button type="submit" id="fBtn" disabled>구독</button>
-												</div>
+										<div>
+											<div id="followBefore">
+												<button type="submit" id="flBtn" onclick="chfl()">구독</button>
 											</div>
-											<div th:unless="${id == '손님'}">
-												<div class="followBefore">
-													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
-														<button type="submit" id="flBtn">구독</button>
-													</form>
-												</div>
-											</div>
-										</div>
-										<div th:unless="${flcheck == null}">
-											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
-												<button id="bell">
+											<div id="following">
+												<button id="bell" onclick="chufl()">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
 												</button>
-											</form>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -417,5 +406,69 @@ body {
 			</div>
 		</div>
 	</div>
+	<script th:inline="javascript">
+	
+	var id = [[${id}]];
+	var flcheck = [[${flcheck}]];
+    var idx = [[${idx}]];
+	
+
+	if(id == '손님') {
+		$("#following").hide();
+		$("#flBtn").attr("disabled",true);
+	} else {
+		if(flcheck == null) {
+			$("#following").hide();
+		} else {
+			$("#followBefore").hide();
+			$("#flBtn").attr("disabled",false);
+		}
+	}
+	
+      
+      //구독
+      function chfl(){
+    	  $.ajax({
+				url:"/following.do",
+				type:"get",
+				data:{"id":id,"idx":idx},
+				success: flfl,
+				error: function(){ alert('error') }
+			})
+      }
+      
+      function flfl(){
+    	  $("#followBefore").hide();
+    	  $("#following").show();
+      }
+      
+      
+      //구독 취소
+      function chufl(){
+    	  
+    	  if(confirm('구독 취소하시겠습니까?')){
+    		  $.ajax({
+  				url:"/deleteflw.do",
+  				type:"get",
+  				data:{"id":id,"idx":idx},
+  				success: uflufl,
+  				error: function(){ alert('error') }
+  				});
+    	  } else {
+    		  
+    	  };
+    	 
+      }
+      
+      
+      function uflufl(){
+   			$("#followBefore").show();
+   	  		$("#following").hide();
+      }
+        
+		
+        
+        
+	</script>	
 </body>
 </html>

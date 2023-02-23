@@ -274,7 +274,7 @@ public class MyController {
 	// 준호
 	//채널 메인
 	@RequestMapping("/channel")
-	public String channel(@RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session, Object aaa) {
+	public String channel(@RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		//아이디를 알고있을때 해당 아이디의
 		
@@ -359,22 +359,18 @@ public class MyController {
 		return "channelIndex";
 	}
 
-	//follow 부분
-	@PostMapping("/following")
-	public String following(int idx, String id, RedirectAttributes redirectAttributes) {
+	//팔로우 기능
+	@GetMapping("/following.do")
+	public @ResponseBody void following(int idx, String id){
 		int idNum = flmapper.getId(id);
 		flmapper.followInsert(idNum, idx);
-		redirectAttributes.addAttribute("idx", idx);
-		return "redirect:/channel";
 	}
 	
-	//follow 삭제
-	@PostMapping("/deleteflw")
-	public String deleteflw(int idx, String id, RedirectAttributes redirectAttributes) {
+	//팔로우 기능
+	@GetMapping("/deleteflw.do")
+	public @ResponseBody void deleteflw(int idx, String id){
 		int idNum = flmapper.getId(id);
 		flmapper.followDelete(idNum, idx);
-		redirectAttributes.addAttribute("idx", idx);
-		return "redirect:/channel";
 	}
 	
 	//일반 동영상 뷰 정렬
@@ -390,7 +386,6 @@ public class MyController {
 		List<youtubeList> list2 = flmapper.selectHotVideo(writer);
 		return list2;
 	}
-	
 		
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
