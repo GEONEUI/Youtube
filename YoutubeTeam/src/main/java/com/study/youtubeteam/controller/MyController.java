@@ -74,7 +74,6 @@ public class MyController {
 
 		if (category == 1) {
 			list = mapper.selectAll();
-			System.out.println(list);
 		}
 		if (category == 2) {
 			list = mapper.selectCate(category);
@@ -160,9 +159,6 @@ public class MyController {
 				}
 			}
 		}
-
-		System.out.println(CookieID);
-		System.out.println(CookiePW);
 
 		model.addAttribute("CookieID", CookieID);
 		model.addAttribute("CookiePW", CookiePW);
@@ -379,6 +375,13 @@ public class MyController {
 		flmapper.followDelete(idNum, idx);
 		redirectAttributes.addAttribute("idx", idx);
 		return "redirect:/channel";
+	}
+	
+	//일반 동영상 뷰 정렬
+	@GetMapping("/vdnomal.do")
+	public @ResponseBody List<youtubeList> vdnomal(String writer){
+		List<youtubeList> list2 = flmapper.selectVideo(writer);
+		return list2;
 	}
 	
 	//채널 동영상 최다뷰 정렬

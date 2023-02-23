@@ -394,11 +394,14 @@ body {
 						<div id="videoBD1">
 							<div id="videoBD2">
 								<div id="videoBtn">
-									<button id="vdbtn1" onclick="">최근에 업로드된 동영상</button>
+									<button id="vdbtn1" onclick="nomalvd()">최근에 업로드된 동영상</button>
 									<button id="vdbtn2" onclick="hotvd()">인기 동영상</button>
 								</div>
 							</div>
-							<div class="youtube_main_item">
+							<div class="youtube_main_item" id="test">
+								
+	                        </div>
+	                        <div class="youtube_main_item" id="test2">
 								
 	                        </div>
 						</div>
@@ -414,7 +417,7 @@ body {
       	//동영상 뿌리기
       	var list = [[${list2}]]
       	//스크롤
-        var el = document.querySelector('.youtube_main_item');
+        var el = document.querySelector('#test');
       	
       //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
       //10개 뿌리기
@@ -441,37 +444,73 @@ body {
           
       };
       
-      function vdHotList(data){
-    	  $.each(data, function(idx, element){
-	          mainElem = document.createElement('div');
-	          mainElem.classList.add('youtube_card');
-	          mainElem.innerHTML = ""
-	                          +'<iframe width="100%" height="230" src="' + element.url + '" + title="' + element.subject +'"frameborder="0"></iframe>'
-	                          +'<div class="youtube_card_info">'
-	                          +'<a href="#"><img src="'+ element.thum +'" width="38"></a>'
-	                          +'<div class="youtube_card_title">'
-	                          +'<p class="text_subject">'+element.subject+'</p>'
-	                          +'<p class="text_writer">'+element.writer+'</p>'
-	                          +'<p class="text_reacount">조회수&nbsp;'+element.readcount+'&nbsp;회</p>'
-	                          +'</div>'
-	                          +'<div onclick="move(' + element.idx +')" class="before"></div>'
-	                          +'</div>';
-	       	  				el.appendChild(mainElem);
-    	  });
-      }
 		
-      var id = [[${id}]];
+      var writer = [[${writer}]];
       
+      function nomalvd(){
+    	  $.ajax({
+    		  url:"/vdnomal.do",
+    		  type:"get",
+			  data:{"writer":writer},
+			  success: vdNomalList,
+			  error: function(){ alert('error') }
+    	  })
+      }
+      
+      function vdNomalList(data){
+    	  var videoHtml ="";
+    	  $.each(data, function(idx, element){
+    		  	console.log(data);
+    		    videoHtml += '<div class="youtube_card">';
+    		    videoHtml += '<iframe width="100%" height="230" src="' + element.url + '" + title="' + element.subject +'"frameborder="0"></iframe>';
+    		    videoHtml += '<div class="youtube_card_info">';
+    		    videoHtml += '<a href="#"><img src="'+ element.thum +'" width="38"></a>';
+    		    videoHtml += '<div class="youtube_card_title">';
+    		    videoHtml += '<p class="text_subject">'+element.subject+'</p>';
+    		    videoHtml += '<p class="text_writer">'+element.writer+'</p>';
+    		    videoHtml += '<p class="text_reacount">조회수&nbsp;'+element.readcount+'&nbsp;회</p>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '<div onclick="move(' + element.idx +')" class="before"></div>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '</div>';
+    	  });
+    	  $('#test2').css('display','none');
+    	  $('#test').css('display','');
+    	  $('#test').html(videoHtml);
+    	}
+      
+
       function hotvd(){
     	  $.ajax({
 				url:"/vdhot.do",
 				type:"get",
+				data:{"writer":writer},
 				success: vdHotList,
-				data:{"id":id},
 				error: function(){ alert('error') }
 			})
       }
      
+      function vdHotList(data){
+    	  var videoHtml ="";
+    	  $.each(data, function(idx, element){
+    		  	console.log(data);
+    		    videoHtml += '<div class="youtube_card">';
+    		    videoHtml += '<iframe width="100%" height="230" src="' + element.url + '" + title="' + element.subject +'"frameborder="0"></iframe>';
+    		    videoHtml += '<div class="youtube_card_info">';
+    		    videoHtml += '<a href="#"><img src="'+ element.thum +'" width="38"></a>';
+    		    videoHtml += '<div class="youtube_card_title">';
+    		    videoHtml += '<p class="text_subject">'+element.subject+'</p>';
+    		    videoHtml += '<p class="text_writer">'+element.writer+'</p>';
+    		    videoHtml += '<p class="text_reacount">조회수&nbsp;'+element.readcount+'&nbsp;회</p>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '<div onclick="move(' + element.idx +')" class="before"></div>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '</div>';
+    	  });
+    	  $('#test').css('display','none');
+    	  $('#test2').css('display','');
+    	  $('#test2').html(videoHtml);
+    	}
 
 
         
