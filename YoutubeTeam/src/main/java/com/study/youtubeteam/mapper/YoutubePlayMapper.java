@@ -35,6 +35,11 @@ public interface YoutubePlayMapper {
 	public int view(int idx);
 	
 	// 채널 아이콘 클릭 시 이동
-	@Select("SELECT a2.idx FROM youtubeList a1, channelList a2 WHERE a1.writer = a2.writer AND a1.idx = #{idx}")
+	@Select("SELECT a2.idx FROM youtubeList a1, youtubeChannelList a2 WHERE a1.writer = a2.writer AND a1.idx = #{idx}")
 	public int chView(int idx);	
+	
+	// 구독자 수 표시
+	@Select("select ch_follow from youtubeChannelList where idx = #{idx}")
+	public String subscribe(int idx);
+	
 }
