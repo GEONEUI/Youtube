@@ -41,4 +41,5 @@ public interface YoutubePlayMapper {
 	// 구독자 수 표시
 	@Select("select ch_follow from youtubeChannelList where idx = #{idx}")
 	public String subscribe(int idx);
+	
 }

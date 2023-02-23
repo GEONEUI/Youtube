@@ -256,6 +256,7 @@ public class MyController {
 		int ss = playMapper.chView(idx);
 		String rjsdml = url + ss;
 		String subs = playMapper.subscribe(ss);
+		
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("id", id);
 		model.addAttribute("list", list);
