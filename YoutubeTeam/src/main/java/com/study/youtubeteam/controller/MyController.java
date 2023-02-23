@@ -1,25 +1,20 @@
 package com.study.youtubeteam.controller;
 
-import java.security.Principal;
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
-import java.util.Map;
+
+import javax.swing.filechooser.FileSystemView;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.youtubeteam.emtity.Chat;
@@ -38,7 +33,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import profile.Profile;
 
 @Controller
 public class MyController {
@@ -231,6 +225,27 @@ public class MyController {
 		List<Chat> clist = mapper.selectChat();
 		
 		return clist;
+	}
+	
+	//프로필 사진변경
+	@RequestMapping("/profileChange.do")
+	public String profileChange() {
+		return "/profileChange";
+	}
+	
+	@RequestMapping("/profileChangeProc.do")
+	public String upload(@RequestPart MultipartFile file, HttpServletRequest request) throws Exception {
+			String originalfileName = file.getOriginalFilename();
+			String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/upload";
+			String lastName = projectPath + "/"+ Math.random() + originalfileName;
+			
+			File dest = new File(lastName);
+			System.out.println(dest);
+			file.transferTo(dest);
+			
+			
+
+		return "redirect:/";
 	}
 	
 	

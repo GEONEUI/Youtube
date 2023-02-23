@@ -1,5 +1,4 @@
 
-
 <style>
         /* header */
         .sec_header{
@@ -165,8 +164,8 @@
 	                        <i class="fa-solid fa-list-check"></i>
 	                        <p>로그인</p>
                     	</div>
-	                    <div th:if="${id != '손님'}" class="login" style="cursor:pointer; background:#5c6bc0; color:#fff">
-	                    	 <i class="fa-light fa-user" style="color:#fff"></i>
+	                    <div th:if="${id != '손님'}" class="login" style="cursor:pointer; border:1px solid #ccc; color:#000">
+	                    	<img th:src="${userInfo.user_img}" width="25">&nbsp;
 	                        <p th:text="${userInfo.user_id}"></p></p>
 	                    </div>
                     </div>
@@ -186,6 +185,12 @@
         			<span th:text="${userInfo.user_email}"></span>
         		</p>
         	</div>
+        	<a href="/profileChange.do">
+	        	<div class="modal_membership dflex">
+	        		<i class="fa-light fa-won-sign"></i>
+	        		<p class="modal_title">프로필 사진 변경</p>
+	        	</div>
+        	</a>
         	<a href="#">
 	        	<div class="modal_make dflex">
 	        		<i class="fa-light fa-image-portrait"></i>
@@ -198,6 +203,7 @@
 	        		<p class="modal_title">구매 항목 및 멤버십</p>
 	        	</div>
         	</a>
+        	
         	<a href="#">
         	<div class="modal_logout dflex">
         		<i class="fa-light fa-arrow-right-from-bracket"></i>
