@@ -18,8 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.youtubeteam.emtity.Chat;
-import com.study.youtubeteam.emtity.youtubeChannel;
-import com.study.youtubeteam.emtity.youtubeIndex;
+import com.study.youtubeteam.emtity.youtubeChannelList;
+import com.study.youtubeteam.emtity.youtubeChannelIndex;
 import com.study.youtubeteam.emtity.youtubeList;
 import com.study.youtubeteam.emtity.youtubeMyComment;
 import com.study.youtubeteam.emtity.youtubeMyView;
@@ -69,7 +69,6 @@ public class MyController {
 
 		if (category == 1) {
 			list = mapper.selectAll();
-			System.out.println(list);
 		}
 		if (category == 2) {
 			list = mapper.selectCate(category);
@@ -156,9 +155,6 @@ public class MyController {
 				}
 			}
 		}
-
-		System.out.println(CookieID);
-		System.out.println(CookiePW);
 
 		model.addAttribute("CookieID", CookieID);
 		model.addAttribute("CookiePW", CookiePW);
@@ -298,7 +294,7 @@ public class MyController {
 	// 준호
 	//채널 메인
 	@RequestMapping("/channel")
-	public String channel(@RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session, Object aaa) {
+	public String channel(@RequestParam(value="search",required=false,defaultValue="") String search, int idx, Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		//아이디를 알고있을때 해당 아이디의
 		
@@ -307,7 +303,7 @@ public class MyController {
 				}
 				
 		youtubeUserList userInfo = mapper.getOneUser(id);
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		String writer = flmapper.getWriter(idx);
 		
 		List<youtubeList> list2 = flmapper.selectVideo(writer);
@@ -346,7 +342,7 @@ public class MyController {
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
 
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
 		model.addAttribute("id", id);
@@ -367,11 +363,11 @@ public class MyController {
 			id = "손님";
 		}
 		
-		List<youtubeIndex> idxInfo = flmapper.indexList(idx);
+		List<youtubeChannelIndex> idxInfo = flmapper.indexList(idx);
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
 
-		List<youtubeChannel> list = flmapper.channelIdx(idx);
+		List<youtubeChannelList> list = flmapper.channelIdx(idx);
 		int idNum = flmapper.getId(id);
 		Integer flcheck = flmapper.followCheck(idNum, idx);
 
@@ -383,21 +379,32 @@ public class MyController {
 		return "channelIndex";
 	}
 
-	//follow 부분
-	@PostMapping("/following")
-	public String following(int idx, String id, RedirectAttributes redirectAttributes) {
+	//팔로우 기능
+	@GetMapping("/following.do")
+	public @ResponseBody void following(int idx, String id){
 		int idNum = flmapper.getId(id);
 		flmapper.followInsert(idNum, idx);
-		redirectAttributes.addAttribute("idx", idx);
-		return "redirect:/channel";
 	}
 	
-	@PostMapping("/deleteflw")
-	public String deleteflw(int idx, String id, RedirectAttributes redirectAttributes) {
+	//팔로우 기능
+	@GetMapping("/deleteflw.do")
+	public @ResponseBody void deleteflw(int idx, String id){
 		int idNum = flmapper.getId(id);
 		flmapper.followDelete(idNum, idx);
-		redirectAttributes.addAttribute("idx", idx);
-		return "redirect:/channel";
+	}
+	
+	//일반 동영상 뷰 정렬
+	@GetMapping("/vdnomal.do")
+	public @ResponseBody List<youtubeList> vdnomal(String writer){
+		List<youtubeList> list2 = flmapper.selectVideo(writer);
+		return list2;
+	}
+	
+	//채널 동영상 최다뷰 정렬
+	@GetMapping("/vdhot.do")
+	public @ResponseBody List<youtubeList> vdhot(String writer){
+		List<youtubeList> list2 = flmapper.selectHotVideo(writer);
+		return list2;
 	}
 		
 	@RequestMapping("/mypage")
@@ -412,7 +419,6 @@ public class MyController {
 		
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
-		System.out.println(userInfo);
 
 		return "mypage";
 	}

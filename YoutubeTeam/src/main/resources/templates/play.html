@@ -255,10 +255,6 @@ body {
 	/* 		background: #ccc; */
 }
 
-.below {
-	
-}
-
 .below .below-Ch {
 	display: flex;
 	font-size: 16px;
@@ -341,7 +337,7 @@ body {
 	padding: 5px;
 	border-radius: 2em;
 	justify-content: center;
-	fone-weight: bold;
+	font-weight: bold;
 	font-size: 16px;
 	cursor: pointer;
 }
@@ -576,7 +572,7 @@ body {
 
 <body>
 
-	</div>
+
 	<div id="wrap">
 
 		<div th:replace="fragments/header"></div>
@@ -770,8 +766,34 @@ body {
 														<input type="submit" class="clear" value="작성">
 													</div>
 												</div>
-										</form>
-									</div>
+												</form>
+											</div>
+										</div>
+										
+										<div th:each="vo : ${pp}" class="view"> <!-- 댓글 보이는 부분 -->
+											<div><img th:src="${vo.user_img}" alt="이모티콘"></div>
+											<div>
+												<div class="view1">
+													<div th:text="${vo.nikname}"></div>
+													<div th:text="${#strings.setSplit(vo.nowdate,' ')[0]}"></div>
+												</div>
+												<p class="view2" th:text="${vo.content}"></p>
+												<div class="view3">
+													<div><i class="fa-regular fa-thumbs-up" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
+													<div><i class="fa-regular fa-thumbs-down" style="font-size: 20px; color: #000000; font-weight: 300;"></i></div>
+													<div style="font-size: 13px; margin-left:25px;">답글</div>
+												</div>
+											</div>
+										<a class="crud"><i class="fa-solid fa-ellipsis-vertical"></i></a> <!-- 수정, 삭제 hover -->
+										</div>
+										
+									</div> <!-- comment  -->
+									
+							</div> <!-- print  -->
+								
+								<div class="list">
+									
+
 								</div>
 
 								<div th:each="vo : ${pp}" class="view">
@@ -930,6 +952,7 @@ body {
 								+'<div style="font-size: 12px;">' +listt[i].writer +'</div>'
 								+'<div style="display: flex; font-size: 12px;">'
 									+'<div>조회수 '+ listt[i].readcount +'회</div> &nbsp&nbsp&nbsp'
+									+'<div>2년 전</div>'
 								+'</div>'
 								+'<div onclick="move(' + listt[i].idx +')" class="before"></div>'
 							+'</div>';
@@ -958,7 +981,7 @@ body {
 			if(current >= stop){ //함수 호출할때마다 1씩 증가시켜서 10번 되면 그만 호출하게끔 만듬
 				return null; //list 변수에 값 그만넣기
 			}else{
-				 list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div>조회수 '+ listt[current].readcount +'회 &nbsp&nbsp&nbsp</div></div><div onclick="move(' + listt[current].idx +')" class="before"></div>';
+				list = '<div class="center-bar"><div class="left-bar"><iframe width="100%" height="94px" src="' +listt[current].url +'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="right-bar"><div style="margin-bottom: 10px;">' +listt[current].subject +'</div><div style="font-size: 12px;">' +listt[current].writer +'</div><div style="display: flex; font-size: 12px;"><div>조회수 '+ listt[current].readcount +'회 &nbsp&nbsp&nbsp</div><div>2년 전</div></div><div onclick="move(' + listt[current].idx +')" class="before"></div>';
 			}
 			
 			return list;

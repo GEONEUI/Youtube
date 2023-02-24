@@ -85,7 +85,7 @@ body {
 }
 
 
-.followBefore {
+#followBefore {
 	cursor: pointer;
 	height: 43px;
 	width: 60px;
@@ -229,7 +229,7 @@ body {
 }
 
 
-.vdbtn1 {
+#vdbtn1 {
 	height: 30px;
 	width: 160px;
 	border-radius: 10px;
@@ -239,7 +239,7 @@ body {
 	cursor: pointer;
 }
 
-.vdbtn2 {
+#vdbtn2 {
 	height: 30px;
 	width: 100px;
 	border-radius: 10px;
@@ -347,28 +347,17 @@ body {
 										</div>
 									</div>
 									<div id="followButton">
-										<div th:if="${flcheck == null}">
-											<div th:if="${id == '손님'}">
-									 			<div class="followBefore">
-													<button type="submit" id="fBtn" disabled>구독</button>
-												</div>
+										<div>
+											<div id="followBefore">
+												<button type="submit" id="flBtn" onclick="chfl()">구독</button>
 											</div>
-											<div th:unless="${id == '손님'}">
-												<div class="followBefore">
-													<form th:action="@{/following((idx=${idx}), (id=${id}))}" method="post">
-														<button type="submit" id="flBtn">구독</button>
-													</form>
-												</div>
-											</div>
-										</div>
-										<div th:unless="${flcheck == null}">
-											<form id="following" th:action="@{/deleteflw((idx=${idx}), (id=${id}))}" method="post">
-												<button id="bell">
+											<div id="following">
+												<button id="bell" onclick="chufl()">
 													<i class="fa-regular fa-bell"></i>
 													<p id="followFont">구독중</p>
 													<i class="fa-solid fa-check"></i>
 												</button>
-											</form>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -394,11 +383,14 @@ body {
 						<div id="videoBD1">
 							<div id="videoBD2">
 								<div id="videoBtn">
-									<button class="vdbtn1" onclick="vdfun1()">최근에 업로드된 동영상</button>
-									<button class="vdbtn2" onclick="vdfun2()">인기 동영상</button>
+									<button id="vdbtn1" onclick="nomalvd()">최근에 업로드된 동영상</button>
+									<button id="vdbtn2" onclick="hotvd()">인기 동영상</button>
 								</div>
 							</div>
-							<div class="youtube_main_item">
+							<div class="youtube_main_item" id="test">
+								
+	                        </div>
+	                        <div class="youtube_main_item" id="test2">
 								
 	                        </div>
 						</div>
@@ -410,11 +402,31 @@ body {
 	
 	<script th:inline="javascript">
 	
+	var id = [[${id}]];
+	var flcheck = [[${flcheck}]];
 	
-      	//동영상 뿌리기
-      	var list = [[${list2}]]
-      	//스크롤
-        var el = document.querySelector('.youtube_main_item');
+	
+
+	if(id == '손님') {
+		$("#following").hide();
+		$("#flBtn").attr("disabled",true);
+	} else {
+		if(flcheck == null) {
+			$("#following").hide();
+		} else {
+			$("#followBefore").hide();
+			$("#flBtn").attr("disabled",false);
+		}
+	}
+	
+
+	  
+	  
+	
+      //동영상 뿌리기
+      var list = [[${list2}]]
+   	  //스크롤
+      var el = document.querySelector('#test');
       	
       //생성자함수 로드되었을때 뿌려져있는 리스트 만들기
       //10개 뿌리기
@@ -422,7 +434,7 @@ body {
           new Card(i);
       }
         	
-      //생성자함수
+      //접근시 기본 동영상 뿌리기
       function Card(){      
           mainElem = document.createElement('div');
           mainElem.classList.add('youtube_card');
@@ -433,13 +445,130 @@ body {
                           +'<div class="youtube_card_title">'
                           +'<p class="text_subject">'+list[i].subject+'</p>'
                           +'<p class="text_writer">'+list[i].writer+'</p>'
-                          +'<p class="text_reacount">조회수 1만회</p>'
+                          +'<p class="text_reacount">조회수&nbsp;'+list[i].readcount+'&nbsp;회</p>'
                           +'</div>'
                           +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
                           +'</div>';
-          el.appendChild(mainElem);
+       	  				el.appendChild(mainElem);
           
       };
+      
+		
+      var writer = [[${writer}]];
+      
+      //일반정렬 동영상 뿌리기
+      function nomalvd(){
+    	  $.ajax({
+    		  url:"/vdnomal.do",
+    		  type:"get",
+			  data:{"writer":writer},
+			  success: vdNomalList,
+			  error: function(){ alert('error') }
+    	  })
+      }
+      
+      function vdNomalList(data){
+    	  var videoHtml ="";
+    	  $.each(data, function(idx, element){
+    		  	console.log(data);
+    		    videoHtml += '<div class="youtube_card">';
+    		    videoHtml += '<iframe width="100%" height="230" src="' + element.url + '" + title="' + element.subject +'"frameborder="0"></iframe>';
+    		    videoHtml += '<div class="youtube_card_info">';
+    		    videoHtml += '<a href="#"><img src="'+ element.thum +'" width="38"></a>';
+    		    videoHtml += '<div class="youtube_card_title">';
+    		    videoHtml += '<p class="text_subject">'+element.subject+'</p>';
+    		    videoHtml += '<p class="text_writer">'+element.writer+'</p>';
+    		    videoHtml += '<p class="text_reacount">조회수&nbsp;'+element.readcount+'&nbsp;회</p>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '<div onclick="move(' + element.idx +')" class="before"></div>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '</div>';
+    	  });
+    	  $('#test2').css('display','none');
+    	  $('#test').css('display','');
+    	  $('#test').html(videoHtml);
+    	  $('#vdbtn1').css({'background':'#000','color':'white'});
+    	  $('#vdbtn2').css({'background':'#ececec','color':'#000'});
+    	}
+      
+	 
+      //뷰 높은순 동영상 정렬
+      function hotvd(){
+    	  $.ajax({
+				url:"/vdhot.do",
+				type:"get",
+				data:{"writer":writer},
+				success: vdHotList,
+				error: function(){ alert('error') }
+			})
+      }
+     
+      function vdHotList(data){
+    	  var videoHtml ="";
+    	  $.each(data, function(idx, element){
+    		  	console.log(data);
+    		    videoHtml += '<div class="youtube_card">';
+    		    videoHtml += '<iframe width="100%" height="230" src="' + element.url + '" + title="' + element.subject +'"frameborder="0"></iframe>';
+    		    videoHtml += '<div class="youtube_card_info">';
+    		    videoHtml += '<a href="#"><img src="'+ element.thum +'" width="38"></a>';
+    		    videoHtml += '<div class="youtube_card_title">';
+    		    videoHtml += '<p class="text_subject">'+element.subject+'</p>';
+    		    videoHtml += '<p class="text_writer">'+element.writer+'</p>';
+    		    videoHtml += '<p class="text_reacount">조회수&nbsp;'+element.readcount+'&nbsp;회</p>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '<div onclick="move(' + element.idx +')" class="before"></div>';
+    		    videoHtml += '</div>';
+    		    videoHtml += '</div>';
+    	  });
+    	  $('#test').css('display','none');
+    	  $('#test2').css('display','');
+    	  $('#test2').html(videoHtml);
+    	  $('#vdbtn2').css({'background':'#000','color':'white'});
+    	  $('#vdbtn1').css({'background':'#ececec','color':'#000'});
+    	}
+		
+      var id = [[${id}]];
+      var idx = [[${idx}]];
+      
+      //구독
+      function chfl(){
+    	  $.ajax({
+				url:"/following.do",
+				type:"get",
+				data:{"id":id,"idx":idx},
+				success: flfl,
+				error: function(){ alert('error') }
+			})
+      }
+      
+      function flfl(){
+    	  $("#followBefore").hide();
+    	  $("#following").show();
+      }
+      
+      
+      //구독 취소
+      function chufl(){
+    	  
+    	  if(confirm('구독 취소하시겠습니까?')){
+    		  $.ajax({
+  				url:"/deleteflw.do",
+  				type:"get",
+  				data:{"id":id,"idx":idx},
+  				success: uflufl,
+  				error: function(){ alert('error') }
+  				});
+    	  } else {
+    		  
+    	  };
+    	 
+      }
+      
+      
+      function uflufl(){
+   			$("#followBefore").show();
+   	  		$("#following").hide();
+      }
         
 	  //이동함수
 	  function move(idx){
