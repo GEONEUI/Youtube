@@ -393,7 +393,6 @@ public class MyController {
 		
 		youtubeUserList userInfo = mapper.getOneUser(id);
 		model.addAttribute("userInfo", userInfo);
-		System.out.println(userInfo);
 
 		return "mypage";
 	}
