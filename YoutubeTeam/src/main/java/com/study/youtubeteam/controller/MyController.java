@@ -432,6 +432,7 @@ public class MyController {
 			id = "손님";
 		}
 		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("id", id);
 		model.addAttribute("userInfo", userInfo);
 		return "videos";
 	}
@@ -479,6 +480,7 @@ public class MyController {
 			id = "손님";
 		}
 		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("id", id);
 		model.addAttribute("userInfo", userInfo);
 		return "subscribe";
 	}
