@@ -25,7 +25,7 @@ public interface YoutubeUpdateMapper {
 	public void insertView(@Param("idx") int idx, @Param("id") String id);
 
 	// 시청기록
-	@Select("SELECT a1.idx, a1.user_id, a2.subject, a2.writer, a2.readcount, a2.url FROM youtubeMyView a1, youtubeList a2 WHERE a1.idx = a2.idx AND a1.user_id = #{id}")
+	@Select("SELECT DISTINCT(a1.idx), a1.user_id, a2.subject, a2.writer, a2.readcount, a2.url FROM youtubeMyView a1, youtubeList a2 WHERE a1.idx = a2.idx AND a1.user_id = #{id}")
 	public List<youtubeMyView> selectMyView(String id);
 
 	// 시청기록 하나 삭제

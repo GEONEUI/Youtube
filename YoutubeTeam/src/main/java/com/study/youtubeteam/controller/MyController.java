@@ -249,40 +249,41 @@ public class MyController {
 	
 
 	// 예준-재생 메인 페이지
-	@RequestMapping("/play")
-	public String play(@RequestParam(value = "idx", required = false, defaultValue = "1") int idx, HttpSession session,
-			Model model) {
+	   @RequestMapping("/play")
+	   public String play(@RequestParam(value = "idx", required = false, defaultValue = "1") int idx, String sub,
+	         HttpSession session, Model model) {
 
-		String id = (String) session.getAttribute("id");
-		if (id == null) {
-			id = "손님";
-		}
+	      String id = (String) session.getAttribute("id");
+	      if (id == null) {
+	         id = "손님";
+	      }
 
-		String url = "/channel?idx=";
-		youtubeList list = playMapper.getOne(idx);
-		youtubeUserList userInfo = mapper.getOneUser(id);
-		List<youtubeList> elst = mapper.selectAll();
-		playMapper.getCount(idx);
-		List<youtubePlayComment> pp = playMapper.selectOne(idx);
-		
-		//유진 기록
-		profileMapper.insertView(idx, id);
-		
-		int rr = playMapper.view(idx);
-		int ss = playMapper.chView(idx);
-		String rjsdml = url + ss;
-		String subs = playMapper.subscribe(ss);
-		
-		model.addAttribute("userInfo", userInfo);
-		model.addAttribute("id", id);
-		model.addAttribute("list", list);
-		model.addAttribute("elst", elst);
-		model.addAttribute("pp", pp);
-		model.addAttribute("rr", rr);
-		model.addAttribute("ss", rjsdml);
-		return "play";
+	      String url = "/channel?idx=";
+	      youtubeList list = playMapper.getOne(idx);
+	      youtubeUserList userInfo = mapper.getOneUser(id);
+	      List<youtubeList> elst = mapper.selectAll();
+	      playMapper.getCount(idx);
+	      List<youtubePlayComment> pp = playMapper.selectOne(idx);
+	      
+	      //유진 기록
+	      profileMapper.insertView(idx, id);
+	      
+	      int rr = playMapper.view(idx);
+	      int ss = playMapper.chView(idx);
+	      String rjsdml = url + ss;
+	      String subs = playMapper.subscribe(ss);
+	      
+	      model.addAttribute("userInfo", userInfo);
+	      model.addAttribute("id", id);
+	      model.addAttribute("list", list);
+	      model.addAttribute("elst", elst);
+	      model.addAttribute("pp", pp);
+	      model.addAttribute("rr", rr);
+	      model.addAttribute("ss", rjsdml);
+	      model.addAttribute("subs", subs);
+	      return "play";
 
-	}
+	   }
 
 	// 예준-댓글 작성 메소드로 이동
 	@GetMapping("/write")
