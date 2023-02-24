@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header"></head>
+<style>
+body {
+	padding-top: 60px;
+}
+
+/* --------header-------- */
+#Banner {
+	height: 250px;
+	width: 100%;
+	position: relative;
+}
+
+#chbd {
+	display: flex;
+	
+	border-bottom: 1px solid #e1dddd;
+}
+
+#ChannelHeader {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	width: 100%;
+	height: 150px;
+}
+
+#logoHeader {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 53px;
+    padding-right: 140px;
+	height: 105px;
+	width: 100%;
+}
+
+.chbox {
+	display: flex;
+}
+
+.box {
+	display: flex;
+	top: 10px;
+	left: 30px;
+	margin: auto 20px;
+	width: 90px;
+	height: 90px;
+	border-radius: 70%;
+	overflow: hidden;
+}
+
+#img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.channelContent {
+	position: relative;
+	float: left;
+	top: 5px;
+}
+
+.channelName {
+	font-size: 30px;
+}
+
+/* 채널명 */
+.channelId {
+	color: grey;
+}
+
+/* 구독자 수 */
+.channelFollow {
+	color: grey;
+}
+
+/* 구독자 버튼 */
+#followButton {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+
+#followBefore {
+	cursor: pointer;
+	height: 43px;
+	width: 60px;
+	border-radius: 20px;
+	border: 0;
+	font-size: 15px;
+	background: black;
+	text-align: center;
+	line-height: 43px;
+}
+
+#fBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+#flBtn {
+	color: white;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+
+#following {
+	display: flex;
+	width: 122px;
+	height: 36px;
+	border-radius: 18px;
+	background: #ececec;
+	align-items: center;
+    justify-content: center;
+	
+}
+
+#bell {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+	cursor: pointer;
+}
+
+.fa-check:before {
+	font-size: 15px;
+}
+
+.fa-bell:before {
+	font-size: 15px;
+}
+
+#followFont{
+	font-size: 15px;
+	padding-left: 10px;
+    padding-right: 10px;
+}
+
+#chbtnAll {
+	display: flex;
+	padding-left: 57px;
+}
+
+.chbtn {
+	background-color: transparent;
+	height: 40px;
+	width: 120px;
+	font-size: 15px;
+	text-align: center;
+	line-height: 40px;
+}
+
+.scbtn {
+	display: flex;
+	justify-content: space-between;
+	width: 220px;
+}
+
+#sc1 {
+	display: flex;
+	align-items: center;
+	border: none;
+    background: transparent;
+    padding-left: 50px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+#sc2 {
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chIndex {
+	display:flex;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+#chbtnSC {
+	width: 190px;
+	height: 32px;
+	border: 0;
+}
+
+#scbtnAll {
+	display: flex;
+
+}
+
+.fa-magnifying-glass:before, .fa-search:before {
+    font-size: 19px;
+}
+
+/* ------content------- */
+#cnIndex1 {
+	display: flex;
+	justify-content: center;
+}
+
+#chIndex2 {
+	display: flex;
+	justify-content: space-between;
+	width: 1300px;
+	height: 100%;
+	padding-left: 21px;
+}
+
+.indexContent {
+	height: 170px;
+	width: 800px;
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #e1dddd;
+}
+
+#emailBtn {
+	height: 36px;
+	width: 121px;
+	border-radius: 10px;
+	border: none;
+}
+
+#cnIndex {
+	width: 400px;
+}
+
+.indexContent2 {
+	height: 50px;
+	width: 400px;
+	display: flex;
+	align-content: center;
+	flex-wrap: wrap;
+	border-bottom: 1px solid #e1dddd;
+}
+
+.cInfo {
+	white-space:pre;
+	font-size: 14px;
+}
+
+.infoFlex {
+	display: flex;
+}
+
+.infoPadding {
+	padding-left: 6px;
+}
+
+.infoText {
+	font-size: 14px;
+}
+
+</style>
+<body>
+	<div id="wrap">
+		<div th:replace="fragments/header"></div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<div class="youtube_main">
+						<div id="BannerLayout">
+							<img id="Banner" th:src='@{/image/banner}+${idx}+@{.png}'>
+						</div>
+						<div id="chbd">
+							<div id="ChannelHeader">
+								<div id="logoHeader">
+									<div class="chbox">
+										<div class="box">
+											<img id="img" th:src='@{/image/icon}+${idx}+@{.jpg}'>
+										</div>
+										<div id="chIndex">
+											<div>
+												<ul>
+													<li th:each="aa : ${list}">
+														<div class="channelName" th:text="${aa.ch_name}"></div>
+													</li>
+													<li th:each="bb : ${list}">
+														<div class="channelId" th:text="${bb.ch_id}"></div>
+													</li>
+													<li th:each="cc : ${list}">
+														<div class="channelFollow" th:text="${cc.ch_follow}"></div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div id="followButton">
+										<div>
+											<div id="followBefore">
+												<button type="submit" id="flBtn" onclick="chfl()">구독</button>
+											</div>
+											<div id="following">
+												<button id="bell" onclick="chufl()">
+													<i class="fa-regular fa-bell"></i>
+													<p id="followFont">구독중</p>
+													<i class="fa-solid fa-check"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="chbtnAll">
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">홈</a> 
+									<a class="chbtn" th:href="@{/channel(idx=${idx})}">동영상</a>
+									<a class="chbtn" th:href="@{/channelBoard(idx=${idx})}">커뮤니티</a>
+									<a class="chbtn" th:href="@{/channelIndex(idx=${idx})}">정보</a>
+									<div class="scbtn">
+										<form th:action="@{/channel(idx=${idx})}" method="post" id="scbtnAll">
+											<button type="submit" id="sc1">
+												<i class="fa-thin fa-magnifying-glass" id="chbtnIcon"></i>
+											</button>
+											<div id="sc2">
+												<input id="chbtnSC" type="text" placeholder="검색" name="search" th:value="${search}">
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div id="cnIndex1"  th:each="qq : ${idxInfo}">
+							<div id="chIndex2">
+								<div>
+									<div class="indexContent">
+										<div>
+											<div>설명</div>
+											<br/> 
+											<div class="cInfo" th:text="${qq.c_info}"></div>
+										</div>
+									</div>
+									<div class="indexContent">
+										<div>
+											<p>세부정보</p>
+											<br />
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>비즈니스 문의: </div> 
+													<div class="infoPadding" th:text="${qq.c_email}"></div>
+												</div>
+												<br />
+												<div class="infoFlex">
+													<div>위치: </div> 
+													<div class="infoPadding" th:text="${qq.c_location}"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="indexContent">
+										<div>
+											<div>링크</div> 
+											<br/>
+											<a class="infoText" th:href="@{${qq.c_link}}">[[${qq.c_link}]]</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div id="cnIndex">
+										<br />
+										<br />
+										<br />
+										<div class="indexContent2">
+											<p>통계</p>
+										</div>
+										<div class="indexContent2">
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>가입일: </div> 
+													<div class="infoPadding" th:text="${qq.c_day}"></div>
+												</div>
+											</div>
+										</div>
+										<div class="indexContent2">
+											<div class="infoText">
+												<div class="infoFlex">
+													<div>조회수: </div> 
+													<div class="infoPadding" th:text="${qq.c_view}"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:inline="javascript">
+	
+	var id = [[${id}]];
+	var flcheck = [[${flcheck}]];
+	var idx = [[${idx}]];
+	
+	
+
+	if(id == '손님') {
+		$("#following").hide();
+		$("#flBtn").attr("disabled",true);
+	} else {
+		if(flcheck == null) {
+			$("#following").hide();
+		} else {
+			$("#followBefore").hide();
+			$("#flBtn").attr("disabled",false);
+		}
+	}
+	
+      
+      //구독
+      function chfl(){
+    	  $.ajax({
+				url:"/following.do",
+				type:"get",
+				data:{"id":id,"idx":idx},
+				success: flfl,
+				error: function(){ alert('error') }
+			})
+      }
+      
+      function flfl(){
+    	  $("#followBefore").hide();
+    	  $("#following").show();
+      }
+      
+      
+      //구독 취소
+      function chufl(){
+    	  
+    	  if(confirm('구독 취소하시겠습니까?')){
+    		  $.ajax({
+  				url:"/deleteflw.do",
+  				type:"get",
+  				data:{"id":id,"idx":idx},
+  				success: uflufl,
+  				error: function(){ alert('error') }
+  				});
+    	  } else {
+    		  
+    	  };
+    	 
+      }
+      
+      
+      function uflufl(){
+   			$("#followBefore").show();
+   	  		$("#following").hide();
+      }
+        
+		
+        
+        
+	</script>
+</body>
+</html>

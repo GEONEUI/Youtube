@@ -226,7 +226,15 @@ public class MyController {
 	
 	//프로필 사진변경
 	@RequestMapping("/profileChange.do")
-	public String profileChange() {
+	public String profileChange(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("id");
+
+		if (id == null) {
+			id = "손님";
+		}
+		youtubeUserList userInfo = mapper.getOneUser(id);
+		model.addAttribute("userInfo", userInfo);
+		
 		return "/profileChange";
 	}
 	
@@ -234,15 +242,23 @@ public class MyController {
 	public String upload(@RequestPart MultipartFile file, HttpServletRequest request) throws Exception {
 			String originalfileName = file.getOriginalFilename();
 			String projectPath = System.getProperty("user.dir") + "/src/main/resources/static/upload";
-			String lastName = projectPath + "/"+ Math.random() + originalfileName;
+			String user_id = request.getParameter("user_id");
+			String random = ""+Math.random();
+			
+			String lastName = projectPath + "/"+ random + originalfileName;
+			String imgPath = "./upload/";
+			String realName = imgPath + random + originalfileName;
 			
 			File dest = new File(lastName);
 			System.out.println(dest);
 			file.transferTo(dest);
 			
 			
+			mapper.profileUpdate(realName, user_id);
+			
+			
 
-		return "redirect:/";
+		return "redirect:/mypage";
 	}
 	
 	

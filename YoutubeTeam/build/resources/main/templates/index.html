@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header"></head>
+<style>
+        /* youtube 수정 */
+        .youtube_card{
+            width: 23%;
+            margin:1%;
+            position:relative;
+        }
+        
+
+        .youtube_card iframe{
+            border-radius: 15px;
+        }
+
+        .youtube_card .youtube_card_info{
+            padding: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: felx-start;
+        }
+        
+         .youtube_card .before{
+         	width:100%;
+         	height:100%;
+         	position:absolute;
+         	top:0;
+         	left:0;
+         	z-index:1;
+         	cursor:pointer;
+         }
+
+        .youtube_card .youtube_card_info img{
+            margin-right: 10px;
+            border-radius:50px;
+        }
+        .youtube_card .youtube_card_info .youtube_card_title .text_subject{
+            font-size: 16px;
+		    margin-bottom: 10px;
+		    height: 42px;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		    white-space: normal;
+        }
+        .youtube_card .youtube_card_info .youtube_card_title .text_writer{
+            font-size: 14px;
+            color: #606060;
+        }
+
+        .youtube_card .youtube_card_info .youtube_card_title .text_reacount{
+            font-size: 14px;
+            color: #606060;
+        }
+        
+        
+        .youtube_main_gnb li:nth-child([[${category}]]){
+        	background:#0F0F0F;
+        	color:#fff;
+        }
+        
+
+        
+        
+</style>
+<body>
+    <div id="wrap">
+		<div th:replace="fragments/header"></div>
+        <div class="sec_layout">
+                <div class="inner">
+                    <div class="layout">
+                        <div class="aside">
+							<div th:replace="fragments/aside"></div>
+                        </div>
+                        <div class="youtube_main">
+							<ul class="youtube_main_gnb">
+								 <li onclick="location.href='/?category=1'" class="tabBtn btn_all">전체</li>
+								 <li onclick="location.href='/?category=2'" class="tabBtn btn_animal">예능</li>
+								 <li onclick="location.href='/?category=3'" class="tabBtn btn_game">동물</li>
+								 <li onclick="location.href='/?category=4'" class="tabBtn btn_alan">게임</li>
+								 <li onclick="location.href='/?category=5'" class="tabBtn btn_soccer">#Alan</li>
+								 <li onclick="location.href='/?category=6'" class="tabBtn btn_music">스포츠</li>
+								 <li onclick="location.href='/?category=7'" class="tabBtn btn_music">음악</li>
+								 <li onclick="location.href='/?category=8'">최근에 업로드된 동영상</li>
+                            </ul>
+                            <div class="youtube_main_item">
+								
+                            </div>
+                            
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <style>
+        	.chat{
+        		width:350px;
+        		position:fixed;
+        		bottom:50px;
+        		right:50px;
+        		background:#fff;
+        		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        		z-index:9999;
+        		border-radius:12px;
+        		border:1px solid #ccc;
+        	}
+        	.chat .chat_header{
+        		padding:25px 0;
+        		background:#f2f2f2;
+        	}
+        	
+        	.chat .chat_header p{
+        		text-align:center;
+        		
+        	}
+        	
+        	.chat .chat_body{
+        		height:300px;
+        		overflow-Y:scroll;
+        	}
+        	
+        	.chat .chat_body .chat_contents{
+        		display:flex;
+        		padding:3px;
+        		align-items:center;
+        	}
+        	
+        	
+        	.chat .chat_body .chat_contents p{
+        		font-size:14px;
+        	}
+        	
+        	.chat .chat_body .chat_contents figure{
+        		margin-right:15px;
+        	}
+        	
+        	.chat .chat_body .chat_contents figure figcaption{
+        		font-size:14px;
+        	}
+        	
+        	
+        	.chat .chat_footer{
+        		padding:10px 0;
+        	}
+        	
+        	.chat .chat_footer form{
+        		display:flex;
+        		
+        	}
+
+        	
+        </style>
+<!--         <div class="chat">
+        	<div class="chat_header">
+        		<p>실시간 채팅</p>
+        	</div>
+        	<div class="chat_body" id="chat_body">
+
+        	</div>
+        	<div class="chat_footer">
+        		<form id="frm">
+        			<textarea type="text" style="width:80%; padding:5px;" rows="3" name="chat_area"></textarea>
+        			<input type="hidden" name="chat_id" th:value="${userInfo.user_id}">
+        			<input type="hidden" name="chat_img" th:value="${userInfo.user_img}">
+        			<input type="button" onclick="chatInsert()" value="전송" style="width:20%;">
+        		</form>
+        	</div>
+        </div> -->
+        
+
+        <script th:inline="javascript">
+        
+		/* //실시간 채팅
+    	$(function(){
+    		selectChat();
+    	});
+		
+		
+		
+		//채팅뷰
+		function chatView(data){
+				var chatHtml;
+				$.each(data, function(idx, element){
+					chatHtml += '<div class="chat_contents">';
+				    chatHtml += '<figure>';
+				    chatHtml += '<img src="">프로필';
+				    chatHtml += '<figcaption>' + element.chat_id + '</figcaption>';
+				    chatHtml += '</figure>';
+				    chatHtml += '<p> :&nbsp&nbsp' + element.chat_area + '</p>';
+					chatHtml += '</div>';
+				});
+				$('#chat_body').html(chatHtml);
+				
+				
+				
+				
+		}
+		
+		
+		//채팅데이터 가져오기
+		function selectChat(){
+			$.ajax({
+				url:"/chat.do",
+				type:"get",
+				success:chatView,
+				error: function(){ alert('error') }
+			})
+		}
+		
+		
+		//채팅작성
+		function chatInsert(){
+			var info = $('#frm').serialize();
+			$.ajax({
+				url:"/chatInsert.do",
+				type:"get",
+				data:info,
+				success:selectChat,
+				error: function(){ alert('error')}
+			})
+		}
+        
+         */
+        	//데이터에서 가져온 모든 자료
+        	var list = [[${list}]];
+        	//무한스크롤
+        	var winTop;
+        	var onTop;
+        	var breakPoint = 80;
+        	var currentItem = 14;
+            var el = document.querySelector('.youtube_main_item');
+
+        
+        
+        	//생성자함수 로드되었을때 뿌려져있는 리스트 만들기
+                //15개만 뿌리기
+                for(var i=0; i<15 ;i++){
+                    new Card(i);
+                }
+                	
+          	      //생성자함수
+                    function Card(){      
+                        this.mainElem = document.createElement('div');
+                        this.mainElem.classList.add('youtube_card');
+                        this.mainElem.innerHTML = ""
+                                        +'<iframe width="100%" height="230" src="' + list[i].url + '" + title="' + list[i].subject +'"frameborder="0"></iframe>'
+                                        +'<div class="youtube_card_info">'
+                                        +'<a href="#"><img src="'+ list[i].thum +'" width="38"></a>'
+                                        +'<div class="youtube_card_title">'
+                                        +'<p class="text_subject">'+list[i].subject+'</p>'
+                                        +'<p class="text_writer">'+list[i].writer+'</p>'
+                                        +'<p class="text_reacount">'+ list[i].readcount +'회</p>'
+                                        +'</div>'
+                                        +'<div onclick="move(' + list[i].idx +')" class="before"></div>'
+                                        +'</div>';
+                        el.appendChild(this.mainElem);
+                        
+                    };
+                
+
+			//스크롤 할때 로딩되어 가져올 리스트 담을 함수
+        	function ylist(){
+        		currentItem ++ //현재 보일숫자
+        		
+        		var realList;
+        		
+        		if(currentItem >= breakPoint){ //조건만족시 그만뿌리기
+        			return null;
+        		}else{
+        			
+                	realList ='<div class="youtube_card">'
+						+'<iframe width="100%" height="230" src="' + list[currentItem].url + '" + title="' + list[currentItem].subject +'"frameborder="0"></iframe>'
+						+'<div class="youtube_card_info">'
+						+'<a href="#"><img src="'+ list[currentItem].thum +'" width="38"></a>'
+		    			+'<div class="youtube_card_title">'
+		    			+'<p class="text_subject">'+list[currentItem].subject+'</p>'
+		    			+'<p class="text_writer">'+list[currentItem].writer+'</p>'
+		    			+'<p class="text_reacount">조회수 1만회</p>'
+		    			+'</div>'
+		    			+'</div>'
+		    			+'<div onclick="move(' + list[currentItem].idx +')" class="before"></div>'
+		    			+'</div>';	
+
+		            	
+
+        		}
+        		
+        		return realList;
+
+        		
+        		
+        	}
+			
+			//이동함수
+			function move(idx){
+				location.href='/play?idx='+idx;
+			}
+			
+        	
+        	
+        	//브라우저가 특정 위치에 도달하면 데이터 로드 시작 - 시작지점을 변수로 나타냄
+        	function setProperty(){
+        		winTop = window.pageYOffset;
+        		onTop = document.body.offsetHeight - window.innerHeight;
+        	}
+        	        	
+        	
+        	//메인이 되는 함수 시작지점을 지정해서 데이터 1개씩 추가로 넣기
+      		function getMain(){
+      			setProperty();
+      			if(winTop+300 >= onTop){ //데이터 조건1
+      				var data = ylist();
+      				if(data == null){ //데이터 조건2
+      					return false;
+      				}else{
+                        var datainfo = document.createElement('div'); //뿌려질 데이터의 부모생성
+                        datainfo.innerHTML = data; //부모안에 데이터 넣기
+                        var listArray = Array.from(datainfo.children); //자식들 리스트 뽑기
+                        
+                        console.log(listArray);
+
+                        listArray.forEach((element)=>{ //뽑은자식들 한개씩 el 에 넣기
+                            el.appendChild(element);
+                        })
+      				}
+      			}
+      		}
+        	
+        	
+        	
+        	
+        	
+        	//스크롤 이벤트 - 이벤트시 겟메인 함수를 호출
+        	window.addEventListener('scroll', ()=>{
+        			getMain();		
+        	});
+     
+        	
+        	//초기화 함수 시작시 겟 메인 호출
+        	function init(){
+        		getMain();
+        	}
+        	
+        	init();
+        	
+        </script>
+
+
+
+			
+        
+
+        
+        
+</body>
+</html>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.study.youtubeteam.emtity.Chat;
 import com.study.youtubeteam.emtity.youtubeList;
@@ -49,6 +50,10 @@ public interface YoutubeListMapper {
 	//댓글내용 가져오기
 	@Select("select * from chat")
 	public List<Chat> selectChat();
+	
+	//프로필사진 변경
+	@Update("update youtubeUser set user_img = #{user_img} where user_id = #{user_id}")
+	public void profileUpdate(@Param("user_img") String user_img, @Param("user_id") String user_id);
 	
 }
 	

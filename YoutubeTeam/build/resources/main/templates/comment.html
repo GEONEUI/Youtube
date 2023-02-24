@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/front_header">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Document</title>
+</head>
+<style>
+* {
+	box-sizing: border-box
+}
+
+#wrap {
+	position: relative;
+}
+
+.main {
+	width: 69%;
+}
+
+.realmain {
+	text-align: center;
+}
+
+iframe {
+	padding-top: 30px;
+}
+
+h1 {
+	text-align: center;
+}
+
+h5 {
+	text-align: center;
+}
+
+.info_box {
+	width: 100%;
+}
+
+.sub {
+	font-size: 25px;
+}
+
+.omg {
+	padding: 33px 0;
+	text-align-last: center;
+}
+
+.omg div {
+	padding-top: 10px;
+	justify-content: center;
+}
+
+.pic {
+	display: flex;
+	text-align: center;
+}
+
+.pic img {
+	width: 50px;
+	height: 50px;
+}
+
+.count {
+	display: flex;
+	align-items: center;
+}
+
+.channel {
+	display: flex;
+}
+
+.later {
+	width: 1000px;
+}
+</style>
+<body>
+	<div id="wrap">
+		<div th:replace="fragments/header"></div>
+		<div class="sec_layout">
+			<div class="inner">
+				<div class="layout">
+					<div class="aside">
+						<div th:replace="fragments/aside"></div>
+					</div>
+					<section class="main">
+						<div class="youtube_main">
+							<div class="realmain">
+								<div class="info_box">
+									<h1>내 YouTube 댓글</h1>
+									<h5>YouTube에서 직접 댓글을 수정 또는 삭제하고 답장할 수 있습니다. 댓글을 삭제하면 완전히
+										삭제되기까지 몇 시간이 걸릴 수 있습니다. 자세히 알아보기</h5>
+								</div>
+								<div class="videoandtitle" th:each=" mycomm : ${mycomm}">
+									<iframe width="50%" height="500px" th:src="${mycomm.url}"
+										frameborder="0"></iframe>
+									<div th:each="aa:${mycomm}">
+										<div class="omg">
+											<div class="sub"></div>
+											<div class="channel"></div>
+											<div class="pic">
+												<img th:src="${aa.thum}">
+												<div th:text="${aa.writer}"></div>
+											</div>
+											<div class="count">
+												<div class="readcount">조회수</div>
+												<div class="video_readcount" th:text="${aa.readcount}"></div>
+												<div>회</div>
+											</div>
+											<div th:text="${aa.user_id}"></div>
+											<div th:text="${aa.nowdate}"></div>
+											<div th:text="${aa.content}"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

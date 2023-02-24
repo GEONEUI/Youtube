@@ -1,0 +1,72 @@
+ <style>
+        .sec_layout .layout .aside{
+            width: 11%;
+            height: 100vh;
+            position: fixed;
+            left: 0px;
+            top: 67px;
+            z-index: 99;
+            padding-left:10px;
+        }
+
+        .sec_layout .layout .aside .gnb{
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom:12px;
+        }
+        .sec_layout .layout .aside ul li a{display: flex; width: 100%; padding: 11px 12px; align-items: center; font-size: 14px;}
+        .sec_layout .layout .aside ul li.active a{background: #f2f2f2; border-radius: 12px;}
+        .sec_layout .layout .aside ul li a i{margin-right: 20px; font-size: 18px; width:22px;}
+       
+        .sec_layout .layout .aside ul li a:hover{
+            background: #f2f2f2;
+            border-radius: 12px;
+        }
+        
+        .sec_layout .layout .aside .gnb_channel p{
+        	padding: 11px 8px;
+        }
+        
+        
+        .sec_layout .layout .aside .gnb_channel figure{
+        	display:flex;
+        	align-items:center;
+        	width: 100%;
+   			padding: 11px 8px;
+   			font-size: 14px;
+   			cursor:pointer;
+        }
+        
+        .sec_layout .layout .aside .gnb_channel figure img{
+        	margin-right: 20px;
+        }
+        
+        .sec_layout .layout .aside .gnb_channel figure:hover{
+        	background: #f2f2f2;
+    		border-radius: 12px;
+        }
+        
+/*         .sec_layout .layout .aside .gnb_channel li.active a{background: #f2f2f2; border-radius: 12px;} */
+        
+       
+ </style>
+						   
+						   
+<ul class="gnb">
+   <li class="active"><a href="/"><i class="fa-light fa-house"></i><span>홈</span></a></li>   
+   <li><a href="/videos"><i class="fa-regular fa-expand"></i><span>구독</span></a></li>
+   <li><a href="/subscribe"><i class="fa-light fa-bookmark"></i><span>보관함</span></a></li>
+   <li><a href="/comment"><i class="fa-light fa-pen"></i><span>내댓글</span></a></li>
+   <li><a href="/watchtime"><i class="fa-light fa-eye"></i><span>시청기록</span></a></li>
+ </ul>
+ <ul class="gnb_channel">
+ 	<p>채널</p>
+   <figure onclick="location.href='channel?idx=10'"><img src="./image/icon10.jpg" width="27"><span>피식대학</span></a></li></figure>   
+   <figure onclick="location.href='channel?idx=9'"><img src="./image/icon9.jpg" width="27"><span>침착맨</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=8'"><img src="./image/icon8.jpg" width="27"><span>페이커</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=7'"><img src="./image/icon7.jpg" width="27"><span>애니멀봐</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=6'"><img src="./image/icon6.jpg" width="27"><span>Alan</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=5'"><img src="./image/icon5.jpg" width="27"><span>GCL지씨엘</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=4'"><img src="./image/icon4.jpg" width="27"><span>딩고뮤직</span></a></li></figure>
+   <figure onclick="location.href='channel?idx=3'"><img src="./image/icon3.jpg" width="27"><span>mtit</span></a></li></figure>
+ </ul>
