@@ -23,8 +23,12 @@ GIF Images
 
 ## 배포환경
 
-<p>Cafe24 호스팅</p>
-<p>Tomcat 8.5.x / JSP 2.3 / Servlet 3.0 / JDK 8 / MariaDB 10.1.x UTF-8</p>
+<div>
+    <ul>
+        <li>Cafe24 호스팅</li>
+        <li>Tomcat 8.5.x / JSP 2.3 / Servlet 3.0 / JDK 8 / MariaDB 10.1.x UTF-8 </li>
+    </ul>
+</div>
 
 <br>
 
