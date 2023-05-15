@@ -43,40 +43,41 @@ GIF Images
 ## 구현 기능
 <br>
 <div>
-     <strong>계정 관련</strong>
-     <p>로그인</p>
-     <p>로그아웃</p>
-     <p>회원가입</p>
-</div>
-
-<br>
-
-<div>
-     <strong>메인 페이지</strong>
-     <p>카테고리별 데이터 출력</p>
-     <p>무한스크롤</p>
-     <p>검색 기능</p>
-     <p>남긴 댓글</p>
-     <p>시청 목록</p>
-</div>
-
-<br>
-
-<div>
-     <strong>게시글 상세 페이지</strong>
-     <p>댓글 기능</p>
-     <p>side bar 목록 무한스크롤</p>
-     <p>side bar toggle</p>
-</div>
-
-<br>
-
-<div>
-     <strong>채널 상세 페이지</strong>
-     <p>카테고리</p>
-     <p>구독 기능</p>
-     <p>검색 기능</p>
-     <p>정렬기능(최신순, 인기순)</p>
+    <ul>
+        <li>
+            <strong>계정 관련</strong>
+            <ul>
+                <li>로그인,로그아웃,회원가입</li>
+            </ul>
+        </li><br>
+        <li>
+            <strong>메인 페이지</strong>
+            <ul>
+                <li>카테고리별 데이터 출력</li>
+                <li>무한스크롤</li>
+                <li>검색 기능</li>
+                <li>남긴 댓글</li>
+                <li>시청 목록</li>
+            </ul>
+        </li><br>
+        <li>
+            <strong>게시글 상세 페이지</strong>
+            <ul>
+                <li>댓글 기능</li>
+                <li>side bar 목록 무한스크롤</li>
+                <li>side bar toggle</li>
+            </ul>
+        </li><br>
+        <li>
+            <strong>채널 상세 페이지</strong>
+            <ul>
+                <li>카테고리</li>
+                <li>구독 기능</li>
+                <li>검색 기능</li>
+                <li>정렬기능(최신순, 인기순)</li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
 
