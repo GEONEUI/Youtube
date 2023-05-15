@@ -39,14 +39,19 @@ GIF Images
 
 <br>
 
-<div style="margin-bottom: 15px">
+
+## 구현 기능
+<br>
+<div>
      <strong>계정 관련</strong>
      <p>로그인</p>
      <p>로그아웃</p>
      <p>회원가입</p>
 </div>
 
-<div style="margin-bottom: 15px">
+<br>
+
+<div>
      <strong>메인 페이지</strong>
      <p>카테고리별 데이터 출력</p>
      <p>무한스크롤</p>
@@ -55,14 +60,18 @@ GIF Images
      <p>시청 목록</p>
 </div>
 
-<div style="margin-bottom: 15px">
+<br>
+
+<div>
      <strong>게시글 상세 페이지</strong>
      <p>댓글 기능</p>
      <p>side bar 목록 무한스크롤</p>
      <p>side bar toggle</p>
 </div>
 
-<div style="margin-bottom: 15px">
+<br>
+
+<div>
      <strong>채널 상세 페이지</strong>
      <p>카테고리</p>
      <p>구독 기능</p>
