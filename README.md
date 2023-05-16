@@ -1,4 +1,6 @@
-# Youtube - youtube 클론 코딩을 통한 트렌디한 웹페이지 학습 진행
+# [http://dbrjsdml.cafe24.com/Youtube]
+
+<p>인기있는 웹 플랫폼 - 유투브 클론 코딩</p>
 
 # 구성원
 
@@ -7,18 +9,19 @@
 * 팀원 김예준 : 게시글(영상) 상세 페이지
 * 팀원 김유진 : 시청기록
 
-목차
+<br>
 
-## 프로젝트 소개
-
-<p align="justify">
-현대의 웹 개발은 빠르게 변화하고 혁신을 이루며, 매 순간 새로운 트렌드와 아이디어가 등장합니다. 이에 따라 이전과는 다른 혁신적인 웹 페이지들이 쏟아져나와 사람들의 시선을 사로잡고 있습니다. 이러한 트렌디한 웹 페이지들을 클론 코딩을 통해 익히고 실력을 향상시키는 것은 현대 웹 개발자로서 필수적인 도전입니다.
-</p>
+# 기획의도
+<ul>
+    <li style="list-style: none;">
+        현대 웹 개발은 지속적으로 변화하고 혁신을 이루며, 새로운 아이디어와 트렌드가 끊임없이 등장합니다. 이에 따라 웹 페이지들도 이전과는 다른 혁신적인 스타일과 디자인으로 사람들의 관심을 끌고 있습니다. 이러한 웹 페이지를 클론 코딩을 통해 배우고 스킬을 향상시키는
+것은 현대 웹 개발자로서 꼭 필요한 도전이라고 생각합니다.
+    </li>
+</ul>
 
 <br>
 
-## 배포환경
-
+# 배포환경
 <div>
     <ul>
         <li>Cafe24 호스팅</li>
@@ -28,16 +31,18 @@
 
 <br>
 
+# 기술 스택
 
-<br>
-
-## 기술 스택
+<div>
 
 | JavaScript |    JAVA    |  Spring Boot |  Thymeleaf   | MariaDB    | Mybatis    |
 | :--------: | :--------: | :------:     | :-----:      | :-----:    | :-----:    |
 |   ![js]    |   ![java]  | ![Boot]      | ![Thymeleaf] | ![MariaDB] | ![Mybatis] |
+    
+</div>
 
 <br>
+
 <div>
     <ul>
         <li>JavaScript</li>
@@ -49,8 +54,9 @@
     </ul>
 </div>
 
-## 구현 기능
 <br>
+
+# 기능 구현
 <div>
     <ul>
         <li>
@@ -65,7 +71,7 @@
                 <li>카테고리별 데이터 출력</li>
                 <li>무한스크롤</li>
                 <li>검색 기능</li>
-                <li>남긴 댓글</li>
+                <li>댓글 </li>
                 <li>시청 목록</li>
             </ul>
         </li><br>
@@ -89,10 +95,9 @@
     </ul>
 </div>
 
-
 <br>
 
-## 프로젝트 이미지
+# 이미지
 
 <div>
     <table>
@@ -107,22 +112,22 @@
             </tr>
             <tr>
                 <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/main/main.png" width="100%">
                 </td>
                 <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/user/login.png" width="100%">
                 </td>
             </tr>
             <tr>
-                <td align="center">남긴 댓글</td>
+                <td align="center">댓글 </td>
                 <td align="center">시청 목록</td>
             </tr>
             <tr>
                 <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/detailPage/comment.png" width="100%">
                 </td>
                 <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/main/viewList.png" width="100%">
                 </td>
             </tr>
             <tr>
@@ -131,22 +136,22 @@
             </tr>
             <tr>
                 <td>
-                    <img src="" width="100%">
+                   <img src="http://dbrjsdml.cafe24.com/Youtube/photo/detailPage/detail.png" width="100%">
                 </td>
                 <td>
-                    <img src="" width="100%">
+                     <img src="http://dbrjsdml.cafe24.com/Youtube/photo/detailPage/sideBarToggle.png" width="100%">
                 </td>
             </tr>
                         <tr>
                 <td align="center">채널 상세페이지</td>
-                <td align="center">정렬 기능(최신순, 인기순)</td>
+                <td align="center">검색 및 정렬 기능(최신순, 인기순)</td>
             </tr>
             <tr>
                 <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/channelPage/channel.png" width="100%">
                 </td>
                  <td>
-                    <img src="" width="100%">
+                    <img src="http://dbrjsdml.cafe24.com/Youtube/photo/main/search.png" width="100%">
                 </td>
             </tr>
         </tbody>
@@ -161,6 +166,9 @@
 <br>
 
 
+
+
+     
 [js]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008394/noticon/ohybolu4ensol1gzqas1.png
 [java]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913897/noticon/xbvewg1m3azbpnrzck1k.png
 [Boot]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008187/noticon/m4oad4rbf65fjszx0did.png
