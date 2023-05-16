@@ -1,5 +1,12 @@
 # Youtube - youtube 클론 코딩을 통한 트렌디한 웹페이지 학습 진행
 
+# 구성원
+
+* 팀장 유건의 : 전체적인 프론트 디자인, 메인 페이지, 로그인, 회원가입
+* 팀원 김준호 : 채널 상세 페이지
+* 팀원 김예준 : 게시글(영상) 상세 페이지
+* 팀원 김유진 : 시청기록
+
 <p align="center">
   <br>
   <img src="./images/common/logo-sample.jpeg">
@@ -37,12 +44,21 @@ GIF Images
 
 ## 기술 스택
 
-| JavaScript |    JAVA    |  Spring Boot |  Thymeleaf | MariaDB | Mybatis |
-| :--------: | :--------: | :------:     | :-----:    | :-----: | :-----: |
-|   ![js]    |   ![ts]    | ![react]     | ![node]    | ![node] | ![node] |
+| JavaScript |    JAVA    |  Spring Boot |  Thymeleaf   | MariaDB    | Mybatis    |
+| :--------: | :--------: | :------:     | :-----:      | :-----:    | :-----:    |
+|   ![js]    |   ![java]  | ![Boot]      | ![Thymeleaf] | ![MariaDB] | ![Mybatis] |
 
 <br>
-
+<div>
+    <ul>
+        <li>JavaScript</li>
+        <li>JAVA</li>
+        <li>Spring Boot 3.0.2</li>
+        <li>Thymeleaf</li>
+        <li>MariaDB 2.7.4</li>
+        <li>Mybatis 2.3.0</li>
+    </ul>
+</div>
 
 ## 구현 기능
 <br>
@@ -89,16 +105,76 @@ GIF Images
 
 ## 프로젝트 이미지
 
-<p align="justify">
-
-</p>
+<div>
+    <table>
+        <tbody>
+            <tr>
+                <td align="center">
+                    메인페이지
+                </td>
+                <td align="center">
+                    회원관련
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="" width="100%">
+                </td>
+                <td>
+                    <img src="" width="100%">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">남긴 댓글</td>
+                <td align="center">시청 목록</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="" width="100%">
+                </td>
+                <td>
+                    <img src="" width="100%">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">게시글(영상) 상세 페이지</td>
+                <td align="center">side bar toggle</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="" width="100%">
+                </td>
+                <td>
+                    <img src="" width="100%">
+                </td>
+            </tr>
+                        <tr>
+                <td align="center">채널 상세페이지</td>
+                <td align="center">정렬 기능(최신순, 인기순)</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="" width="100%">
+                </td>
+                 <td>
+                    <img src="" width="100%">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <br>
 
-## 라이센스
+# 참고사이트
+   * Youtube : https://www.youtube.com/
+<br>
+<br>
 
 
-[js]: /images/stack/javascript.svg
-[ts]: /images/stack/typescript.svg
-[react]: /images/stack/react.svg
-[node]: /images/stack/node.svg
+[js]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008394/noticon/ohybolu4ensol1gzqas1.png
+[java]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913897/noticon/xbvewg1m3azbpnrzck1k.png
+[Boot]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008187/noticon/m4oad4rbf65fjszx0did.png
+[Thymeleaf]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1592435734/noticon/ovcserf615eo3sbcbv8b.png
+[MariaDB]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566920129/noticon/r9gn1ilil1r8ar4w59dj.png
+[Mybatis]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1592435324/noticon/judba41udt3wtirdj4ek.png
