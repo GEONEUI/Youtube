@@ -459,7 +459,7 @@ body {
       //일반정렬 동영상 뿌리기
       function nomalvd(){
     	  $.ajax({
-    		  url:"/vdnomal.do",
+    		  url:"vdnomal.do",
     		  type:"get",
 			  data:{"writer":writer},
 			  success: vdNomalList,
@@ -495,7 +495,7 @@ body {
       //뷰 높은순 동영상 정렬
       function hotvd(){
     	  $.ajax({
-				url:"/vdhot.do",
+				url:"vdhot.do",
 				type:"get",
 				data:{"writer":writer},
 				success: vdHotList,
@@ -533,7 +533,7 @@ body {
       //구독
       function chfl(){
     	  $.ajax({
-				url:"/following.do",
+				url:"following.do",
 				type:"get",
 				data:{"id":id,"idx":idx},
 				success: flfl,
@@ -552,7 +552,7 @@ body {
     	  
     	  if(confirm('구독 취소하시겠습니까?')){
     		  $.ajax({
-  				url:"/deleteflw.do",
+  				url:"deleteflw.do",
   				type:"get",
   				data:{"id":id,"idx":idx},
   				success: uflufl,
@@ -572,7 +572,7 @@ body {
         
 	  //이동함수
 	  function move(idx){
-	  	location.href='/play?idx='+idx;
+	  	location.href='play?idx='+idx;
 	  }
 		
         
