@@ -162,11 +162,17 @@
 
 # 참고사이트
    * Youtube : https://www.youtube.com/
+
+
+
+<br>
+
+# 추가 업데이트 계획
+    * 05.17 프로필 이미지 변경기능 추가예정
+    * 05.17 보관함기능 현재 수정중
+
 <br>
 <br>
-
-
-
 
      
 [js]: https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567008394/noticon/ohybolu4ensol1gzqas1.png
