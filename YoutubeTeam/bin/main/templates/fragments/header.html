@@ -185,13 +185,13 @@
         			<span th:text="${userInfo.user_email}"></span>
         		</p>
         	</div>
-        	<a href="/mypage">
+        	<a href="mypage">
 	        	<div class="modal_make dflex">
 	        		<i class="fa-light fa-image-portrait"></i>
 	        		<p class="modal_title">내정보 관리</p>
 	        	</div>
         	</a>
-        	<a href="#">
+        	<a href="#" onclick="goUpdate();">
 	        	<div class="modal_membership dflex">
 	        		<i class="fa-light fa-won-sign"></i>
 	        		<p class="modal_title">구매 항목 및 멤버십</p>
@@ -201,13 +201,18 @@
         	<a href="#">
         	<div class="modal_logout dflex">
         		<i class="fa-light fa-arrow-right-from-bracket"></i>
-        		<p class="modal_title" onclick="location.href='/logoutProc.do'">로그아웃</p>
+        		<p class="modal_title" onclick="location.href='logoutProc.do'">로그아웃</p>
         	</div>
         	</a>
         </div>
         
         
 <script th:inline="javascript">
+
+	function goUpdate(){
+		alert('서비스 준비중 입니다.');
+	}
+
 	var flag = [[${id}]];
 	
 	if(flag == "손님"){
