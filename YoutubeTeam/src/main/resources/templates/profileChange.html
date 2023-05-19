@@ -122,7 +122,7 @@ input[type="submit"] {
 									</tr>
 									<tr height="35">
 										<input type="hidden" name="user_id" th:value="${userInfo.user_id}">
-										<td><input type="submit"></td>
+										<td><input type="submit" value="프로필변경"></td>
 									</tr>
 								</table>
 							</form>
@@ -132,5 +132,14 @@ input[type="submit"] {
 			</div>
 		</div>
 	</div>
+	<script th:inline="javascript">
+		
+		var msg = /*[[${msg}]]*/ null;
+		
+		if(msg){
+			alert(msg);
+		}
+	
+	</script>
 </body>
 </html>

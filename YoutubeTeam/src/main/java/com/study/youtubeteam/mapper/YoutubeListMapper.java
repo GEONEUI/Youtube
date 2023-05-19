@@ -24,7 +24,7 @@ public interface YoutubeListMapper {
 	List<youtubeList> selectCate(int category);
 	
 	//회원가입
-	@Insert("insert into youtubeUser values(null, #{user_id}, #{user_pw}, #{user_nikname}, #{user_email}, #{user_img})")
+	@Insert("insert into youtubeUser(user_idx, user_id, user_pw, user_nikname, user_email) values(null, #{user_id}, #{user_pw}, #{user_nikname}, #{user_email})")
 	public void userInsert(youtubeUserList vo);
 	
 	//로그인

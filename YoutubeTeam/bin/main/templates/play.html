@@ -296,7 +296,6 @@
     }
 
     .comment .comment-Ch.active {
-        width: 1200px;
         display: flex;
         justify-content: flex-end;
     }
@@ -306,7 +305,6 @@
     }
 
     .comment .comment-live {
-        width: 1200px;
         border: none;
         margin-bottom: 6px;
         outline: none;
@@ -569,6 +567,16 @@
     .sec_layout .layout .aside {
         transition: 0.25s;
     }
+    
+    #frm{
+    	width:100%;
+    }
+    
+    input[type="text"]{
+    	width:100%;
+    } 
+    
+ 
 </style>
 
 <body>
@@ -658,7 +666,7 @@
                                 <li class="title" th:text="${list.subject}"></li>
                                 <div class="subscribe">
                                     <div class="subscribeCh">
-                                        <a th:href="${ss}"> <img class="sutak" th:src="${list.thum}" alt="이모티콘"></a>
+                                        <a th:href="${home}"> <img class="sutak" th:src="${list.thum}" alt="이모티콘"></a>
                                         <div class="jtbc">
                                             <a th:text="${list.writer}"></a>
                                             <li th:text="${subs}"></li>
@@ -713,9 +721,9 @@
                                     </div>
                                     <div th:if="${id != '손님'}" class="comment">
                                         <div>
-                                            <a href="#"><img th:src="${userInfo.user_img}" alt="이모티콘" width="42"></a>
+                                            <a href="#"><img th:src="@{/resources/images/__${userInfo.user_img}__}" alt="이모티콘" width="42"></a>
                                         </div>
-                                        <form action="/write" method="get" style="margin-left: 15px;">
+                                        <form id="frm" action="write" method="get" style="margin-left: 15px;">
                                             <div>
                                                 <input type="hidden" name="idx" th:value="${list.idx}">
                                                 <input type="hidden" name="user_id" th:value="${userInfo.user_id}"> <input type="text" name="content" class="comment-live" placeholder="댓글 추가..." id="comment"> <input type="hidden" name="nikname" th:value="${userInfo.user_nikname}"> <input type="hidden" name="user_img" th:value="${userInfo.user_img}">
@@ -748,7 +756,7 @@
                                     <div th:each="vo : ${pp}" class="view">
                                         <!-- 댓글 보이는 부분 -->
                                         <div>
-                                            <img th:src="${vo.user_img}" alt="이모티콘">
+                                            <img th:src="@{/resources/images/__${userInfo.user_img}__}" alt="이모티콘">
                                         </div>
                                         <div>
                                             <div class="view1">
@@ -884,7 +892,7 @@
       var ismove = false;
       var stop = 40; //데이터 뿌릴 횟수
       var current = 10; //10개부터 무한스크롤 시작하는거
-      var listt = [[${elst}]];
+      var listt = /*[[${elst}]]*/ '';
    
       // 스크롤 전에 9개 미리 뿌리기
       // 생성자 함수 대문자로 써야함

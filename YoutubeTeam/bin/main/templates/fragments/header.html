@@ -165,8 +165,13 @@
 	                        <p>로그인</p>
                     	</div>
 	                    <div th:if="${id != '손님'}" class="login" style="cursor:pointer; border:1px solid #ccc; color:#000">
-	                    	<img th:src="${userInfo.user_img}" width="30">&nbsp;
-	                        <p th:text="${userInfo.user_id}"></p></p>
+	                    	<span th:if="${userInfo.user_img eq ''}">
+	                    		<img th:src="@{/resources/images/default.png}" width="30">&nbsp;	
+	                    	</span>
+	                    	<span th:if="${userInfo.user_img ne ''}">
+	                    		<img th:src="@{/resources/images/__${userInfo.user_img}__}" width="30">&nbsp;	
+	                    	</span>
+	                        <p th:text="${userInfo.user_id}"></p>
 	                    </div>
                     </div>
                     

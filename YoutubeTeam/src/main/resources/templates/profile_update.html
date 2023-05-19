@@ -67,9 +67,12 @@
 	width: 85%;
 	height: 100%;
 	padding-left: 15px;
-	background: #f7f5f5; border : none;
 	border-radius: 5px;
-	border: none;
+}
+
+input[readonly="readonly"]{
+	background: #f7f5f5; 
+	border:none;
 }
 
 .profile_left {
@@ -84,14 +87,37 @@
     height: 38px;
 }
 
-input[type="submit"] {
-	width: 30%;
+#frmBtn{
+	width: 20%;
 	background: #ed4444;
 	height: 50px;
 	border: none;
 	border-radius: 5px;
 	color: #fff;
 	cursor: pointer;
+	font-size:15px;
+}
+
+input[type="submit"] {
+	width: 20%;
+	background: #ed4444;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size:15px;
+}
+
+.back{
+	width: 20%;
+	background: #666;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size:15px;
 }
 </style>
 <body>
@@ -106,36 +132,46 @@ input[type="submit"] {
 					<div class="youtube_main">
 						<div class="profile_22">
 							<figure class="profile_left">
-								<a href="profileChange.do"><img th:src="${userInfo.user_img}" width="150"></a>
+								<a th:if="${userInfo.user_img eq ''}" href="profileChange.do">
+									<img th:src="@{/resources/images/default.png}" width="130">
+								</a>
+								<a th:if="${userInfo.user_img ne ''}" href="profileChange.do">
+									<img th:src="@{/resources/images/__${userInfo.user_img}__}" width="130">
+								</a>
 								<img class="prof_img" src="images/camera.jpg">
 							</figure>
 							<div class="profile_right">
-								<form action="profile_updateProc.do" method="post">
+								<form id="frm">
 									<div class="title">
 										<h2>내정보변경</h2>
 										<p>상세한 계정정보를 관리할 수 있어요.</p>
 									</div>
 									<div class="line">
 										<p>아이디</p>
-										<input type="text" name="user_id" th:value="${userInfo.user_id}" readonly="readonly">
+										<input id="user_id" type="text" name="user_id" th:value="${userInfo.user_id}" readonly="readonly">
 									</div>
 									<div class="line">
 										<p>닉네임</p>
-										<input type="text" name="user_nikname" th:value="${userInfo.user_nikname}">
+										<input id="nikname" type="text" name="user_nikname" th:value="${userInfo.user_nikname}" readonly="readonly">
 									</div>
 									<div class="line">
 										<p>이메일</p>
-										<input type="text" name="user_email" th:value="${userInfo.user_email}">
+										<input id="email" type="text" name="user_email" th:value="${userInfo.user_email}" readonly="readonly">
 									</div>
 									<div class="line">
 										<p>비밀번호</p>
-										<input type="password" name="user_pw" value="">
+										<input id="user_pw" type="password" name="user_pw" th:value="${userInfo.user_pw}" readonly="readonly">
 									</div>
-									<div class="line">
-										<p>비밀번호</p>
-										<input type="password" name="user_pw2" value="">
-									</div>
-										<input type="submit" value="저장하기">
+									<span id="passHere" style="display:none;">
+										<div class="line">
+											<p>비밀번호 확인</p>
+											<input id="passCheck" type="password">
+										</div>
+									</span>
+										<span id="btnHere">
+											<input id="frmBtn" type="button" value="수정하기">
+									   </span>
+									   <input class="back" onclick="goBack();" type="button" value="뒤로가기">
 								</form>
 							</div>
 						</div>
@@ -144,5 +180,51 @@ input[type="submit"] {
 			</div>
 		</div>
 	</div>
+	<script th:inline="javascript">
+	
+	   var msg = /*[[${msg}]]*/ null;
+	   var success = /*[[${success}]]*/ null;
+	   var error =  /*[[${error}]]*/ null;
+	 
+	   if(msg){
+		   if(success){
+			   alert(success);
+		   }
+	   }
+		
+		$(function(){
+			
+			var frm = $('#frm');
+			
+			$('#frmBtn').on('click', function(){
+				$('#nikname').attr('readonly', false);
+				$('#email').attr('readonly', false);
+				$('#user_pw').attr('readonly', false);
+				$('#passHere').css('display', 'block');
+				$('#btnHere').html('<input onclick="return pass();" type="submit" value="수정완료">');
+				frm.attr('action', 'profile_updateProc.do');
+				frm.attr('method', 'post');
+				
+			});
+			
+		});
+		
+		function pass(){
+			if($('#passCheck').val() != $('#user_pw').val()){
+				alert('비밀번호가 일치하지 않습니다.');
+				return false;
+			}
+			
+			
+			return true;
+			
+		}
+	
+		
+		function goBack(){
+			location.href='mypage';
+		}
+
+	</script>
 </body>
 </html>
